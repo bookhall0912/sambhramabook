@@ -1,0 +1,184 @@
+<div class="admin-dashboard">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      SambhramaBook
+      <span class="badge">ADMIN</span>
+    </div>
+
+    <div class="admin-profile">
+      <div>
+        <strong>Admin User</strong><br>
+        <small>Super Admin</small>
+      </div>
+      <img src="https://i.pravatar.cc/32?img=47" alt="Admin">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h6>Overview</h6>
+      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Dashboard</a>
+      <a routerLink="/admin/analytics" routerLinkActive="active" class="sidebar-link">Analytics</a>
+
+      <h6>Management</h6>
+      <a routerLink="/admin/users" routerLinkActive="active" class="sidebar-link">Users</a>
+      <a routerLink="/admin/vendors" routerLinkActive="active" class="sidebar-link">Vendors</a>
+      <a routerLink="/admin/listings-approval" routerLinkActive="active" class="sidebar-link">
+        Listings Approval
+        @if (pendingCount() > 0) {
+          <span class="pill">{{ pendingCount() }}</span>
+        }
+      </a>
+
+      <h6>Operations</h6>
+      <a routerLink="/admin/bookings" routerLinkActive="active" class="sidebar-link">Bookings</a>
+      <a routerLink="/admin/payouts" routerLinkActive="active" class="sidebar-link">
+        Payouts
+        @if (payoutsCount() > 0) {
+          <span class="pill">{{ payoutsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/admin/reports" routerLinkActive="active" class="sidebar-link">Reports & Reviews</a>
+
+      <h6>System</h6>
+      <a routerLink="/admin/settings" routerLinkActive="active" class="sidebar-link">Platform Settings</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Dashboard Overview</h1>
+          <p>Welcome back, here's what's happening on SambhramaBook today.</p>
+        </div>
+        <select class="filter">
+          <option>Last 30 Days</option>
+          <option>Last 7 Days</option>
+          <option>Last 90 Days</option>
+          <option>This Year</option>
+        </select>
+      </div>
+
+      <!-- Stats -->
+      <section class="stats">
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="icon blue"></div>
+            <span>{{ usersChange() }}%</span>
+          </div>
+          <p>Total Users</p>
+          <h2>{{ totalUsers().toLocaleString() }}</h2>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="icon yellow"></div>
+            <span>{{ vendorsChange() }}%</span>
+          </div>
+          <p>Active Vendors</p>
+          <h2>{{ activeVendors().toLocaleString() }}</h2>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="icon purple"></div>
+            <span>{{ bookingsChange() }}%</span>
+          </div>
+          <p>Total Bookings</p>
+          <h2>{{ totalBookings().toLocaleString() }}</h2>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <div class="icon green"></div>
+            <span>{{ revenueChange() }}%</span>
+          </div>
+          <p>Platform Revenue</p>
+          <h2>{{ formatRevenue(platformRevenue()) }}</h2>
+        </div>
+      </section>
+
+      <!-- Charts -->
+      <section class="charts">
+        <div class="panel">
+          <div class="panel-header">
+            Booking Trends
+            <span style="font-size:13px;color:#777;">Monthly View</span>
+          </div>
+          <div class="bar-chart">
+            <div class="bar" style="height:80px"></div>
+            <div class="bar" style="height:120px"></div>
+            <div class="bar" style="height:70px"></div>
+            <div class="bar" style="height:130px"></div>
+            <div class="bar" style="height:170px"></div>
+            <div class="bar" style="height:100px"></div>
+            <div class="bar" style="height:190px"></div>
+            <div class="bar" style="height:140px"></div>
+            <div class="bar highlight" style="height:210px"></div>
+            <div class="bar" style="height:160px"></div>
+            <div class="bar" style="height:180px"></div>
+            <div class="bar" style="height:130px"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">Vendor Distribution</div>
+          <div class="donut"></div>
+          <div class="donut-label">{{ activeVendors().toLocaleString() }}<br><small>Total Vendors</small></div>
+        </div>
+      </section>
+
+      <!-- Pending Approvals -->
+      <div class="table-header">
+        Pending Listings Approvals
+        <button type="button" class="btn outline" (click)="onViewAll()">View All</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>LISTING NAME</th>
+            <th>VENDOR</th>
+            <th>TYPE</th>
+            <th>SUBMITTED</th>
+            <th>STATUS</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (listing of pendingListings(); track listing.id) {
+            <tr>
+              <td>
+                <strong>{{ listing.name }}</strong><br>
+                <small>{{ listing.location }}</small>
+              </td>
+              <td class="vendor">
+                <img [src]="listing.vendorAvatar" [alt]="listing.vendorName">
+                {{ listing.vendorName }}
+              </td>
+              <td>{{ listing.type }}</td>
+              <td>{{ listing.submitted }}</td>
+              <td>
+                <span class="status" [class]="listing.status.toLowerCase().replace('_', '-')">
+                  {{ listing.status === 'NEEDS_CHANGES' ? 'Needs Changes' : 'Pending' }}
+                </span>
+              </td>
+              <td>
+                @if (listing.status === 'PENDING') {
+                  <button type="button" class="btn primary" (click)="onReview(listing.id)">Review</button>
+                  <button type="button" class="btn outline" (click)="onReject(listing.id)">Reject</button>
+                } @else {
+                  <button type="button" class="btn outline" (click)="onViewDetails(listing.id)">Details</button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </main>
+  </div>
+</div>
+

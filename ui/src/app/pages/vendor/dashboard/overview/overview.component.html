@@ -1,0 +1,211 @@
+<div class="vendor-dashboard">
+  <!-- VENDOR HEADER -->
+  <header class="vendor-header">
+    <div class="vendor-header-container">
+      <div class="vendor-logo">
+        <div class="logo-box"></div>
+        <span class="logo-text">SambhramaBook</span>
+        <span class="vendor-badge">VENDOR</span>
+      </div>
+      <div class="vendor-header-actions">
+        <div class="user-avatar">
+          <img src="https://i.pravatar.cc/32" alt="User" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/vendor/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Overview</a>
+      <a routerLink="/vendor/dashboard/listings" routerLinkActive="active" class="sidebar-link">My Listings</a>
+      <a routerLink="/vendor/dashboard/bookings" routerLinkActive="active" class="sidebar-link">
+        Bookings
+        @if (pendingBookingsCount() > 0) {
+          <span class="badge-count">{{ pendingBookingsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/vendor/dashboard/availability" routerLinkActive="active" class="sidebar-link">Availability</a>
+      <a routerLink="/vendor/dashboard/earnings" routerLinkActive="active" class="sidebar-link">Earnings</a>
+      <hr class="sidebar-divider">
+      <a routerLink="/vendor/dashboard/settings" routerLinkActive="active" class="sidebar-link">Settings</a>
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="content-header">
+        <h2 class="page-title">Dashboard Overview</h2>
+        <button type="button" class="create-booking-btn" (click)="onCreateBooking()">
+          Create Booking
+        </button>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-content">
+            <h4 class="stat-label">Total Earnings (Oct)</h4>
+            <div class="stat-value">{{ formatPrice(totalEarnings()) }}</div>
+            <small class="stat-change positive">+{{ earningsChange() }}% from last month</small>
+          </div>
+          <div class="stat-chart">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="mini-chart">
+              <rect x="4" y="20" width="4" height="8" fill="#F4B41A" opacity="0.6"/>
+              <rect x="10" y="16" width="4" height="12" fill="#F4B41A" opacity="0.6"/>
+              <rect x="16" y="12" width="4" height="16" fill="#F4B41A" opacity="0.6"/>
+              <rect x="22" y="8" width="4" height="20" fill="#F4B41A"/>
+              <rect x="28" y="14" width="4" height="14" fill="#F4B41A" opacity="0.6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-content">
+            <h4 class="stat-label">Upcoming Events</h4>
+            <div class="stat-value">{{ upcomingEvents() }}</div>
+            <small class="stat-change">Next: {{ nextEvent() }}</small>
+          </div>
+          <div class="stat-chart">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="mini-chart">
+              <rect x="4" y="18" width="4" height="10" fill="#F4B41A" opacity="0.6"/>
+              <rect x="10" y="14" width="4" height="14" fill="#F4B41A" opacity="0.6"/>
+              <rect x="16" y="10" width="4" height="18" fill="#F4B41A"/>
+              <rect x="22" y="16" width="4" height="12" fill="#F4B41A" opacity="0.6"/>
+              <rect x="28" y="12" width="4" height="16" fill="#F4B41A" opacity="0.6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-content">
+            <h4 class="stat-label">Profile Views</h4>
+            <div class="stat-value">{{ profileViews().toLocaleString() }}</div>
+            <small class="stat-change positive">+{{ profileViewsChange() }}% this week</small>
+          </div>
+          <div class="stat-chart">
+            <svg width="40" height="40" viewBox="0 0 40 40" class="mini-chart">
+              <rect x="4" y="20" width="4" height="8" fill="#F4B41A" opacity="0.6"/>
+              <rect x="10" y="16" width="4" height="12" fill="#F4B41A" opacity="0.6"/>
+              <rect x="16" y="12" width="4" height="16" fill="#F4B41A" opacity="0.6"/>
+              <rect x="22" y="8" width="4" height="20" fill="#F4B41A"/>
+              <rect x="28" y="10" width="4" height="18" fill="#F4B41A" opacity="0.6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <!-- RECENT BOOKINGS -->
+        <div class="card">
+          <div class="card-header">
+            <strong class="card-title">Recent Bookings</strong>
+            <a (click)="onViewAllBookings()" class="card-link">View All</a>
+          </div>
+
+          <div class="table-container">
+            <table class="bookings-table">
+              <thead>
+                <tr>
+                  <th>BOOKING ID</th>
+                  <th>CUSTOMER</th>
+                  <th>DATE</th>
+                  <th>STATUS</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (booking of recentBookings(); track booking.id) {
+                  <tr>
+                    <td>#{{ booking.bookingId }}</td>
+                    <td>
+                      <div class="customer-cell">
+                        <img src="https://i.pravatar.cc/24?img={{ $index + 1 }}" alt="{{ booking.customerName }}" class="customer-avatar" />
+                        <span>{{ booking.customerName }}</span>
+                      </div>
+                    </td>
+                    <td>{{ formatDate(booking.date) }}</td>
+                    <td>
+                      <span class="status-badge" [class]="getStatusClass(booking.status)">
+                        {{ booking.status }}
+                      </span>
+                    </td>
+                    <td>
+                      @if (booking.status === 'PENDING') {
+                        <button 
+                          type="button"
+                          class="action-button"
+                          (click)="onApproveBooking(booking.id)"
+                        >
+                          Approve
+                        </button>
+                      } @else {
+                        <button 
+                          type="button"
+                          class="action-button"
+                          (click)="onManageBooking(booking.id)"
+                        >
+                          Manage
+                        </button>
+                      }
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- MY LISTINGS -->
+        <div class="card">
+          <div class="card-header">
+            <strong class="card-title">My Listings</strong>
+            <button type="button" class="action-button" (click)="onAddListing()">+ Add New</button>
+          </div>
+
+          @for (listing of listings(); track listing.id) {
+            <div class="listing-item">
+              @if (listing.id === '1') {
+                <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=200" [alt]="listing.name" class="listing-thumb" />
+              } @else {
+                <div class="listing-thumb-placeholder"></div>
+              }
+              <div class="listing-info">
+                <strong class="listing-name">{{ listing.name }}</strong>
+                <div class="listing-meta">
+                  <span class="status-tag" [class]="'tag-' + listing.status.toLowerCase()">
+                    {{ listing.status }}
+                  </span>
+                  @if (listing.status === 'DRAFT') {
+                    <span class="unlisted-text">Unlisted</span>
+                  } @else {
+                    {{ listing.location }}
+                  }
+                </div>
+                <a (click)="onEditListing(listing.id)" class="listing-link">
+                  @if (listing.status === 'DRAFT') {
+                    Resume Editing
+                  } @else {
+                    Edit Details
+                  }
+                </a>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Manage Booking Modal -->
+  <app-manage-booking-modal
+    [booking]="selectedBooking()"
+    [visible]="showManageModal"
+    (close)="onCloseModal()"
+    (confirmCancel)="onConfirmCancel($event)"
+    (confirmReschedule)="onConfirmReschedule($event)"
+    (keepBooking)="onKeepBooking()">
+  </app-manage-booking-modal>
+</div>
+

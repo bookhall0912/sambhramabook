@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Sambrama\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F8D1B8F5-191B-4362-9E88-25099DE5B09E}|Sambrama.Infrastructure\\Sambrama.Infrastructure.csproj|c:\\sambrama\\api\\sambrama.infrastructure\\sambrama.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F8D1B8F5-191B-4362-9E88-25099DE5B09E}|Sambrama.Infrastructure\\Sambrama.Infrastructure.csproj|solutionrelative:sambrama.infrastructure\\sambrama.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27940D4E-BADF-4383-BA66-64842BA4624C}|Sambrama.Application\\Sambrama.Application.csproj|c:\\sambrama\\api\\sambrama.application\\sambrama.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{27940D4E-BADF-4383-BA66-64842BA4624C}|Sambrama.Application\\Sambrama.Application.csproj|solutionrelative:sambrama.application\\sambrama.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\sambrama.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\sambrama.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AD0C442-000F-3A31-EB7B-5FA59945292F}|Sambrama.Api\\Sambrama.Api.csproj|c:\\sambrama\\api\\sambrama.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2AD0C442-000F-3A31-EB7B-5FA59945292F}|Sambrama.Api\\Sambrama.Api.csproj|solutionrelative:sambrama.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2AD0C442-000F-3A31-EB7B-5FA59945292F}|Sambrama.Api\\Sambrama.Api.csproj|c:\\sambrama\\api\\sambrama.api\\sambrama.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2AD0C442-000F-3A31-EB7B-5FA59945292F}|Sambrama.Api\\Sambrama.Api.csproj|solutionrelative:sambrama.api\\sambrama.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Sambrama\\api\\Directory.Packages.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Directory.Packages.props||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Sambrama.Infrastructure",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Infrastructure\\Sambrama.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Sambrama.Infrastructure\\Sambrama.Infrastructure.csproj",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Infrastructure\\Sambrama.Infrastructure.csproj",
+              "RelativeToolTip": "Sambrama.Infrastructure\\Sambrama.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-15T03:56:50.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Sambrama.Application",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Application\\Sambrama.Application.csproj",
+              "RelativeDocumentMoniker": "Sambrama.Application\\Sambrama.Application.csproj",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Application\\Sambrama.Application.csproj",
+              "RelativeToolTip": "Sambrama.Application\\Sambrama.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-15T03:56:23.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Sambrama.Domain",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\Sambrama.Domain.csproj",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\Sambrama.Domain.csproj",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\Sambrama.Domain.csproj",
+              "RelativeToolTip": "Sambrama.Domain\\Sambrama.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-15T03:55:55.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Api\\Program.cs",
+              "RelativeDocumentMoniker": "Sambrama.Api\\Program.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Api\\Program.cs",
+              "RelativeToolTip": "Sambrama.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T03:19:11.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Directory.Packages.props",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Directory.Packages.props",
+              "RelativeDocumentMoniker": "Directory.Packages.props",
+              "ToolTip": "C:\\Sambrama\\api\\Directory.Packages.props",
+              "RelativeToolTip": "Directory.Packages.props",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-12-15T03:18:37.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Sambrama.Api",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Api\\Sambrama.Api.csproj",
+              "RelativeDocumentMoniker": "Sambrama.Api\\Sambrama.Api.csproj",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Api\\Sambrama.Api.csproj",
+              "RelativeToolTip": "Sambrama.Api\\Sambrama.Api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-15T03:17:50.829Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

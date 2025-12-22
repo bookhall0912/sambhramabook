@@ -1,0 +1,411 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Sambrama\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\conversation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\conversation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\commissionledger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\commissionledger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\bookingslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\bookingslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\servicemedia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\servicemedia.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\mediatype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\mediatype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\servicecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\servicecategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\ownerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\ownerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\notificationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\notificationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\slotstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\slotstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\bookingstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\bookingstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\pricingtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\pricingtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\verificationstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\verificationstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|c:\\sambrama\\api\\sambrama.domain\\domainmodels\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{106853B9-45B3-4743-BF9D-8C5682F7A3B1}|Sambrama.Domain\\Sambrama.Domain.csproj|solutionrelative:sambrama.domain\\domainmodels\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Review.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Review.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Review.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:28:02.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Notification.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Notification.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Notification.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:27:31.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Message.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Message.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Message.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Message.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:26:57.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Conversation.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Conversation.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Conversation.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Conversation.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Conversation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:26:28.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CommissionLedger.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\CommissionLedger.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\CommissionLedger.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\CommissionLedger.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\CommissionLedger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:25:58.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Payment.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Payment.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Payment.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Payment.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:25:22.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Booking.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Booking.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Booking.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Booking.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:24:49.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BookingSlot.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\BookingSlot.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\BookingSlot.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\BookingSlot.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\BookingSlot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:24:20.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MediaType.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\MediaType.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\MediaType.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\MediaType.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\MediaType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:23:38.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ServiceMedia.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\ServiceMedia.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\ServiceMedia.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\ServiceMedia.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\ServiceMedia.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:22:59.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Service.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Service.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Service.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Service.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Service.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwBIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:20:44.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ServiceCategory.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\ServiceCategory.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\ServiceCategory.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\ServiceCategory.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\ServiceCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:20:19.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OwnerProfile.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\OwnerProfile.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\OwnerProfile.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\OwnerProfile.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\OwnerProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:19:12.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\User.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\User.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\User.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\User.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:17:37.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "NotificationType.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\NotificationType.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\NotificationType.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\NotificationType.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\NotificationType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:16:49.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SlotStatus.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\SlotStatus.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\SlotStatus.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\SlotStatus.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\SlotStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:16:13.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PaymentStatus.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\PaymentStatus.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\PaymentStatus.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\PaymentStatus.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\PaymentStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:15:35.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PaymentMethod.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\PaymentMethod.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\PaymentMethod.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\PaymentMethod.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\PaymentMethod.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:15:01.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "BookingStatus.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\BookingStatus.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\BookingStatus.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\BookingStatus.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\BookingStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:12:54.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PricingType.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\PricingType.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\PricingType.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\PricingType.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\PricingType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:12:14.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "VerificationStatus.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\VerificationStatus.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\VerificationStatus.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\VerificationStatus.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\VerificationStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:10:38.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\Role.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\Enums\\Role.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\Enums\\Role.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\Enums\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:09:39.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "Sambrama.Domain\\DomainModels\\BaseEntity.cs",
+              "ToolTip": "C:\\Sambrama\\api\\Sambrama.Domain\\DomainModels\\BaseEntity.cs",
+              "RelativeToolTip": "Sambrama.Domain\\DomainModels\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T04:06:14.035Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

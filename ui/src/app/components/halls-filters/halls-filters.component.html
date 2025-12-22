@@ -1,0 +1,52 @@
+<aside class="filters">
+  <h3>Filters</h3>
+
+  <div class="filter-group">
+    <label for="price-range">Price per day</label>
+    <input
+      type="range"
+      id="price-range"
+      [(ngModel)]="priceRange"
+      [max]="maxPrice"
+      min="0"
+      step="10000"
+      class="price-slider"
+    />
+    <div class="price-display">
+      Up to {{ priceRange | currency:'INR':'symbol':'1.0-0' }}
+    </div>
+  </div>
+
+  <div class="filter-group">
+    <label>Guest Capacity</label>
+    @for (option of capacityOptions; track option.value) {
+      <label class="checkbox-label">
+        <input
+          type="checkbox"
+          [value]="option.value"
+          [checked]="selectedCapacity.includes(option.value)"
+          (change)="onCapacityChange(option.value, $any($event.target).checked)"
+        />
+        <span>{{ option.label }}</span>
+      </label>
+    }
+  </div>
+
+  <div class="filter-group">
+    <label>Amenities</label>
+    @for (option of amenityOptions; track option.value) {
+      <label class="checkbox-label">
+        <input
+          type="checkbox"
+          [value]="option.value"
+          [checked]="selectedAmenities.includes(option.value)"
+          (change)="onAmenityChange(option.value, $any($event.target).checked)"
+        />
+        <span>{{ option.label }}</span>
+      </label>
+    }
+  </div>
+
+  <button class="apply-btn" (click)="applyFilters()">Apply Filters</button>
+</aside>
+

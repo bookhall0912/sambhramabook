@@ -1,0 +1,107 @@
+<div class="vendor-dashboard">
+  <!-- VENDOR HEADER -->
+  <header class="vendor-header">
+    <div class="vendor-header-container">
+      <div class="vendor-logo">
+        <div class="logo-box"></div>
+        <span class="logo-text">SambhramaBook</span>
+        <span class="vendor-badge">VENDOR</span>
+      </div>
+      <div class="vendor-header-actions">
+        <div class="user-avatar">
+          <img src="https://i.pravatar.cc/40?img=47" alt="User" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/vendor/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Overview</a>
+      <a routerLink="/vendor/dashboard/listings" routerLinkActive="active" class="sidebar-link">My Listings</a>
+      <a routerLink="/vendor/dashboard/bookings" routerLinkActive="active" class="sidebar-link">
+        Bookings
+        @if (pendingBookingsCount() > 0) {
+          <span class="badge-count">{{ pendingBookingsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/vendor/dashboard/availability" routerLinkActive="active" class="sidebar-link">Availability</a>
+      <a routerLink="/vendor/dashboard/earnings" routerLinkActive="active" class="sidebar-link">Earnings</a>
+      <hr class="sidebar-divider">
+      <a routerLink="/vendor/dashboard/settings" routerLinkActive="active" class="sidebar-link">Settings</a>
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="content-header">
+        <h2 class="page-title">Bookings</h2>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>All Bookings</h3>
+          <div class="filter-tabs">
+            <button type="button" class="tab-btn" [class.active]="selectedFilter() === 'all'" (click)="setFilter('all')">All</button>
+            <button type="button" class="tab-btn" [class.active]="selectedFilter() === 'pending'" (click)="setFilter('pending')">Pending</button>
+            <button type="button" class="tab-btn" [class.active]="selectedFilter() === 'confirmed'" (click)="setFilter('confirmed')">Confirmed</button>
+          </div>
+        </div>
+
+        <table class="bookings-table">
+          <thead>
+            <tr>
+              <th>BOOKING ID</th>
+              <th>CUSTOMER</th>
+              <th>VENUE</th>
+              <th>DATE</th>
+              <th>GUESTS</th>
+              <th>AMOUNT</th>
+              <th>STATUS</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (booking of filteredBookings(); track booking.id) {
+              <tr>
+                <td>#{{ booking.bookingId }}</td>
+                <td class="user">
+                  <img src="https://i.pravatar.cc/32?img={{ $index + 1 }}" alt="{{ booking.customerName }}" class="user-avatar">
+                  <div>
+                    <div class="user-name">{{ booking.customerName }}</div>
+                    <div class="user-phone">{{ booking.customerPhone }}</div>
+                  </div>
+                </td>
+                <td>{{ booking.venueName }}</td>
+                <td>{{ formatDate(booking.date) }}</td>
+                <td>{{ booking.guests }}</td>
+                <td class="amount">{{ formatPrice(booking.amount) }}</td>
+                <td>
+                  <span class="status" [class]="booking.status.toLowerCase()">{{ booking.status }}</span>
+                </td>
+                <td>
+                  @if (booking.status === 'PENDING') {
+                    <button type="button" class="ghost-btn" (click)="onApprove(booking.id)">Approve</button>
+                  } @else {
+                    <button type="button" class="ghost-btn" (click)="onManage(booking.id)">Manage</button>
+                  }
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Manage Booking Modal -->
+  <app-manage-booking-modal
+    [booking]="selectedBooking()"
+    [visible]="showManageModal"
+    (close)="onCloseModal()"
+    (confirmCancel)="onConfirmCancel($event)"
+    (confirmReschedule)="onConfirmReschedule($event)"
+    (keepBooking)="onKeepBooking()">
+  </app-manage-booking-modal>
+</div>

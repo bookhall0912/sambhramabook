@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="SambhramaBook.Domain\SambhramaBook.Domain.csproj" />
+  <Project Path="SambhramaBook.Application\SambhramaBook.Application.csproj" />
+  <Project Path="SambhramaBook.Infrastructure\SambhramaBook.Infrastructure.csproj" />
+  <Project Path="SambhramaBook.Api\SambhramaBook.Api.csproj" />
+</Solution>
+

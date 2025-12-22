@@ -1,0 +1,13 @@
+C:\SambhramaBook\api\SambhramaBook.Domain\bin\Debug\net10.0\SambhramaBook.Domain.deps.json
+C:\SambhramaBook\api\SambhramaBook.Domain\bin\Debug\net10.0\SambhramaBook.Domain.dll
+C:\SambhramaBook\api\SambhramaBook.Domain\bin\Debug\net10.0\SambhramaBook.Domain.pdb
+C:\SambhramaBook\api\SambhramaBook.Domain\bin\Debug\net10.0\SambhramaBook.Domain.xml
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\SambhramaBook.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\SambhramaBook.Domain.AssemblyInfoInputs.cache
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\SambhramaBook.Domain.AssemblyInfo.cs
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\SambhramaBook.Domain.csproj.CoreCompileInputs.cache
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\SambhramaBook.Domain.dll
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\refint\SambhramaBook.Domain.dll
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\SambhramaBook.Domain.xml
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\SambhramaBook.Domain.pdb
+C:\SambhramaBook\api\SambhramaBook.Domain\obj\Debug\net10.0\ref\SambhramaBook.Domain.dll

@@ -1,0 +1,211 @@
+@use 'design-system' as *;
+
+.venue-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  @include card-shadow;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.venue-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 60%; // Aspect ratio
+  overflow: hidden;
+  background-color: var(--border-light);
+}
+
+.venue-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.venue-rating {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  backdrop-filter: blur(4px);
+}
+
+.rating-value {
+  line-height: 1;
+}
+
+.venue-content {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1;
+
+  @include respond-to('sm') {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+  }
+}
+
+.venue-name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: #2c3e50; // Dark blue/purple as per design
+  margin: 0;
+  line-height: 1.3;
+
+  @include respond-to('sm') {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.venue-location {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+
+  svg {
+    flex-shrink: 0;
+    color: var(--text-tertiary);
+  }
+
+  .distance {
+    color: var(--text-tertiary);
+  }
+}
+
+.venue-details {
+  display: flex;
+  gap: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  svg {
+    flex-shrink: 0;
+    color: var(--text-tertiary);
+  }
+
+  &.amenities {
+    gap: 0;
+  }
+}
+
+.venue-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-light);
+  flex-wrap: wrap;
+
+  @include respond-to('sm') {
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    flex-wrap: nowrap;
+  }
+}
+
+.venue-price {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.price-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.price-value {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--brand-primary);
+  line-height: 1;
+}
+
+.view-details-button {
+  @include button-primary;
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  @include respond-to('sm') {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+  }
+}
+
+.venue-footer.with-actions {
+  flex-direction: column;
+  gap: var(--spacing-md);
+  border-top: none;
+  padding-top: 0;
+}
+
+.venue-price-simple {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  width: 100%;
+
+  .outline-btn,
+  .primary-btn {
+    flex: 1;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-xl);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    text-align: center;
+    text-decoration: none;
+    transition: all var(--transition-base);
+  }
+
+  .outline-btn {
+    @include button-secondary;
+    border-color: var(--brand-primary);
+    color: var(--brand-primary);
+  }
+
+  .primary-btn {
+    @include button-primary;
+  }
+}

@@ -1,0 +1,100 @@
+// Brand Colors - Configurable
+:root {
+  // Primary Brand Color (Gold/Yellow)
+  --brand-primary: #F4B41A; // Main brand color - Gold
+  --brand-primary-hover: #e0a300;
+  --brand-primary-light: #fff1d6;
+  --brand-primary-dark: #c27a00;
+  --brand-primary-rgb: 244, 180, 26;
+
+  // Secondary Brand Color (Teal)
+  --brand-secondary: #0F8B8D; // Teal - for success states, accents
+  --brand-secondary-light: #dff5f3;
+  --brand-secondary-dark: #0a6d6f;
+
+  // Accent Color (Maroon)
+  --brand-accent: #8B1430; // Maroon - for headers, special elements
+  --brand-accent-light: #f2eaea;
+  --brand-accent-dark: #6B0F24;
+
+  // Background Colors
+  --bg-main: #FFF7EE; // Main background - cream/peach
+  --bg-header: #ffffff;
+  --bg-footer: #f5f3f0;
+  --bg-card: #ffffff;
+  --bg-card-alt: #fff3e5; // Light cream for sidebars
+  --bg-card-hover: #fef9f5;
+
+  // Text Colors
+  --text-primary: #2b2b2b; // Main text color
+  --text-secondary: #777777; // Secondary text
+  --text-tertiary: #999999; // Tertiary/muted text
+  --text-on-primary: #ffffff; // White text on primary color
+  --text-on-secondary: #ffffff; // White text on secondary color
+
+  // Border Colors
+  --border-light: #e6e6e6;
+  --border-medium: #ddd;
+  --border-dark: #ccc;
+
+  // Status Colors
+  --success: #0F8B8D; // Using teal for success
+  --success-light: #dff5f3;
+  --error: #dc3545;
+  --error-light: #f8d7da;
+  --warning: #f5b400;
+  --warning-light: #fff3cd;
+  --info: #2196f3;
+  --info-light: #e3f2fd;
+
+  // Spacing Scale
+  --spacing-xs: 0.25rem; // 4px
+  --spacing-sm: 0.5rem; // 8px
+  --spacing-md: 1rem; // 16px
+  --spacing-lg: 1.5rem; // 24px
+  --spacing-xl: 2rem; // 32px
+  --spacing-2xl: 3rem; // 48px
+  --spacing-3xl: 4rem; // 64px
+
+  // Border Radius
+  --radius-sm: 0.25rem; // 4px
+  --radius-md: 0.5rem; // 8px
+  --radius-lg: 0.75rem; // 12px
+  --radius-xl: 1rem; // 16px
+  --radius-full: 9999px;
+
+  // Shadows
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  // Typography
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-size-xs: 0.75rem; // 12px
+  --font-size-sm: 0.875rem; // 14px
+  --font-size-base: 1rem; // 16px
+  --font-size-lg: 1.125rem; // 18px
+  --font-size-xl: 1.25rem; // 20px
+  --font-size-2xl: 1.5rem; // 24px
+  --font-size-3xl: 1.875rem; // 30px
+  --font-size-4xl: 2.25rem; // 36px
+  --font-size-5xl: 3rem; // 48px
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Transitions
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;

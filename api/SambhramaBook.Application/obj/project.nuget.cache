@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "o0QHVtUSq6I=",
+  "success": true,
+  "projectFilePath": "C:\\SambhramaBook\\api\\SambhramaBook.Application\\SambhramaBook.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DVNaveen\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.1\\microsoft.extensions.dependencyinjection.10.0.1.nupkg.sha512",
+    "C:\\Users\\DVNaveen\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.1\\microsoft.extensions.dependencyinjection.abstractions.10.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

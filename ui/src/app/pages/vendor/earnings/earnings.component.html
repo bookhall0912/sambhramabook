@@ -1,0 +1,105 @@
+<div class="vendor-dashboard">
+  <!-- VENDOR HEADER -->
+  <header class="vendor-header">
+    <div class="vendor-header-container">
+      <div class="vendor-logo">
+        <div class="logo-box"></div>
+        <span class="logo-text">SambhramaBook</span>
+        <span class="vendor-badge">VENDOR</span>
+      </div>
+      <div class="vendor-header-actions">
+        <div class="user-avatar">
+          <img src="https://i.pravatar.cc/40?img=47" alt="User" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/vendor/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Overview</a>
+      <a routerLink="/vendor/dashboard/listings" routerLinkActive="active" class="sidebar-link">My Listings</a>
+      <a routerLink="/vendor/dashboard/bookings" routerLinkActive="active" class="sidebar-link">
+        Bookings
+        @if (pendingBookingsCount() > 0) {
+          <span class="badge-count">{{ pendingBookingsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/vendor/dashboard/availability" routerLinkActive="active" class="sidebar-link">Availability</a>
+      <a routerLink="/vendor/dashboard/earnings" routerLinkActive="active" class="sidebar-link">Earnings</a>
+      <hr class="sidebar-divider">
+      <a routerLink="/vendor/dashboard/settings" routerLinkActive="active" class="sidebar-link">Settings</a>
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="content-header">
+        <h2 class="page-title">Earnings</h2>
+        <button type="button" class="primary-btn" (click)="onDownloadReport()">Download Report</button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p class="label">Total Earnings</p>
+          <h2>{{ formatPrice(totalEarnings()) }}</h2>
+          <p class="muted">All time</p>
+        </div>
+        <div class="stat-card">
+          <p class="label">This Month</p>
+          <h2>{{ formatPrice(thisMonth()) }}</h2>
+          <p class="positive">+{{ ((thisMonth() - lastMonth()) / lastMonth() * 100).toFixed(1) }}% from last month</p>
+        </div>
+        <div class="stat-card">
+          <p class="label">Last Month</p>
+          <h2>{{ formatPrice(lastMonth()) }}</h2>
+          <p class="muted">Previous period</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Earnings Breakdown</h3>
+          <select class="period-select">
+            <option>Last 30 days</option>
+            <option>Last 3 months</option>
+            <option>Last 6 months</option>
+            <option>Last year</option>
+          </select>
+        </div>
+        <div class="chart-placeholder">
+          <p>Earnings chart will be displayed here</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Recent Transactions</h3>
+        </div>
+        <table class="transactions-table">
+          <thead>
+            <tr>
+              <th>DATE</th>
+              <th>BOOKING ID</th>
+              <th>AMOUNT</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (transaction of transactions(); track transaction.id) {
+              <tr>
+                <td>{{ formatDate(transaction.date) }}</td>
+                <td>#{{ transaction.bookingId }}</td>
+                <td class="amount">{{ formatPrice(transaction.amount) }}</td>
+                <td>
+                  <span class="status" [class]="transaction.status.toLowerCase()">{{ transaction.status }}</span>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>

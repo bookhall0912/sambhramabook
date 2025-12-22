@@ -1,0 +1,91 @@
+@use 'design-system' as *;
+
+.services-section {
+  padding: var(--spacing-2xl) var(--spacing-md);
+  background-color: var(--bg-main);
+
+  @include respond-to('md') {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+  }
+
+  @include respond-to('lg') {
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+  }
+}
+
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+
+  @include respond-to('sm') {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  @include respond-to('md') {
+    text-align: left;
+  }
+}
+
+.section-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--brand-primary);
+  margin: 0;
+  line-height: 1.2;
+
+  @include respond-to('sm') {
+    font-size: var(--font-size-3xl);
+  }
+
+  @include respond-to('md') {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+.section-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+
+  @include respond-to('md') {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+.loading,
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+}

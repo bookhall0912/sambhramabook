@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SambhramaBook.Application\SambhramaBook.Application.csproj" />
+    <ProjectReference Include="..\SambhramaBook.Domain\SambhramaBook.Domain.csproj" />
+  </ItemGroup>
+</Project>

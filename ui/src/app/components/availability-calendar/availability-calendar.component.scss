@@ -1,0 +1,112 @@
+@use 'design-system' as *;
+
+.calendar {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.month-title {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+.day-header {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  padding: var(--spacing-xs);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--spacing-xs);
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-weight: var(--font-weight-medium);
+
+  &.empty {
+    cursor: default;
+    visibility: hidden;
+  }
+
+  &.available {
+    background-color: #e6fbf3;
+    color: var(--text-primary);
+
+    &:hover {
+      background-color: #d4f5e8;
+      transform: scale(1.05);
+    }
+  }
+
+  &.booked {
+    background-color: var(--bg-main);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.selected {
+    background-color: var(--brand-primary);
+    color: var(--text-on-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+.legend {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+  
+  &.available {
+    background-color: #e6fbf3;
+  }
+  
+  &.booked {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-light);
+  }
+}
+

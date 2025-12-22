@@ -1,0 +1,105 @@
+<app-header></app-header>
+
+<div class="page-header">
+  <button type="button" class="back-button" (click)="goBack()" aria-label="Go back">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back
+  </button>
+  <div class="page-header-content">
+    <h1>{{ formatServiceType(serviceType()) }} Services near {{ location() }}</h1>
+    <small>{{ filteredVendors().length }} vendors found · <strong>Within 50 km</strong></small>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- FILTERS -->
+  <aside class="filters">
+    <h3>Filters</h3>
+
+    <div class="filter-group">
+      <label>Service Type</label>
+      <input type="text" [value]="serviceTypeFilter()" readonly class="readonly-input" />
+    </div>
+
+    <div class="filter-group">
+      <label>Photography Style</label>
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="photographyStyle().candid" (change)="togglePhotographyStyle('candid')">
+        <span>Candid</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="photographyStyle().traditional" (change)="togglePhotographyStyle('traditional')">
+        <span>Traditional</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="photographyStyle().cinematic" (change)="togglePhotographyStyle('cinematic')">
+        <span>Cinematic Video</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="photographyStyle().drone" (change)="togglePhotographyStyle('drone')">
+        <span>Drone Shoots</span>
+      </label>
+    </div>
+
+    <div class="filter-group">
+      <label>Experience</label>
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="experience()['5plus']" (change)="toggleExperience('5plus')">
+        <span>5+ Years</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="experience()['3plus']" (change)="toggleExperience('3plus')">
+        <span>3+ Years</span>
+      </label>
+    </div>
+
+    <div class="filter-group">
+      <label>Rating</label>
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="rating()['4.5']" (change)="toggleRating('4.5')">
+        <span>4.5 & up</span>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" [checked]="rating()['4.0']" (change)="toggleRating('4.0')">
+        <span>4.0 & up</span>
+      </label>
+    </div>
+
+    <button class="apply-btn" (click)="onResetFilters()">Reset Filters</button>
+  </aside>
+
+  <!-- LISTINGS -->
+  <section class="listings-section">
+    <div class="listings">
+        @for (vendor of filteredVendors(); track vendor.id) {
+          <div class="card">
+            <div style="position:relative">
+              @if (vendor.image) {
+                <img [src]="vendor.image" [alt]="vendor.name">
+              } @else {
+                <div style="width:100%;height:160px;background:#f1e9e4;"></div>
+              }
+              <span class="tag">{{ vendor.tag }}</span>
+            </div>
+            <div class="card-body">
+              <div class="title">{{ vendor.name }}</div>
+              <div class="rating">{{ vendor.rating }} ({{ vendor.reviewCount }})</div>
+              <div class="desc">{{ vendor.description }}</div>
+              <div class="price">{{ formatPrice(vendor.price) }} <span class="per">{{ vendor.priceUnit }}</span></div>
+              <div class="actions">
+                <button type="button" class="btn outline" (click)="onContactVendor(vendor.id)">Contact</button>
+                <button type="button" class="btn primary" (click)="onViewVendor(vendor.id)">View</button>
+              </div>
+            </div>
+          </div>
+      }
+    </div>
+
+    <button class="load-more" (click)="onLoadMore()">Load More Results</button>
+  </section>
+</div>
+
+<app-footer></app-footer>
+

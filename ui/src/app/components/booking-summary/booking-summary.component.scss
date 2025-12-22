@@ -1,0 +1,52 @@
+@use 'design-system' as *;
+
+.booking-summary-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  @include card-shadow;
+}
+
+.summary-image {
+  width: 100%;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  object-fit: cover;
+  height: 200px;
+}
+
+.summary-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--brand-primary);
+  margin: var(--spacing-xs) 0;
+}
+
+.summary-location {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.summary-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: var(--spacing-md) 0;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  margin: var(--spacing-sm) 0;
+  color: var(--text-primary);
+}
+
+.summary-total {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  color: var(--brand-primary);
+  margin-top: var(--spacing-md);
+}
+

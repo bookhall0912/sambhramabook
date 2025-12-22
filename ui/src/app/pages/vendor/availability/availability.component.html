@@ -1,0 +1,88 @@
+<div class="vendor-dashboard">
+  <!-- VENDOR HEADER -->
+  <header class="vendor-header">
+    <div class="vendor-header-container">
+      <div class="vendor-logo">
+        <div class="logo-box"></div>
+        <span class="logo-text">SambhramaBook</span>
+        <span class="vendor-badge">VENDOR</span>
+      </div>
+      <div class="vendor-header-actions">
+        <div class="user-avatar">
+          <img src="https://i.pravatar.cc/40?img=47" alt="User" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/vendor/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Overview</a>
+      <a routerLink="/vendor/dashboard/listings" routerLinkActive="active" class="sidebar-link">My Listings</a>
+      <a routerLink="/vendor/dashboard/bookings" routerLinkActive="active" class="sidebar-link">
+        Bookings
+        @if (pendingBookingsCount() > 0) {
+          <span class="badge-count">{{ pendingBookingsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/vendor/dashboard/availability" routerLinkActive="active" class="sidebar-link">Availability</a>
+      <a routerLink="/vendor/dashboard/earnings" routerLinkActive="active" class="sidebar-link">Earnings</a>
+      <hr class="sidebar-divider">
+      <a routerLink="/vendor/dashboard/settings" routerLinkActive="active" class="sidebar-link">Settings</a>
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="content-header">
+        <h2 class="page-title">Availability</h2>
+        <button type="button" class="primary-btn" (click)="onBulkUpdate()">Bulk Update</button>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Calendar View</h3>
+          <div class="month-nav">
+            <button type="button" class="nav-btn" (click)="previousMonth()">←</button>
+            <span class="current-month">{{ currentMonth() }}</span>
+            <button type="button" class="nav-btn" (click)="nextMonth()">→</button>
+          </div>
+        </div>
+
+        <div class="calendar-grid">
+          @for (day of calendarDays(); track day.date) {
+            <div class="calendar-day" [class.booked]="day.booked" [class.selected]="day.selected">
+              <div class="day-number">{{ day.date }}</div>
+              @if (day.booked) {
+                <div class="day-status booked">Booked</div>
+              } @else {
+                <div class="day-status available">Available</div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Availability Settings</h3>
+        </div>
+        <div class="settings-content">
+          <div class="setting-item">
+            <label>Default Availability</label>
+            <select class="form-select">
+              <option>Available</option>
+              <option>Unavailable</option>
+            </select>
+          </div>
+          <div class="setting-item">
+            <label>Minimum Booking Notice</label>
+            <input type="number" class="form-input" value="7" min="1"> days
+          </div>
+          <button type="button" class="save-btn">Save Settings</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

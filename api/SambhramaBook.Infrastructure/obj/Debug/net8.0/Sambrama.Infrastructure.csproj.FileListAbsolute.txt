@@ -1,0 +1,13 @@
+C:\Sambrama\api\Sambrama.Infrastructure\bin\Debug\net8.0\Sambrama.Infrastructure.deps.json
+C:\Sambrama\api\Sambrama.Infrastructure\bin\Debug\net8.0\Sambrama.Infrastructure.dll
+C:\Sambrama\api\Sambrama.Infrastructure\bin\Debug\net8.0\Sambrama.Infrastructure.pdb
+C:\Sambrama\api\Sambrama.Infrastructure\bin\Debug\net8.0\Sambrama.Infrastructure.xml
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\Sambrama.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\Sambrama.Infrastructure.AssemblyInfoInputs.cache
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\Sambrama.Infrastructure.AssemblyInfo.cs
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\Sambrama.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\Sambrama.Infrastructure.dll
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\refint\Sambrama.Infrastructure.dll
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\Sambrama.Infrastructure.xml
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\Sambrama.Infrastructure.pdb
+C:\Sambrama\api\Sambrama.Infrastructure\obj\Debug\net8.0\ref\Sambrama.Infrastructure.dll

@@ -1,0 +1,12 @@
+<div 
+  class="addon-card"
+  [class.selected]="addon().selected"
+  (click)="onToggle()"
+>
+  <div class="addon-content">
+    <div class="addon-title">{{ addon().title }}</div>
+    <div class="addon-description">{{ addon().description }}</div>
+  </div>
+  <div class="addon-price">{{ formatPrice(addon().price) }}</div>
+</div>
+

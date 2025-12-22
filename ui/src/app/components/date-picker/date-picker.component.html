@@ -1,0 +1,17 @@
+<div class="date-picker-wrapper">
+  <svg class="date-picker-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="3.33333" y="4.16667" width="13.3333" height="12.5" rx="1" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M3.33333 8.33333H16.6667" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M6.66667 2.5V5.83333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M13.3333 2.5V5.83333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+  <input
+    #dateInput
+    type="text"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()"
+    class="date-picker-input"
+    readonly
+    autocomplete="off"
+  />
+</div>

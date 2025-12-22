@@ -1,0 +1,89 @@
+@use 'design-system' as *;
+
+.booking {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  position: sticky;
+  top: var(--spacing-xl);
+  height: fit-content;
+
+  @include respond-to-max('lg') {
+    position: static;
+  }
+}
+
+.price {
+  color: var(--brand-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+
+  small {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    color: var(--text-secondary);
+  }
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.booking-form label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.booking-input {
+  @include input-field;
+  margin-bottom: var(--spacing-sm);
+}
+
+.booking-date-picker {
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+
+  ::ng-deep .date-picker-wrapper {
+    width: 100%;
+  }
+
+  ::ng-deep .date-picker-input {
+    width: 100%;
+  }
+}
+
+.summary {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: var(--spacing-md) 0;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+
+  div {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .total {
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border-light);
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+  }
+}
+
+.book-btn {
+  width: 100%;
+  @include button-primary;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-xl);
+  font-size: var(--font-size-base);
+  margin-top: var(--spacing-sm);
+}
+

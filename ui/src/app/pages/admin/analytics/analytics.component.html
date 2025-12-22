@@ -1,0 +1,88 @@
+<div class="admin-dashboard">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      SambhramaBook
+      <span class="badge">ADMIN</span>
+    </div>
+
+    <div class="admin-profile">
+      <div>
+        <strong>Admin User</strong><br>
+        <small>Super Admin</small>
+      </div>
+      <img src="https://i.pravatar.cc/32?img=47" alt="Admin">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h6>Overview</h6>
+      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Dashboard</a>
+      <a routerLink="/admin/analytics" routerLinkActive="active" class="sidebar-link">Analytics</a>
+
+      <h6>Management</h6>
+      <a routerLink="/admin/users" routerLinkActive="active" class="sidebar-link">Users</a>
+      <a routerLink="/admin/vendors" routerLinkActive="active" class="sidebar-link">Vendors</a>
+      <a routerLink="/admin/listings-approval" routerLinkActive="active" class="sidebar-link">
+        Listings Approval
+        @if (pendingCount() > 0) {
+          <span class="pill">{{ pendingCount() }}</span>
+        }
+      </a>
+
+      <h6>Operations</h6>
+      <a routerLink="/admin/bookings" routerLinkActive="active" class="sidebar-link">Bookings</a>
+      <a routerLink="/admin/payouts" routerLinkActive="active" class="sidebar-link">
+        Payouts
+        @if (payoutsCount() > 0) {
+          <span class="pill">{{ payoutsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/admin/reports" routerLinkActive="active" class="sidebar-link">Reports & Reviews</a>
+
+      <h6>System</h6>
+      <a routerLink="/admin/settings" routerLinkActive="active" class="sidebar-link">Platform Settings</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Analytics</h1>
+          <p>Detailed insights and performance metrics for SambhramaBook platform.</p>
+        </div>
+        <select class="filter">
+          <option>Last 30 Days</option>
+          <option>Last 7 Days</option>
+          <option>Last 90 Days</option>
+          <option>This Year</option>
+        </select>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">User Growth Trends</div>
+        <div class="chart-placeholder">
+          <p>User growth chart will be displayed here</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Booking Revenue Analysis</div>
+        <div class="chart-placeholder">
+          <p>Revenue analysis chart will be displayed here</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Vendor Performance Metrics</div>
+        <div class="chart-placeholder">
+          <p>Vendor performance metrics will be displayed here</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+

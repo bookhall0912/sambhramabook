@@ -1,0 +1,100 @@
+<div class="admin-dashboard">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      SambhramaBook
+      <span class="badge">ADMIN</span>
+    </div>
+
+    <div class="admin-profile">
+      <div>
+        <strong>Admin User</strong><br>
+        <small>Super Admin</small>
+      </div>
+      <img src="https://i.pravatar.cc/32?img=47" alt="Admin">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h6>Overview</h6>
+      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Dashboard</a>
+      <a routerLink="/admin/analytics" routerLinkActive="active" class="sidebar-link">Analytics</a>
+
+      <h6>Management</h6>
+      <a routerLink="/admin/users" routerLinkActive="active" class="sidebar-link">Users</a>
+      <a routerLink="/admin/vendors" routerLinkActive="active" class="sidebar-link">Vendors</a>
+      <a routerLink="/admin/listings-approval" routerLinkActive="active" class="sidebar-link">
+        Listings Approval
+        @if (pendingCount() > 0) {
+          <span class="pill">{{ pendingCount() }}</span>
+        }
+      </a>
+
+      <h6>Operations</h6>
+      <a routerLink="/admin/bookings" routerLinkActive="active" class="sidebar-link">Bookings</a>
+      <a routerLink="/admin/payouts" routerLinkActive="active" class="sidebar-link">
+        Payouts
+        @if (payoutsCount() > 0) {
+          <span class="pill">{{ payoutsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/admin/reports" routerLinkActive="active" class="sidebar-link">Reports & Reviews</a>
+
+      <h6>System</h6>
+      <a routerLink="/admin/settings" routerLinkActive="active" class="sidebar-link">Platform Settings</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Bookings</h1>
+          <p>View and manage all bookings on the platform.</p>
+        </div>
+        <select class="filter">
+          <option>All Bookings</option>
+          <option>Confirmed</option>
+          <option>Pending</option>
+          <option>Cancelled</option>
+        </select>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>BOOKING ID</th>
+            <th>CUSTOMER</th>
+            <th>VENUE</th>
+            <th>DATE</th>
+            <th>AMOUNT</th>
+            <th>STATUS</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (booking of bookings(); track booking.id) {
+            <tr>
+              <td><strong>{{ booking.bookingId }}</strong></td>
+              <td>{{ booking.customerName }}</td>
+              <td>{{ booking.venueName }}</td>
+              <td>{{ formatDate(booking.date) }}</td>
+              <td>{{ formatPrice(booking.amount) }}</td>
+              <td>
+                <span class="status" [class]="booking.status.toLowerCase()">
+                  {{ booking.status }}
+                </span>
+              </td>
+              <td>
+                <button type="button" class="btn outline" (click)="onViewDetails(booking.id)">View</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </main>
+  </div>
+</div>
+

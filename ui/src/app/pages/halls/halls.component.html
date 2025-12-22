@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+<div class="page-header">
+  <button type="button" class="back-button" (click)="goBack()" aria-label="Go back">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back
+  </button>
+  <div class="page-header-content">
+    <h1>Convention Halls near {{ location }}</h1>
+    <small>Showing {{ filteredHalls.length }} results within {{ radius }} km · Change location</small>
+  </div>
+</div>
+
+<div class="layout">
+  <app-halls-filters (filtersApplied)="onFiltersApplied($event)"></app-halls-filters>
+
+  <section class="listings-section">
+    <div class="listings">
+      @for (hall of filteredHalls; track hall.id) {
+        <app-venue-card [venue]="hall" [showBookNow]="true"></app-venue-card>
+      }
+    </div>
+
+    <button class="load-more" (click)="loadMore()">Load More Results</button>
+  </section>
+</div>
+
+<app-footer></app-footer>
+

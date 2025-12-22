@@ -1,0 +1,123 @@
+<div class="search-form-card">
+  <h2 class="search-form-title">Find your venue</h2>
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="search-form">
+    <div class="form-group">
+      <label for="location" class="form-label">LOCATION</label>
+      <div class="location-input-wrapper">
+        <div class="input-wrapper">
+          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M10 10C11.3807 10 12.5 8.88071 12.5 7.5C12.5 6.11929 11.3807 5 10 5C8.61929 5 7.5 6.11929 7.5 7.5C7.5 8.88071 8.61929 10 10 10Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 18.3333C13.3333 15 16.6667 11.3333 16.6667 7.5C16.6667 4.46243 14.2043 2 11.1667 2H8.83333C5.79576 2 3.33333 4.46243 3.33333 7.5C3.33333 11.3333 6.66667 15 10 18.3333Z" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <input
+            id="location"
+            type="text"
+            formControlName="location"
+            class="form-input"
+            placeholder="e.g. Bangalore, Mysore"
+            aria-required="true"
+            autocomplete="off"
+            (focus)="onLocationFocus()"
+            (blur)="onLocationBlur()"
+          />
+          @if (searchForm.get('location')?.value) {
+            <button
+              type="button"
+              class="input-clear"
+              (click)="searchForm.patchValue({ location: '' }); suggestions = []; showSuggestions = false;"
+              aria-label="Clear location"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          }
+        </div>
+        @if (showSuggestions && suggestions.length > 0) {
+          <ul class="suggestions-list" role="listbox">
+            @for (suggestion of suggestions; track suggestion) {
+              <li 
+                class="suggestion-item"
+                role="option"
+                (click)="selectSuggestion(suggestion)"
+                (mousedown)="$event.preventDefault()"
+              >
+                <svg class="suggestion-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 8C8.82843 8 9.5 7.32843 9.5 6.5C9.5 5.67157 8.82843 5 8 5C7.17157 5 6.5 5.67157 6.5 6.5C6.5 7.32843 7.17157 8 8 8Z" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M8 14.6667C10.6667 12 13.3333 9.06667 13.3333 6C13.3333 3.79086 11.5425 2 9.33333 2H6.66667C4.45753 2 2.66667 3.79086 2.66667 6C2.66667 9.06667 5.33333 12 8 14.6667Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span class="suggestion-text">{{ suggestion }}</span>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+      @if (searchForm.get('location')?.invalid && searchForm.get('location')?.touched) {
+        <span class="error-message">Location is required</span>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="date" class="form-label">DATE</label>
+        <div class="input-wrapper">
+          <app-date-picker
+            id="date"
+            formControlName="date"
+            [minDate]="minDate"
+            placeholder="Select date"
+          ></app-date-picker>
+        </div>
+        @if (searchForm.get('date')?.invalid && searchForm.get('date')?.touched) {
+          <span class="error-message">Date is required</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="days" class="form-label">DAYS</label>
+        <div class="input-wrapper">
+          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 5V10L13.3333 13.3333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <input
+            id="days"
+            type="number"
+            formControlName="days"
+            class="form-input"
+            min="1"
+            aria-required="true"
+          />
+        </div>
+        @if (searchForm.get('days')?.invalid && searchForm.get('days')?.touched) {
+          <span class="error-message">Days must be at least 1</span>
+        }
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="guests" class="form-label">GUESTS</label>
+      <div class="input-wrapper">
+        <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 10C11.8409 10 13.3333 8.50762 13.3333 6.66667C13.3333 4.82572 11.8409 3.33333 10 3.33333C8.15905 3.33333 6.66667 4.82572 6.66667 6.66667C6.66667 8.50762 8.15905 10 10 10Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M3.33333 17.5C3.33333 14.7217 5.72167 12.5 8.5 12.5H11.5C14.2783 12.5 16.6667 14.7217 16.6667 17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <input
+          id="guests"
+          type="number"
+          formControlName="guests"
+          class="form-input"
+          min="1"
+          aria-required="true"
+        />
+      </div>
+      @if (searchForm.get('guests')?.invalid && searchForm.get('guests')?.touched) {
+        <span class="error-message">Guests must be at least 1</span>
+      }
+    </div>
+
+    <button type="submit" class="search-button" [disabled]="searchForm.invalid">
+      Search Convention Halls
+    </button>
+  </form>
+</div>

@@ -1,0 +1,73 @@
+<div class="vendor-dashboard">
+  <!-- VENDOR HEADER -->
+  <header class="vendor-header">
+    <div class="vendor-header-container">
+      <div class="vendor-logo">
+        <div class="logo-box"></div>
+        <span class="logo-text">SambhramaBook</span>
+        <span class="vendor-badge">VENDOR</span>
+      </div>
+      <div class="vendor-header-actions">
+        <div class="user-avatar">
+          <img src="https://i.pravatar.cc/40?img=47" alt="User" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/vendor/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Overview</a>
+      <a routerLink="/vendor/dashboard/listings" routerLinkActive="active" class="sidebar-link">My Listings</a>
+      <a routerLink="/vendor/dashboard/bookings" routerLinkActive="active" class="sidebar-link">
+        Bookings
+        @if (pendingBookingsCount() > 0) {
+          <span class="badge-count">{{ pendingBookingsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/vendor/dashboard/availability" routerLinkActive="active" class="sidebar-link">Availability</a>
+      <a routerLink="/vendor/dashboard/earnings" routerLinkActive="active" class="sidebar-link">Earnings</a>
+      <hr class="sidebar-divider">
+      <a routerLink="/vendor/dashboard/settings" routerLinkActive="active" class="sidebar-link">Settings</a>
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="content-header">
+        <h2 class="page-title">My Listings</h2>
+        <button type="button" class="primary-btn" (click)="onAddNew()">+ Add New</button>
+      </div>
+
+      <div class="listings-grid">
+        @for (listing of listings(); track listing.id) {
+          <div class="listing-card">
+            @if (listing.image) {
+              <img [src]="listing.image" [alt]="listing.name" class="listing-image" />
+            } @else {
+              <div class="listing-image-placeholder"></div>
+            }
+            <div class="listing-content">
+              <h3 class="listing-name">{{ listing.name }}</h3>
+              <p class="listing-location">{{ listing.location }}</p>
+              <div class="listing-meta">
+                <span class="status-tag" [class]="'tag-' + listing.status.toLowerCase()">{{ listing.status }}</span>
+                @if (listing.price) {
+                  <span class="listing-price">{{ formatPrice(listing.price) }}</span>
+                }
+              </div>
+              @if (listing.capacity) {
+                <p class="listing-capacity">Capacity: {{ listing.capacity }} guests</p>
+              }
+              @if (listing.views !== undefined) {
+                <p class="listing-stats">{{ listing.views }} views · {{ listing.bookings || 0 }} bookings</p>
+              }
+              <button type="button" class="edit-button" (click)="onEdit(listing.id)">Edit Details</button>
+            </div>
+          </div>
+        }
+      </div>
+    </main>
+  </div>
+</div>

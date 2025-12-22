@@ -1,0 +1,20 @@
+<div class="gallery">
+  <img
+    [src]="getMainImage()"
+    [alt]="alt()"
+    class="gallery-main"
+  />
+  @if (images().length > 1) {
+    <div class="gallery-right">
+      @for (image of getThumbnails().slice(0, 2); track image) {
+        <img
+          [src]="image"
+          [alt]="alt() + ' thumbnail ' + ($index + 1)"
+          (click)="selectImage(image)"
+          class="gallery-thumbnail"
+        />
+      }
+    </div>
+  }
+</div>
+

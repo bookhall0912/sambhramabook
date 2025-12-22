@@ -1,0 +1,111 @@
+@use 'design-system' as *;
+
+.hero-section {
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--bg-main);
+
+  @include respond-to('md') {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
+  @include respond-to('lg') {
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+  }
+}
+
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  gap: var(--spacing-2xl);
+  grid-template-columns: 1fr;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--spacing-3xl);
+  }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.hero-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--brand-primary);
+  line-height: 1.2;
+  margin: 0;
+
+  @include respond-to('sm') {
+    font-size: var(--font-size-3xl);
+  }
+
+  @include respond-to('md') {
+    font-size: var(--font-size-4xl);
+  }
+
+  @include respond-to('lg') {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+.hero-description {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+
+  @include respond-to('md') {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.hero-social-proof {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.avatar-group {
+  display: flex;
+  gap: calc(var(--spacing-sm) * -1);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-header);
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
+  
+  &:nth-child(2) {
+    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+  }
+
+  &:nth-child(3) {
+    background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  }
+}
+
+.social-proof-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.hero-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+
+  @include respond-to('lg') {
+    width: auto;
+  }
+}

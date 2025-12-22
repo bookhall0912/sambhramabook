@@ -1,0 +1,205 @@
+<app-header></app-header>
+
+<div class="onboarding-page">
+  <div class="onboarding-container">
+    <!-- Progress Steps -->
+    <div class="steps-indicator">
+      @for (step of [1, 2, 3]; track step) {
+        <div class="step" [class.active]="currentStep() >= step" [class.completed]="currentStep() > step">
+          <div class="step-number">{{ step }}</div>
+          <div class="step-label">
+            @if (step === 1) { Business Info }
+            @else if (step === 2) { Location }
+            @else { Additional Details }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Form Content -->
+    <form [formGroup]="onboardingForm" class="form-content">
+      <h1 class="page-title">Complete Your Vendor Profile</h1>
+      <p class="page-subtitle">Let's get your business set up on SambhramaBook</p>
+
+      <!-- Step 1: Business Information -->
+      @if (currentStep() === 1) {
+        <div class="form-step">
+          <h2>Business Information</h2>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>Business Name *</label>
+              <input 
+                type="text" 
+                formControlName="businessName"
+                placeholder="e.g. Royal Grand Convention Hall"
+                [class.error]="onboardingForm.get('businessName')?.invalid && onboardingForm.get('businessName')?.touched"
+              >
+              @if (onboardingForm.get('businessName')?.invalid && onboardingForm.get('businessName')?.touched) {
+                <span class="error-message">Business name is required</span>
+              }
+            </div>
+
+            <div class="form-field">
+              <label>Business Type *</label>
+              <select formControlName="businessType">
+                <option value="Hall Owner">Hall Owner</option>
+                <option value="Service Provider">Service Provider</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label>Business Email *</label>
+              <input 
+                type="email" 
+                formControlName="businessEmail"
+                placeholder="business@example.com"
+                [class.error]="onboardingForm.get('businessEmail')?.invalid && onboardingForm.get('businessEmail')?.touched"
+              >
+              @if (onboardingForm.get('businessEmail')?.invalid && onboardingForm.get('businessEmail')?.touched) {
+                <span class="error-message">Valid email is required</span>
+              }
+            </div>
+
+            <div class="form-field">
+              <label>Business Phone *</label>
+              <input 
+                type="tel" 
+                formControlName="businessPhone"
+                placeholder="+91 98765 43210"
+                [class.error]="onboardingForm.get('businessPhone')?.invalid && onboardingForm.get('businessPhone')?.touched"
+              >
+              @if (onboardingForm.get('businessPhone')?.invalid && onboardingForm.get('businessPhone')?.touched) {
+                <span class="error-message">Phone number is required</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Step 2: Location -->
+      @if (currentStep() === 2) {
+        <div class="form-step">
+          <h2>Business Location</h2>
+          <div class="form-grid">
+            <div class="form-field full-width">
+              <label>Address *</label>
+              <input 
+                type="text" 
+                formControlName="address"
+                placeholder="Street address, Building name"
+                [class.error]="onboardingForm.get('address')?.invalid && onboardingForm.get('address')?.touched"
+              >
+              @if (onboardingForm.get('address')?.invalid && onboardingForm.get('address')?.touched) {
+                <span class="error-message">Address is required</span>
+              }
+            </div>
+
+            <div class="form-field">
+              <label>City *</label>
+              <input 
+                type="text" 
+                formControlName="city"
+                placeholder="e.g. Bangalore"
+                [class.error]="onboardingForm.get('city')?.invalid && onboardingForm.get('city')?.touched"
+              >
+              @if (onboardingForm.get('city')?.invalid && onboardingForm.get('city')?.touched) {
+                <span class="error-message">City is required</span>
+              }
+            </div>
+
+            <div class="form-field">
+              <label>State *</label>
+              <input 
+                type="text" 
+                formControlName="state"
+                placeholder="e.g. Karnataka"
+                [class.error]="onboardingForm.get('state')?.invalid && onboardingForm.get('state')?.touched"
+              >
+              @if (onboardingForm.get('state')?.invalid && onboardingForm.get('state')?.touched) {
+                <span class="error-message">State is required</span>
+              }
+            </div>
+
+            <div class="form-field">
+              <label>Pincode *</label>
+              <input 
+                type="text" 
+                formControlName="pincode"
+                placeholder="e.g. 560001"
+                maxlength="6"
+                [class.error]="onboardingForm.get('pincode')?.invalid && onboardingForm.get('pincode')?.touched"
+              >
+              @if (onboardingForm.get('pincode')?.invalid && onboardingForm.get('pincode')?.touched) {
+                <span class="error-message">Pincode is required</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Step 3: Additional Details -->
+      @if (currentStep() === 3) {
+        <div class="form-step">
+          <h2>Additional Details (Optional)</h2>
+          <p class="step-description">You can add these later from your settings</p>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>GST Number</label>
+              <input 
+                type="text" 
+                formControlName="gstNumber"
+                placeholder="29ABCDE1234F1Z5"
+              >
+            </div>
+
+            <div class="form-field">
+              <label>PAN Number</label>
+              <input 
+                type="text" 
+                formControlName="panNumber"
+                placeholder="ABCDE1234F"
+                maxlength="10"
+              >
+            </div>
+
+            <div class="form-field">
+              <label>Bank Account Number</label>
+              <input 
+                type="text" 
+                formControlName="bankAccountNumber"
+                placeholder="Account number"
+              >
+            </div>
+
+            <div class="form-field">
+              <label>IFSC Code</label>
+              <input 
+                type="text" 
+                formControlName="ifscCode"
+                placeholder="BANK0001234"
+                maxlength="11"
+              >
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Navigation Buttons -->
+      <div class="form-actions">
+        @if (currentStep() > 1) {
+          <button type="button" class="btn-secondary" (click)="previousStep()">Back</button>
+        }
+        <div class="spacer"></div>
+        @if (currentStep() < totalSteps) {
+          <button type="button" class="btn-primary" (click)="nextStep()">Next</button>
+        } @else {
+          <button type="button" class="btn-secondary" (click)="skipForNow()">Skip for Now</button>
+          <button type="button" class="btn-primary" (click)="completeOnboarding()">Complete Setup</button>
+        }
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-footer></app-footer>
+

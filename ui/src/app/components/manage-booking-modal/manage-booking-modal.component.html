@@ -1,0 +1,90 @@
+@if (visible()()) {
+  <div class="modal-overlay" (click)="onClose()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <!-- Header -->
+      <div class="modal-header">
+        <h2>Manage Booking</h2>
+        <span>Booking ID: #{{ booking()?.bookingId }}</span>
+      </div>
+
+      <!-- Booking Summary -->
+      @if (booking(); as bookingData) {
+        <div class="summary">
+          <img [src]="bookingData.venueImage || 'https://i.pravatar.cc/80?img=12'" [alt]="bookingData.venueName">
+          <div>
+            <h4>{{ bookingData.venueName }}</h4>
+            <p>{{ formatDate(bookingData.date) }} · {{ bookingData.location || 'Bangalore' }}</p>
+          </div>
+        </div>
+      }
+
+      <!-- Content -->
+      <div class="content">
+        <div class="section-title">What would you like to do?</div>
+
+        <div class="options">
+          <div class="option" [class.selected]="selectedAction() === 'cancel'" (click)="onSelectAction('cancel')">
+            <div class="radio"></div>
+            <h4>Cancel Booking</h4>
+            <p>Cancel this event completely. Refund policies apply.</p>
+          </div>
+
+          <div class="option" [class.selected]="selectedAction() === 'reschedule'" (click)="onSelectAction('reschedule')">
+            <div class="radio"></div>
+            <h4>Reschedule Date</h4>
+            <p>Request to change the event date (subject to availability).</p>
+          </div>
+        </div>
+
+        <!-- Policy (only show for cancel) -->
+        @if (selectedAction() === 'cancel' && booking(); as bookingData) {
+          <div class="policy">
+            <h4>Cancellation Policy Summary</h4>
+
+            <div class="policy-row">
+              <span>Cancellation Fee (Within 30 days)</span>
+              <span>50% of Total Amount</span>
+            </div>
+
+            <div class="policy-row">
+              <span>Total Paid</span>
+              <strong>{{ formatPrice(bookingData.totalAmount) }}</strong>
+            </div>
+
+            <div class="policy-row">
+              <span>Estimated Refund</span>
+              <strong>{{ formatPrice(calculateRefund()) }}</strong>
+            </div>
+
+            <div class="policy-row">
+              <span>Refund Timeline</span>
+              <span>5–7 Business Days</span>
+            </div>
+          </div>
+
+          <!-- Reason -->
+          <label>Reason for Cancellation</label>
+          <select [ngModel]="cancellationReason()" (ngModelChange)="cancellationReason.set($event)">
+            <option value="" disabled selected>Select a reason…</option>
+            @for (reason of cancellationReasons; track reason) {
+              <option [value]="reason">{{ reason }}</option>
+            }
+          </select>
+        }
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <button type="button" class="btn secondary" (click)="onKeepBooking()">Keep Booking</button>
+        <button type="button" class="btn primary" (click)="onConfirm()">
+          @if (selectedAction() === 'cancel') {
+            Confirm Cancellation
+          } @else {
+            Request Reschedule
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+}
+

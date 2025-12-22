@@ -1,0 +1,13 @@
+C:\Sambrama\api\Sambrama.Domain\bin\Debug\net8.0\Sambrama.Domain.deps.json
+C:\Sambrama\api\Sambrama.Domain\bin\Debug\net8.0\Sambrama.Domain.dll
+C:\Sambrama\api\Sambrama.Domain\bin\Debug\net8.0\Sambrama.Domain.pdb
+C:\Sambrama\api\Sambrama.Domain\bin\Debug\net8.0\Sambrama.Domain.xml
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\Sambrama.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\Sambrama.Domain.AssemblyInfoInputs.cache
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\Sambrama.Domain.AssemblyInfo.cs
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\Sambrama.Domain.csproj.CoreCompileInputs.cache
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\Sambrama.Domain.dll
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\refint\Sambrama.Domain.dll
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\Sambrama.Domain.xml
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\Sambrama.Domain.pdb
+C:\Sambrama\api\Sambrama.Domain\obj\Debug\net8.0\ref\Sambrama.Domain.dll

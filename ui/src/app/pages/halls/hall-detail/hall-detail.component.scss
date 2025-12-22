@@ -1,0 +1,198 @@
+@use 'design-system' as *;
+
+.hall-detail-page {
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: var(--spacing-lg);
+  left: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  z-index: 10;
+  transition: color var(--transition-base);
+
+  @include respond-to('md') {
+    left: var(--spacing-2xl);
+    top: var(--spacing-xl);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md) var(--spacing-3xl);
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--spacing-xl);
+
+  @include respond-to-max('lg') {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  @include respond-to('md') {
+    padding: var(--spacing-xl) var(--spacing-2xl) var(--spacing-3xl);
+  }
+}
+
+.content-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Image Gallery - handled by component */
+
+/* Title and Meta */
+.title {
+  margin: var(--spacing-md) 0 var(--spacing-xs);
+  color: var(--brand-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+
+  @include respond-to('md') {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+.rating {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.location {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+
+  .map-link {
+    color: var(--brand-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.meta {
+  display: flex;
+  gap: var(--spacing-xl);
+  margin: var(--spacing-md) 0;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  flex-wrap: wrap;
+}
+
+/* Tabs - handled by component */
+
+/* Sections */
+.section {
+  margin-bottom: var(--spacing-2xl);
+
+  h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+  }
+
+  p {
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+}
+
+/* Amenities */
+.amenities {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.amenity {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+/* Calendar and Reviews - handled by components */
+
+/* Similar Halls */
+.similar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sim-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-base);
+  @include card-shadow;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+  }
+
+  div {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+
+    strong {
+      display: block;
+      margin-bottom: var(--spacing-xs);
+    }
+  }
+}
+
+/* Booking Card - handled by component */
+

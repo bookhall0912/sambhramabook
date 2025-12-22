@@ -1,0 +1,53 @@
+@use 'design-system' as *;
+
+.gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  @include respond-to-max('sm') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-main {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+
+  @include respond-to-max('sm') {
+    min-height: 300px;
+  }
+}
+
+.gallery-right {
+  display: grid;
+  gap: var(--spacing-sm);
+
+  @include respond-to-max('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gallery-thumbnail {
+  width: 100%;
+  height: 100%;
+  min-height: 194px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--transition-base);
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  @include respond-to-max('sm') {
+    min-height: 150px;
+  }
+}
+

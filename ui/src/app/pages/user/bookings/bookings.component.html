@@ -1,0 +1,154 @@
+<div class="bookings-page">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <span class="brand-name">SambhramaBook</span>
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/bookings" routerLinkActive="active">My Bookings</a>
+      <a routerLink="/services" routerLinkActive="active">Services</a>
+    </nav>
+
+    <div class="profile">
+      <img src="https://i.pravatar.cc/40?img=47" alt="Profile">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/bookings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">My Bookings</a>
+      <a routerLink="/bookings/saved" routerLinkActive="active" class="sidebar-link">Saved Venues</a>
+
+      <div class="divider"></div>
+
+      <a routerLink="/bookings/profile" routerLinkActive="active" class="sidebar-link">Profile & Settings</a>
+      <a routerLink="/bookings/notifications" routerLinkActive="active" class="sidebar-link">Notifications</a>
+
+      <div class="divider"></div>
+
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="greeting">
+        <h1>Hello, <span>{{ userName() }}</span> 👋</h1>
+        <p>Manage your bookings and track your event plans here.</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <span 
+          class="tab"
+          [class.active]="activeTab() === 'UPCOMING'"
+          (click)="setActiveTab('UPCOMING')"
+        >
+          Upcoming
+        </span>
+        <span 
+          class="tab"
+          [class.active]="activeTab() === 'PAST'"
+          (click)="setActiveTab('PAST')"
+        >
+          Past
+        </span>
+        <span 
+          class="tab"
+          [class.active]="activeTab() === 'CANCELLED'"
+          (click)="setActiveTab('CANCELLED')"
+        >
+          Cancelled
+        </span>
+      </div>
+
+      <!-- Booking Cards -->
+      @for (booking of getFilteredBookings(); track booking.id) {
+        <div class="booking-card">
+          <div class="booking-header">
+            <span>REF: {{ booking.referenceId }}</span>
+            <span class="badge" [class]="getStatusBadgeClass(booking)">
+              {{ getStatusText(booking) }}
+            </span>
+          </div>
+
+          <div class="booking-body">
+            @if (booking.venueImage) {
+              <img class="thumb" [src]="booking.venueImage" [alt]="booking.venueName">
+            } @else {
+              <div class="thumb"></div>
+            }
+
+            <div class="booking-info">
+              <h3>{{ booking.venueName }}</h3>
+              <p>{{ formatDateRange(booking.startDate, booking.endDate, booking.days) }} · {{ booking.location }}</p>
+              @if (booking.guestCount > 0) {
+                <p class="meta">{{ booking.guestCount }} Guests · Total: {{ formatPrice(booking.totalAmount) }}</p>
+              } @else if (booking.status === 'PENDING_CONFIRMATION') {
+                <p class="meta">Awaiting Vendor Approval</p>
+              }
+            </div>
+
+            <div class="booking-actions">
+              @if (booking.status === 'PENDING_CONFIRMATION') {
+                <button class="primary-btn" (click)="onViewDetails(booking.id)">Track Status</button>
+                <span class="link" (click)="onContactVenue(booking.id)">Contact Vendor</span>
+              } @else {
+                <button class="primary-btn" (click)="onViewDetails(booking.id)">View Details</button>
+                <button class="secondary-btn" (click)="onViewInvoice(booking.id)">Invoice</button>
+                @if (isEligibleForManagement(booking)) {
+                  <span class="link" (click)="onManageBooking(booking)">Manage Booking</span>
+                }
+                <span class="link" (click)="onContactVenue(booking.id)">Contact Venue</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Recently Saved -->
+      @if (activeTab() === 'UPCOMING' && savedVenues().length > 0) {
+        <div class="section-header">
+          <h3>Recently Saved</h3>
+          <span class="link" (click)="onViewAllSaved()">View All</span>
+        </div>
+
+        <div class="cards">
+          @for (venue of savedVenues(); track venue.id) {
+            <div class="saved-card">
+              @if (venue.image) {
+                <img [src]="venue.image" [alt]="venue.name">
+              } @else {
+                <img>
+              }
+              <div class="saved-body">
+                <h4>{{ venue.name }}</h4>
+                <p>
+                  @if (venue.rating) {
+                    ⭐ {{ venue.rating }} ({{ venue.reviewCount }})
+                  } @else {
+                    {{ venue.location }}
+                  }
+                </p>
+                <button (click)="onViewSavedVenue(venue.id)">View Details</button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </main>
+  </div>
+
+  <!-- Manage Booking Modal -->
+  <app-manage-booking-modal
+    [booking]="selectedBooking()"
+    [visible]="showManageModal"
+    (close)="onCloseModal()"
+    (confirmCancel)="onConfirmCancel($event)"
+    (confirmReschedule)="onConfirmReschedule($event)"
+    (keepBooking)="onKeepBooking()"
+  ></app-manage-booking-modal>
+</div>

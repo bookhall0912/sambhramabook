@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SambhramaBook.Api/SambhramaBook.Api.csproj" />
+  <Project Path="SambhramaBook.Application/SambhramaBook.Application.csproj" Id="27940d4e-badf-4383-ba66-64842ba4624c" />
+  <Project Path="SambhramaBook.Domain/SambhramaBook.Domain.csproj" Id="106853b9-45b3-4743-bf9d-8c5682f7a3b1" />
+  <Project Path="SambhramaBook.Infrastructure/SambhramaBook.Infrastructure.csproj" Id="f8d1b8f5-191b-4362-9e88-25099de5b09e" />
+</Solution>

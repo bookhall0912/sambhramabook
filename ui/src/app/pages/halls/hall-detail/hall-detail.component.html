@@ -1,0 +1,113 @@
+<app-header></app-header>
+
+@if (hall) {
+  <main class="hall-detail-page">
+    <div class="container">
+      <!-- LEFT COLUMN -->
+      <div class="content-column">
+        <!-- Image Gallery -->
+        @if (hall.images && hall.images.length > 0) {
+          <app-image-gallery [images]="hall.images" [alt]="hall.name"></app-image-gallery>
+        }
+
+        <!-- Title and Meta -->
+        <h2 class="title">{{ hall.name }}</h2>
+        <div class="rating">
+          ⭐ {{ hall.rating }} ({{ getReviewCount() }} Reviews)
+        </div>
+        <div class="location">
+          📍 {{ hall.location }} · <a href="#" class="map-link">View on Map</a>
+        </div>
+
+        <div class="meta">
+          <span>{{ hall.minCapacity || hall.capacity }}-{{ hall.maxCapacity || hall.capacity }} Pax</span>
+          <span>{{ hall.rooms }} Guest Rooms</span>
+          <span>{{ hall.parking || 'Parking Available' }}</span>
+        </div>
+
+        <!-- Tabs -->
+        <app-tabs
+          [tabs]="tabs"
+          [activeTab]="activeTab"
+          (tabChanged)="setActiveTab($event)"
+        ></app-tabs>
+
+        <!-- Tab Content -->
+        @if (activeTab === 'overview') {
+          <div class="section">
+            <h3>About the Venue</h3>
+            <p>{{ hall.description || 'No description available.' }}</p>
+          </div>
+        }
+
+        @if (activeTab === 'amenities') {
+          <div class="section">
+            <h3>Amenities</h3>
+            <div class="amenities">
+              @for (amenity of hall.fullAmenities || hall.amenities || []; track $index) {
+                <div class="amenity">{{ amenity }}</div>
+              }
+            </div>
+          </div>
+        }
+
+        @if (activeTab === 'pricing') {
+          <div class="section">
+            <h3>Pricing</h3>
+            <p>Starting from {{ formatPrice(hall.price) }} per day</p>
+            <p>Pricing may vary based on date, duration, and number of guests. Contact us for detailed pricing information.</p>
+          </div>
+        }
+
+        @if (activeTab === 'availability') {
+          <div class="section">
+            <h3>Availability</h3>
+            <app-availability-calendar
+              month="October 2025"
+              [days]="calendarDays"
+              [selectedDay]="selectedDay"
+              (daySelected)="onDaySelected($event)"
+            ></app-availability-calendar>
+          </div>
+        }
+
+        @if (activeTab === 'reviews') {
+          <div class="section">
+            @if (hall.reviews && hall.reviews.length > 0) {
+              <app-reviews-section [reviews]="hall.reviews"></app-reviews-section>
+            } @else {
+              <h3>Reviews</h3>
+              <p>No reviews yet.</p>
+            }
+          </div>
+        }
+
+        <!-- Similar Halls -->
+        @if (similarHalls.length > 0) {
+          <div class="section">
+            <h3>Similar Convention Halls</h3>
+            <div class="similar">
+              @for (similarHall of similarHalls; track similarHall.id) {
+                <a [routerLink]="['/halls', similarHall.id]" class="sim-card">
+                  <img [src]="similarHall.imageUrl" [alt]="similarHall.name" />
+                  <div>
+                    <strong>{{ similarHall.name }}</strong><br>
+                    {{ formatPrice(similarHall.price) }}/day
+                  </div>
+                </a>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- RIGHT COLUMN - Booking Card -->
+      <app-booking-card
+        [price]="hall.price"
+        (bookingSubmitted)="onBookingSubmit($event)"
+      ></app-booking-card>
+    </div>
+  </main>
+}
+
+<app-footer></app-footer>

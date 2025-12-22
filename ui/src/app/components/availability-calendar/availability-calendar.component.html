@@ -1,0 +1,39 @@
+<div class="calendar">
+  <h3 class="month-title">{{ month() }}</h3>
+  
+  <div class="calendar-header">
+    @for (dayHeader of dayHeaders; track dayHeader) {
+      <div class="day-header">{{ dayHeader }}</div>
+    }
+  </div>
+  
+  <div class="calendar-grid">
+    @for (cell of calendarGrid(); track $index) {
+      @if (cell.day !== null) {
+        <div
+          class="day"
+          [class.available]="cell.status === 'available'"
+          [class.booked]="cell.status === 'booked'"
+          [class.selected]="cell.status === 'selected'"
+          (click)="onDayClick(cell.day!, cell.status)"
+        >
+          {{ cell.day }}
+        </div>
+      } @else {
+        <div class="day empty"></div>
+      }
+    }
+  </div>
+  
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-color available"></span>
+      <span>Available</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color booked"></span>
+      <span>Booked</span>
+    </div>
+  </div>
+</div>
+

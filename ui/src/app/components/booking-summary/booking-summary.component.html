@@ -1,0 +1,36 @@
+<div class="booking-summary-card">
+  <img [src]="hallImage()" [alt]="hallName()" class="summary-image" />
+  
+  <h4 class="summary-title">{{ hallName() }}</h4>
+  <p class="summary-location">{{ location() }}</p>
+
+  <hr class="summary-divider" />
+
+  <div class="summary-line">
+    <span>Base Package</span>
+    <span>{{ formatPrice(priceBreakdown().basePrice) }}</span>
+  </div>
+  
+  <div class="summary-line">
+    <span>Add-ons</span>
+    <span>{{ formatPrice(priceBreakdown().addonsTotal) }}</span>
+  </div>
+  
+  <div class="summary-line">
+    <span>Platform Fee (2%)</span>
+    <span>{{ formatPrice(priceBreakdown().platformFee) }}</span>
+  </div>
+  
+  <div class="summary-line">
+    <span>Taxes (18%)</span>
+    <span>{{ formatPrice(priceBreakdown().taxes) }}</span>
+  </div>
+
+  <hr class="summary-divider" />
+
+  <div class="summary-line summary-total">
+    <span>Total</span>
+    <span>{{ formatPrice(priceBreakdown().total) }}</span>
+  </div>
+</div>
+

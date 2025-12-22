@@ -1,0 +1,15 @@
+<div class="reviews-section">
+  <h3>Reviews</h3>
+  @if (reviews().length > 0) {
+    @for (review of reviews(); track review.id) {
+      <div class="review">
+        <strong>{{ review.author }}</strong>
+        <div class="review-rating">⭐ {{ review.rating }}</div>
+        <p>{{ review.comment }}</p>
+      </div>
+    }
+  } @else {
+    <p>No reviews yet.</p>
+  }
+</div>
+

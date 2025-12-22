@@ -1,0 +1,210 @@
+<div class="register-page">
+  <!-- LEFT BRAND PANEL -->
+  <section class="brand-panel">
+    <div class="brand-logo">
+      <div class="logo-box"></div>
+      <span class="brand-name">SambhramaBook</span>
+    </div>
+
+    <h1 class="brand-heading">Where celebrations<br>begin.</h1>
+
+    <ul class="brand-features">
+      <li>Discover 500+ premium convention halls</li>
+      <li>Verified photographers & caterers</li>
+      <li>Secure booking with transparent pricing</li>
+    </ul>
+  </section>
+
+  <!-- RIGHT REGISTRATION PANEL -->
+  <section class="register-panel">
+    <div class="register-card">
+      <h2 class="register-title">Create an Account</h2>
+      <p class="register-subtitle">Join us to plan or host memorable events</p>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSendOtp()">
+        <label class="role-label">I want to:</label>
+        <div class="role-select">
+          <div 
+            class="role"
+            [class.active]="selectedRole() === 'Customer'"
+            (click)="selectRole('Customer')"
+          >
+            <div class="role-dot"></div>
+            <strong>Book Halls & Services</strong>
+            <span>I am a Customer</span>
+          </div>
+          <div 
+            class="role"
+            [class.active]="selectedRole() === 'Vendor'"
+            (click)="selectRole('Vendor')"
+          >
+            <div class="role-dot"></div>
+            <strong>List My Business</strong>
+            <span>I am a Vendor</span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="fullName" class="field-label">Full Name</label>
+          <input
+            id="fullName"
+            type="text"
+            formControlName="fullName"
+            class="field-input"
+            placeholder="John Doe"
+            [class.error]="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched"
+          />
+          @if (registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched) {
+            <span class="error-message">Full name is required</span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="mobileNumber" class="field-label">Mobile Number</label>
+          <div class="input-wrapper">
+            <input
+              id="mobileNumber"
+              type="text"
+              formControlName="mobileNumber"
+              class="field-input"
+              [class.disabled]="otpSent()"
+              placeholder="98765 43210"
+              inputmode="tel"
+              [disabled]="otpSent()"
+              (input)="onMobileInput($event)"
+              (keydown)="onMobileKeyDown($event)"
+              [class.error]="registerForm.get('mobileNumber')?.invalid && registerForm.get('mobileNumber')?.touched"
+            />
+            @if (otpSent()) {
+              <button type="button" class="change-phone-link" (click)="onChangePhone()">
+                Change
+              </button>
+            }
+          </div>
+          @if (registerForm.get('mobileNumber')?.invalid && registerForm.get('mobileNumber')?.touched) {
+            <span class="error-message">Valid mobile number is required</span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="email" class="field-label">Email Address</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="field-input"
+            placeholder="john@example.com"
+            [class.error]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+          />
+          @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+            <span class="error-message">Valid email address is required</span>
+          }
+        </div>
+
+        @if (selectedRole() === 'Vendor') {
+          <div class="business-box">
+            <label class="business-label">Business Details</label>
+
+            <div class="form-field">
+              <label for="businessName" class="field-label">Business Name</label>
+              <input
+                id="businessName"
+                type="text"
+                formControlName="businessName"
+                class="field-input"
+                placeholder="e.g. Royal Convention Hall"
+                [class.error]="registerForm.get('businessName')?.invalid && registerForm.get('businessName')?.touched"
+              />
+              @if (registerForm.get('businessName')?.invalid && registerForm.get('businessName')?.touched) {
+                <span class="error-message">Business name is required</span>
+              }
+            </div>
+
+            <label class="field-label">Vendor Type</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  formControlName="vendorType"
+                  value="Hall Owner"
+                  [checked]="registerForm.get('vendorType')?.value === 'Hall Owner'"
+                />
+                <span>Hall Owner</span>
+              </label>
+              <label class="radio-option">
+                <input
+                  type="radio"
+                  formControlName="vendorType"
+                  value="Service Provider"
+                  [checked]="registerForm.get('vendorType')?.value === 'Service Provider'"
+                />
+                <span>Service Provider</span>
+              </label>
+            </div>
+          </div>
+        }
+
+        <div class="checkbox-field">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              formControlName="acceptTerms"
+              [class.error]="registerForm.get('acceptTerms')?.invalid && registerForm.get('acceptTerms')?.touched"
+            />
+            <span>I agree to the
+              <a routerLink="/terms" class="terms-link">Terms & Conditions</a> and
+              <a routerLink="/privacy" class="terms-link">Privacy Policy</a>.
+            </span>
+          </label>
+          @if (registerForm.get('acceptTerms')?.invalid && registerForm.get('acceptTerms')?.touched) {
+            <span class="error-message">You must accept the terms and conditions</span>
+          }
+        </div>
+
+        @if (!otpSent()) {
+          <button type="submit" class="primary-button" [disabled]="registerForm.invalid">
+            Send OTP
+          </button>
+        }
+      </form>
+
+      @if (otpSent()) {
+        <form [formGroup]="otpForm" (ngSubmit)="onVerifyOtp()" class="otp-form">
+          <div class="form-field">
+            <label class="field-label">Enter OTP</label>
+            <div class="otp-inputs">
+              @for (control of otpArray.controls; track $index) {
+                <input
+                  [id]="'otp-' + $index"
+                  type="text"
+                  [formControl]="getOtpControl($index)"
+                  class="otp-input"
+                  maxlength="1"
+                  [class.error]="getOtpControl($index).invalid && getOtpControl($index).touched"
+                  (input)="onOtpInput($event, $index)"
+                  (keydown)="onOtpKeyDown($event, $index)"
+                  (paste)="onOtpPaste($event)"
+                  inputmode="numeric"
+                  pattern="[0-9]"
+                />
+              }
+            </div>
+            @if (otpForm.invalid && otpForm.touched) {
+              <span class="error-message">Please enter all 6 digits</span>
+            }
+          </div>
+
+          <button type="submit" class="primary-button" [disabled]="otpForm.invalid">
+            Verify OTP & Create Account
+          </button>
+        </form>
+      }
+
+      <div class="register-footer">
+        Already have an account?
+        <a routerLink="/login" class="footer-link">Log In</a>
+      </div>
+    </div>
+  </section>
+</div>
+

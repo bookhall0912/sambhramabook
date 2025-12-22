@@ -1,0 +1,61 @@
+﻿# Node.js dependencies
+ui/node_modules/
+**/node_modules/
+
+# .NET build artifacts
+api/**/bin/
+api/**/obj/
+**/bin/
+**/obj/
+
+# Visual Studio files
+api/.vs/
+**/.vs/
+
+# Build outputs and cache
+**/*.dll
+**/*.pdb
+**/*.cache
+**/*.vsidx
+**/*.bin
+
+# Angular build outputs
+ui/dist/
+ui/.angular/
+ui/out-tsc/
+ui/tmp/
+
+# Package manager files
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
+
+# IDE files
+**/.idea/
+**/.vscode/
+**/.vs/
+**/*.suo
+**/*.user
+**/*.userosscache
+**/*.sln.docstates
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+**/desktop.ini
+
+# Logs
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Coverage and test results
+**/coverage/
+**/.nyc_output/
+**/test-results/
+
+# Temporary files
+**/tmp/
+**/temp/
+**/*.tmp

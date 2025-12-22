@@ -1,0 +1,66 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="8" fill="var(--brand-primary)"/>
+              <path d="M20 10L25 15L20 20L15 15L20 10Z" fill="white" opacity="0.9"/>
+              <path d="M20 20L25 25L20 30L15 25L20 20Z" fill="white" opacity="0.7"/>
+            </svg>
+          </div>
+          <span class="brand-name">SambhramaBook</span>
+        </div>
+        <p class="footer-description">
+          The most trusted platform for booking convention halls and event services.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3 class="footer-column-title">Platform</h3>
+          <nav class="footer-nav" aria-label="Platform navigation">
+            <a routerLink="/" class="footer-link">Home</a>
+            <a routerLink="/halls" class="footer-link">Convention Halls</a>
+            <a routerLink="/services" class="footer-link">Services</a>
+            <a routerLink="/vendors" class="footer-link">Become a Vendor</a>
+          </nav>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footer-column-title">Company</h3>
+          <nav class="footer-nav" aria-label="Company navigation">
+            <a routerLink="/about" class="footer-link">About Us</a>
+            <a routerLink="/contact" class="footer-link">Contact</a>
+            <a routerLink="/terms" class="footer-link">Terms of Service</a>
+            <a routerLink="/privacy" class="footer-link">Privacy Policy</a>
+          </nav>
+        </div>
+
+        <div class="footer-column">
+          <h3 class="footer-column-title">Contact Us</h3>
+          <div class="contact-info">
+            <a href="tel:+919876543210" class="contact-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M3.33333 2.66667C2.59695 2.66667 2 3.26362 2 4V4.66667C2 9.25762 5.74238 13 10.3333 13H11C11.7364 13 12.3333 12.403 12.3333 11.6667V9.86238C12.3333 9.45619 12.1238 9.08095 11.781 8.86238L9.781 7.52905C9.4381 7.31048 9.00952 7.31048 8.66667 7.52905L7.33333 8.33333C6.80952 8.66667 6.12381 8.52381 5.7619 8.1619L4.8381 7.2381C4.47619 6.87619 4.33333 6.19048 4.66667 5.66667L5.47095 4.33333C5.68952 3.99048 5.68952 3.5619 5.47095 3.21905L4.13762 1.21905C3.91905 0.87619 3.54381 0.66667 3.13762 0.66667H3.33333Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+              +91 98765 43210
+            </a>
+            <a [href]="'mailto:' + email" class="contact-item">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="4" width="12" height="8" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M2 5L8 9L14 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              {{ email }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© {{ currentYear }} SambhramaBook. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

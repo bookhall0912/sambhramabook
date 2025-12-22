@@ -1,0 +1,386 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.service-detail-page {
+  font-family: 'Inter', sans-serif;
+  background: #fff7ee;
+  color: #2b2b2b;
+  min-height: calc(100vh - 64px);
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  padding: 28px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================= HERO ================= */
+.hero img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ================= TITLE ================= */
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.vendor-info h1 {
+  font-size: 26px;
+  color: #f5b400;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.vendor-meta {
+  font-size: 13px;
+  color: #777;
+}
+
+.pill {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #e0f7f3;
+  color: #009688;
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ================= TABS ================= */
+.tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #eadfce;
+  margin: 24px 0;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.tabs span {
+  padding-bottom: 10px;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.2s ease;
+}
+
+.tabs span:hover {
+  color: #f5b400;
+}
+
+.tabs .active {
+  color: #f5b400;
+  border-bottom: 2px solid #f5b400;
+  font-weight: 600;
+}
+
+/* ================= GRID ================= */
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* ================= SECTIONS ================= */
+section {
+  margin-bottom: 28px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f1e9e4;
+  color: #2b2b2b;
+}
+
+/* ================= PACKAGES ================= */
+.packages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.package {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 16px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.package:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.package.popular {
+  border-color: #f5b400;
+  background: #fffbf0;
+}
+
+.package h4 {
+  font-size: 15px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #2b2b2b;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f5b400;
+  margin-bottom: 10px;
+}
+
+.package ul {
+  margin: 10px 0;
+  font-size: 13px;
+  padding-left: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.package ul li {
+  margin-bottom: 4px;
+}
+
+.package button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* ================= BOOKING CARD ================= */
+.booking {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid #eee;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.booking h3 {
+  margin-bottom: 16px;
+  color: #2b2b2b;
+}
+
+.booking label {
+  font-size: 13px;
+  display: block;
+  margin: 10px 0 4px;
+  font-weight: 500;
+  color: #2b2b2b;
+}
+
+.booking input,
+.booking select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  color: #2b2b2b;
+  transition: border-color 0.2s ease;
+}
+
+.booking input:focus,
+.booking select:focus {
+  outline: none;
+  border-color: #f5b400;
+}
+
+.total {
+  font-weight: 700;
+  color: #f5b400;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* ================= PORTFOLIO ================= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ================= REVIEWS ================= */
+.review-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #eee;
+  margin-bottom: 12px;
+}
+
+.review-score {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f5b400;
+  margin-bottom: 8px;
+}
+
+.review-box p {
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+}
+
+/* ================= SIMILAR ================= */
+.similar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.similar-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  overflow: hidden;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.similar-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.similar-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.similar-body {
+  padding: 10px;
+  color: #2b2b2b;
+  line-height: 1.4;
+}
+
+.similar-body br {
+  margin-bottom: 4px;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn.primary {
+  background: #f5b400;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #e0a300;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 1px solid #f5b400;
+  color: #f5b400;
+}
+
+.btn.outline:hover {
+  background: #fffbf0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking {
+    position: static;
+  }
+
+  .packages {
+    grid-template-columns: 1fr;
+  }
+
+  .similar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .hero img {
+    height: 200px;
+  }
+
+  .title-row {
+    flex-direction: column;
+  }
+
+  .tabs {
+    gap: 16px;
+    font-size: 13px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .similar {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,49 @@
+<aside class="booking">
+  <div class="price">
+    {{ formatPrice(price()) }} <small>/day</small>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" class="booking-form">
+    <label for="date">Select Dates</label>
+    <app-date-picker
+      id="date"
+      [(ngModel)]="selectedDate"
+      name="date"
+      [minDate]="minDate"
+      placeholder="Select date"
+      class="booking-date-picker"
+    ></app-date-picker>
+
+    <label for="days">Number of Days</label>
+    <input
+      id="days"
+      type="number"
+      [(ngModel)]="numberOfDays"
+      name="days"
+      class="booking-input"
+      min="1"
+      (ngModelChange)="onDaysChange()"
+    />
+
+    <label for="guests">Guests (Approx)</label>
+    <input
+      id="guests"
+      type="number"
+      [(ngModel)]="guests"
+      name="guests"
+      class="booking-input"
+      min="1"
+    />
+
+    <div class="summary">
+      <div>Venue Rental: {{ formatPrice(venueRental) }}</div>
+      <div>Taxes: {{ formatPrice(taxes) }}</div>
+      <div class="total">
+        <strong>Total: {{ formatPrice(total) }}</strong>
+      </div>
+    </div>
+
+    <button type="submit" class="book-btn">Request to Book</button>
+  </form>
+</aside>
+

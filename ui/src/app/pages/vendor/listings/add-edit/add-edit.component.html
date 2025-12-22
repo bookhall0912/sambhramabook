@@ -1,0 +1,245 @@
+<div class="vendor-listing-form">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      SambhramaBook
+      <span class="badge">VENDOR</span>
+    </div>
+    <div class="profile">
+      <img src="https://i.pravatar.cc/40?img=47" alt="Profile">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/vendor/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Overview</a>
+      <a routerLink="/vendor/dashboard/listings" routerLinkActive="active" class="sidebar-link">My Listings</a>
+      <a routerLink="/vendor/dashboard/bookings" routerLinkActive="active" class="sidebar-link">
+        Bookings
+        @if (pendingBookingsCount() > 0) {
+          <span class="badge-count">{{ pendingBookingsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/vendor/dashboard/availability" routerLinkActive="active" class="sidebar-link">Availability</a>
+      <a routerLink="/vendor/dashboard/earnings" routerLinkActive="active" class="sidebar-link">Earnings</a>
+      <hr class="sidebar-divider">
+      <a routerLink="/vendor/dashboard/settings" routerLinkActive="active" class="sidebar-link">Settings</a>
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="page-header">
+        <h1>{{ isEditMode() ? 'Edit Convention Hall' : 'Add New Convention Hall' }}</h1>
+        <p>Fill in the details below to {{ isEditMode() ? 'update' : 'create' }} a new hall listing. You can save as draft at any time.</p>
+      </div>
+
+      <!-- Steps -->
+      <div class="steps">
+        @for (step of steps; track step.number) {
+          <div class="step" [class.active]="currentStep() === step.number" (click)="goToStep(step.number)">
+            <span>{{ step.number }}</span>
+            {{ step.label }}
+          </div>
+        }
+      </div>
+
+      <div class="grid">
+        <!-- LEFT -->
+        <div>
+          @if (currentStep() === 1) {
+            <!-- Basic Information -->
+            <div class="card">
+              <h3>Basic Information</h3>
+
+              <div class="field">
+                <label>Hall Name *</label>
+                <input type="text" placeholder="e.g. Royal Grand Convention Hall" [ngModel]="hallName()" (ngModelChange)="hallName.set($event)">
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label>Hall Type</label>
+                  <select [ngModel]="hallType()" (ngModelChange)="hallType.set($event)">
+                    <option>Convention Hall</option>
+                    <option>Banquet Hall</option>
+                    <option>Party Hall</option>
+                    <option>Marriage Hall</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Year Established</label>
+                  <input type="text" placeholder="e.g. 2015" [ngModel]="yearEstablished()" (ngModelChange)="yearEstablished.set($event)">
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Description</label>
+                <textarea placeholder="Describe your hall, ambience, and suitability for events..." [ngModel]="description()" (ngModelChange)="description.set($event)"></textarea>
+              </div>
+            </div>
+
+            <!-- Location Details -->
+            <div class="card">
+              <h3>Location Details</h3>
+
+              <div class="row">
+                <div class="field">
+                  <label>Address Line 1</label>
+                  <input type="text" placeholder="Building / Street" [ngModel]="addressLine1()" (ngModelChange)="addressLine1.set($event)">
+                </div>
+                <div class="field">
+                  <label>Area / Locality</label>
+                  <input type="text" placeholder="e.g. Jayanagar" [ngModel]="area()" (ngModelChange)="area.set($event)">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label>City</label>
+                  <select [ngModel]="city()" (ngModelChange)="city.set($event)">
+                    <option>Bangalore</option>
+                    <option>Mumbai</option>
+                    <option>Delhi</option>
+                    <option>Hyderabad</option>
+                    <option>Chennai</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label>Pincode</label>
+                  <input type="text" placeholder="e.g. 560041" [ngModel]="pincode()" (ngModelChange)="pincode.set($event)">
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Pin Location on Map</label>
+                <div class="map">Map Integration Placeholder</div>
+              </div>
+            </div>
+          }
+
+          @if (currentStep() === 2) {
+            <!-- Capacity & Amenities -->
+            <div class="card">
+              <h3>Capacity & Amenities</h3>
+
+              <div class="row">
+                <div class="field">
+                  <label>Floating Capacity</label>
+                  <input type="number" placeholder="e.g. 1000" [ngModel]="floatingCapacity()" (ngModelChange)="floatingCapacity.set($event)">
+                </div>
+                <div class="field">
+                  <label>Dining Capacity</label>
+                  <input type="number" placeholder="e.g. 400" [ngModel]="diningCapacity()" (ngModelChange)="diningCapacity.set($event)">
+                </div>
+              </div>
+
+              <div class="amenities">
+                @for (amenity of amenities(); track amenity.id) {
+                  <div class="amenity" [class.active]="amenity.selected" (click)="toggleAmenity(amenity.id)">
+                    {{ amenity.name }}
+                  </div>
+                }
+              </div>
+            </div>
+          }
+
+          @if (currentStep() === 3) {
+            <!-- Pricing & Policies -->
+            <div class="card">
+              <h3>Pricing & Policies</h3>
+
+              <div class="row">
+                <div class="field">
+                  <label>Price Per Day (₹)</label>
+                  <input type="number" placeholder="e.g. 150000" [ngModel]="pricePerDay()" (ngModelChange)="pricePerDay.set($event)">
+                </div>
+                <div class="field">
+                  <label>Advance Amount (%)</label>
+                  <input type="number" placeholder="e.g. 50" [ngModel]="advanceAmount()" (ngModelChange)="advanceAmount.set($event)">
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Cancellation Policy</label>
+                <textarea placeholder="e.g. No refund if cancelled within 30 days..." [ngModel]="cancellationPolicy()" (ngModelChange)="cancellationPolicy.set($event)"></textarea>
+              </div>
+            </div>
+          }
+
+          @if (currentStep() === 4) {
+            <!-- Availability -->
+            <div class="card">
+              <h3>Availability Settings</h3>
+              <p style="color: #777; font-size: 13px; margin-bottom: 20px;">Configure your hall's availability calendar and booking rules.</p>
+              <!-- TODO: Add availability calendar component -->
+            </div>
+          }
+
+          @if (currentStep() === 5) {
+            <!-- Gallery & Photos -->
+            <div class="card">
+              <h3>Gallery & Photos</h3>
+
+              <div class="upload" (click)="fileInput.click()">
+                <input #fileInput type="file" multiple accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+                Click to upload photos<br>
+                <small>or drag and drop here (Max 10MB per file)</small>
+              </div>
+
+              @if (uploadedImages().length > 0) {
+                <div class="thumbs">
+                  @for (image of uploadedImages(); track $index) {
+                    <div style="position: relative;">
+                      <img [src]="image" [alt]="'Uploaded image ' + ($index + 1)">
+                      <button type="button" (click)="removeImage($index)" style="position: absolute; top: -8px; right: -8px; background: #d33; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 12px;">×</button>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+
+          @if (currentStep() === 6) {
+            <!-- Review -->
+            <div class="card">
+              <h3>Review Your Listing</h3>
+              <p style="color: #777; font-size: 13px; margin-bottom: 20px;">Please review all the information before submitting.</p>
+              <!-- TODO: Add review summary -->
+            </div>
+          }
+
+          <div class="footer">
+            @if (currentStep() > 1) {
+              <button type="button" class="btn secondary" (click)="onPreviousStep()">Previous</button>
+            }
+            <button type="button" class="btn secondary" (click)="onSaveDraft()">Save as Draft</button>
+            @if (currentStep() < steps.length) {
+              <button type="button" class="btn primary" (click)="onNextStep()">Next Step</button>
+            } @else {
+              <button type="button" class="btn primary" (click)="onSubmit()">Submit Listing</button>
+            }
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="tips">
+          <h4>Listing Tips</h4>
+          <ul>
+            <li>High quality photos get more bookings</li>
+            <li>Don't overestimate capacity</li>
+            <li>Transparent pricing builds trust</li>
+          </ul>
+
+          <div class="progress">
+            <span [style.width.%]="progress()"></span>
+          </div>
+          <small>{{ progress() }}% Complete</small>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+

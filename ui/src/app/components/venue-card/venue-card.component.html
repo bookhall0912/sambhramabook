@@ -1,0 +1,73 @@
+<a [routerLink]="['/halls', venue().id]" class="venue-card">
+  <div class="venue-image-wrapper">
+    <img
+      [src]="venue().imageUrl"
+      [alt]="venue().name"
+      class="venue-image"
+      loading="lazy"
+    />
+    <div class="venue-rating">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 1L9.545 5.26L14 5.27L10.5 8.13L11.91 12.02L8 9.77L4.09 12.02L5.5 8.13L2 5.27L6.455 5.26L8 1Z" fill="currentColor"/>
+      </svg>
+      <span class="rating-value">{{ venue().rating }}</span>
+    </div>
+  </div>
+
+  <div class="venue-content">
+    <h3 class="venue-name">{{ venue().name }}</h3>
+    
+    <div class="venue-location">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 4C6.89543 4 6 4.89543 6 6C6 7.5 8 10 8 10C8 10 10 7.5 10 6C10 4.89543 9.10457 4 8 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <path d="M8 2C5.79086 2 4 3.79086 4 6C4 8.5 8 12 8 12C8 12 12 8.5 12 6C12 3.79086 10.2091 2 8 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span>{{ venue().location }}</span>
+      @if (venueData().distance) {
+        <span class="distance">· {{ venueData().distance }}</span>
+      }
+    </div>
+
+    <div class="venue-details">
+      <div class="detail-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 8C9.10457 8 10 7.10457 10 6C10 4.89543 9.10457 4 8 4C6.89543 4 6 4.89543 6 6C6 7.10457 6.89543 8 8 8Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M8 8V14M4 14H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>{{ venue().capacity }} Pax</span>
+      </div>
+      <div class="detail-item">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="4" width="12" height="10" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M2 6H14" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M11 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>{{ venue().rooms }} Rooms</span>
+      </div>
+      @if (venueData().amenities.length > 0) {
+        <div class="detail-item amenities">
+          <span>{{ venueData().amenities.join(' · ') }}</span>
+        </div>
+      }
+    </div>
+
+    <div class="venue-footer" [class.with-actions]="showBookNow()">
+      @if (!showBookNow()) {
+        <div class="venue-price">
+          <span class="price-label">Starting from</span>
+          <span class="price-value">{{ formatPrice(venue().price) }}</span>
+        </div>
+        <a [routerLink]="['/halls', venue().id]" class="view-details-button" (click)="$event.stopPropagation()">View Details</a>
+      } @else {
+        <div class="venue-price-simple">
+          {{ formatPrice(venue().price) }} per day
+        </div>
+        <div class="card-actions" (click)="$event.stopPropagation()">
+          <a [routerLink]="['/halls', venue().id]" class="outline-btn">View Details</a>
+          <button type="button" class="primary-btn" (click)="onBookNow($event)">Book Now</button>
+        </div>
+      }
+    </div>
+  </div>
+</a>

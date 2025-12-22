@@ -1,0 +1,119 @@
+<div class="login-page">
+  <!-- LEFT BRAND PANEL -->
+  <section class="brand-panel">
+    <div class="brand-logo">
+      <div class="logo-box"></div>
+      <span class="brand-name">SambhramaBook</span>
+    </div>
+
+    <h1 class="brand-heading">
+      Plan Your Perfect<br>
+      Celebration With<br>
+      Confidence.
+    </h1>
+
+    <p class="brand-description">
+      Join thousands of happy couples and event planners discovering the best
+      halls and services in their city.
+    </p>
+  </section>
+
+  <!-- RIGHT LOGIN PANEL -->
+  <section class="login-panel">
+    <div class="login-card">
+      <h2 class="login-title">@if (isVendorFlow()) { Welcome, Vendor! } @else { Welcome Back }</h2>
+      <p class="login-subtitle">
+        @if (isVendorFlow()) {
+          Enter your mobile number to access your vendor dashboard and manage your listings.
+        } @else {
+          Enter your mobile number or email to continue
+        }
+      </p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSendOtp()">
+        <div class="form-field">
+          <label for="mobileOrEmail" class="field-label">Mobile Number or Email</label>
+          <div class="input-wrapper">
+            <input
+              id="mobileOrEmail"
+              type="text"
+              formControlName="mobileOrEmail"
+              class="field-input"
+              [class.disabled]="otpSent()"
+              placeholder="e.g. 98765 43210"
+              [disabled]="otpSent()"
+              [class.error]="loginForm.get('mobileOrEmail')?.invalid && loginForm.get('mobileOrEmail')?.touched"
+              (input)="onMobileInput($event)"
+              (keydown)="onMobileKeyDown($event)"
+              inputmode="tel"
+            />
+            @if (otpSent()) {
+              <button type="button" class="change-phone-link" (click)="onChangePhone()">
+                Change
+              </button>
+            }
+          </div>
+          @if (loginForm.get('mobileOrEmail')?.invalid && loginForm.get('mobileOrEmail')?.touched) {
+            <span class="error-message">Mobile number or email is required</span>
+          }
+        </div>
+
+        @if (!otpSent()) {
+          <button type="submit" class="primary-button" [disabled]="loginForm.invalid">
+            Send OTP
+          </button>
+        }
+      </form>
+
+      @if (otpSent()) {
+        <form [formGroup]="otpForm" (ngSubmit)="onVerifyOtp()" class="otp-form">
+          <div class="form-field">
+            <label class="field-label">Enter OTP</label>
+            <div class="otp-inputs">
+              @for (control of otpArray.controls; track $index) {
+                <input
+                  [id]="'otp-' + $index"
+                  type="text"
+                  [formControl]="getOtpControl($index)"
+                  class="otp-input"
+                  maxlength="1"
+                  [class.error]="control.invalid && control.touched"
+                  (input)="onOtpInput($event, $index)"
+                  (keydown)="onOtpKeyDown($event, $index)"
+                  (paste)="onOtpPaste($event)"
+                  inputmode="numeric"
+                  pattern="[0-9]"
+                />
+              }
+            </div>
+            @if (otpForm.invalid && otpForm.touched) {
+              <span class="error-message">Please enter all 6 digits</span>
+            }
+          </div>
+
+          <button type="submit" class="primary-button" [disabled]="otpForm.invalid">
+            Verify OTP
+          </button>
+        </form>
+      }
+
+      <div class="otp-note">
+        Secure Login with OTP Verification
+      </div>
+
+      <div class="terms">
+        By continuing, you agree to our
+        <a routerLink="/terms" class="terms-link">Terms of Service</a> and
+        <a routerLink="/privacy" class="terms-link">Privacy Policy</a>.
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="vendor-section">
+        Are you a Vendor?
+        <a routerLink="/vendor/register" class="vendor-link">Register here</a>
+      </div>
+    </div>
+  </section>
+</div>
+

@@ -1,0 +1,111 @@
+<div class="admin-dashboard">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      SambhramaBook
+      <span class="badge">ADMIN</span>
+    </div>
+
+    <div class="admin-profile">
+      <div>
+        <strong>Admin User</strong><br>
+        <small>Super Admin</small>
+      </div>
+      <img src="https://i.pravatar.cc/32?img=47" alt="Admin">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h6>Overview</h6>
+      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Dashboard</a>
+      <a routerLink="/admin/analytics" routerLinkActive="active" class="sidebar-link">Analytics</a>
+
+      <h6>Management</h6>
+      <a routerLink="/admin/users" routerLinkActive="active" class="sidebar-link">Users</a>
+      <a routerLink="/admin/vendors" routerLinkActive="active" class="sidebar-link">Vendors</a>
+      <a routerLink="/admin/listings-approval" routerLinkActive="active" class="sidebar-link">
+        Listings Approval
+        @if (pendingCount() > 0) {
+          <span class="pill">{{ pendingCount() }}</span>
+        }
+      </a>
+
+      <h6>Operations</h6>
+      <a routerLink="/admin/bookings" routerLinkActive="active" class="sidebar-link">Bookings</a>
+      <a routerLink="/admin/payouts" routerLinkActive="active" class="sidebar-link">
+        Payouts
+        @if (payoutsCount() > 0) {
+          <span class="pill">{{ payoutsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/admin/reports" routerLinkActive="active" class="sidebar-link">Reports & Reviews</a>
+
+      <h6>System</h6>
+      <a routerLink="/admin/settings" routerLinkActive="active" class="sidebar-link">Platform Settings</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Users</h1>
+          <p>Manage all registered users on the platform.</p>
+        </div>
+        <div class="header-actions">
+          <input type="text" class="search-input" placeholder="Search users..." [value]="searchTerm()" (input)="searchTerm.set($any($event.target).value)">
+          <select class="filter">
+            <option>All Users</option>
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>Suspended</option>
+          </select>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>USER</th>
+            <th>EMAIL</th>
+            <th>MOBILE</th>
+            <th>JOINED</th>
+            <th>BOOKINGS</th>
+            <th>STATUS</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users(); track user.id) {
+            <tr>
+              <td>
+                <div class="user-cell">
+                  <img [src]="user.avatar" [alt]="user.name">
+                  <strong>{{ user.name }}</strong>
+                </div>
+              </td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.mobile }}</td>
+              <td>{{ formatDate(user.joinDate) }}</td>
+              <td>{{ user.bookings }}</td>
+              <td>
+                <span class="status" [class]="user.status.toLowerCase()">
+                  {{ user.status }}
+                </span>
+              </td>
+              <td>
+                <button type="button" class="btn outline" (click)="onViewDetails(user.id)">View</button>
+                @if (user.status === 'ACTIVE') {
+                  <button type="button" class="btn outline" (click)="onSuspend(user.id)">Suspend</button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </main>
+  </div>
+</div>
+

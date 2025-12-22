@@ -1,0 +1,68 @@
+// Design System Configuration
+// This file contains all configurable design tokens
+// Modify these values to customize the entire application appearance
+
+// ==================== BRAND COLORS ====================
+// Primary Brand Color (Gold/Yellow)
+$brand-primary: #F4B41A;
+$brand-primary-hover: #e0a300;
+$brand-primary-light: #fff1d6;
+$brand-primary-dark: #c27a00;
+
+// Secondary Brand Color (Teal)
+$brand-secondary: #0F8B8D;
+$brand-secondary-light: #dff5f3;
+$brand-secondary-dark: #0a6d6f;
+
+// Accent Color (Maroon)
+$brand-accent: #8B1430;
+$brand-accent-light: #f2eaea;
+$brand-accent-dark: #6B0F24;
+
+// ==================== BACKGROUND COLORS ====================
+$bg-main: #FFF7EE;
+$bg-header: #ffffff;
+$bg-footer: #f5f3f0;
+$bg-card: #ffffff;
+$bg-card-alt: #fff3e5;
+
+// ==================== TEXT COLORS ====================
+$text-primary: #2b2b2b;
+$text-secondary: #777777;
+$text-tertiary: #999999;
+$text-on-primary: #ffffff;
+$text-on-secondary: #ffffff;
+
+// ==================== BORDER COLORS ====================
+$border-light: #e6e6e6;
+$border-medium: #ddd;
+$border-dark: #ccc;
+
+// ==================== TYPOGRAPHY ====================
+$font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-size-base: 1rem; // 16px
+
+// ==================== SPACING ====================
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2rem; // 32px
+$spacing-2xl: 3rem; // 48px
+$spacing-3xl: 4rem; // 64px
+
+// ==================== BORDER RADIUS ====================
+$radius-sm: 0.25rem; // 4px
+$radius-md: 0.5rem; // 8px
+$radius-lg: 0.75rem; // 12px
+$radius-xl: 1rem; // 16px
+$radius-2xl: 1.5rem; // 24px
+
+// ==================== BREAKPOINTS (Mobile First) ====================
+$breakpoint-xs: 0px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+

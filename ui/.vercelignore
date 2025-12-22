@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build artifacts (will be generated during build)
+dist/
+.angular/
+
+# Test files
+coverage/
+.nyc_output/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files (if sensitive)
+# .env.local
+# .env.*.local

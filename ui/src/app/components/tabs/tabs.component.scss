@@ -1,0 +1,38 @@
+@use 'design-system' as *;
+
+.tabs {
+  display: flex;
+  gap: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-light);
+  margin: var(--spacing-xl) 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @include respond-to-max('sm') {
+    gap: var(--spacing-md);
+  }
+}
+
+.tab-button {
+  padding: var(--spacing-md) 0;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--brand-primary);
+  }
+
+  &.active {
+    color: var(--brand-primary);
+    border-bottom-color: var(--brand-primary);
+  }
+}
+

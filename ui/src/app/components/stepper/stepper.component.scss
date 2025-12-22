@@ -1,0 +1,85 @@
+@use 'design-system' as *;
+
+.stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
+  flex-wrap: wrap;
+
+  @include respond-to('sm') {
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: color var(--transition-base);
+  user-select: none;
+
+  @include respond-to('sm') {
+    gap: var(--spacing-md);
+  }
+
+  &:hover {
+    color: var(--text-secondary);
+  }
+
+  &.active {
+    color: var(--brand-primary);
+  }
+
+  &.completed {
+    color: var(--text-secondary);
+  }
+}
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--bg-card-alt);
+  border: 2px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-tertiary);
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: var(--success);
+  }
+}
+
+.step.active .step-circle {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: var(--text-on-primary);
+}
+
+.step.completed .step-circle {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--text-on-primary);
+}
+
+.step-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+
+  @include respond-to('sm') {
+    font-size: var(--font-size-base);
+  }
+}
+

@@ -1,0 +1,106 @@
+<div class="notifications-page">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <span class="brand-name">SambhramaBook</span>
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/bookings" routerLinkActive="active">My Bookings</a>
+      <a routerLink="/services" routerLinkActive="active">Services</a>
+    </nav>
+
+    <div class="profile">
+      <img src="https://i.pravatar.cc/40?img=47" alt="Profile">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/bookings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">My Bookings</a>
+      <a routerLink="/bookings/saved" routerLinkActive="active" class="sidebar-link">Saved Venues</a>
+
+      <div class="divider"></div>
+
+      <a routerLink="/bookings/profile" routerLinkActive="active" class="sidebar-link">Profile & Settings</a>
+      <a routerLink="/bookings/notifications" routerLinkActive="active" class="sidebar-link">Notifications</a>
+
+      <div class="divider"></div>
+
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="greeting">
+        <div class="greeting-header">
+          <div>
+            <h1>Notifications</h1>
+            <p>
+              @if (getUnreadCount() > 0) {
+                You have {{ getUnreadCount() }} unread notification{{ getUnreadCount() > 1 ? 's' : '' }}.
+              } @else {
+                All caught up! No new notifications.
+              }
+            </p>
+          </div>
+          @if (getUnreadCount() > 0) {
+            <button type="button" class="mark-all-btn" (click)="onMarkAllAsRead()">
+              Mark All as Read
+            </button>
+          }
+        </div>
+      </div>
+
+      @if (notifications().length > 0) {
+        <div class="notifications-list">
+          @for (notification of notifications(); track notification.id) {
+            <div 
+              class="notification-item"
+              [class.unread]="!notification.read"
+              (click)="onNotificationClick(notification)"
+            >
+              <div class="notification-icon">
+                {{ getNotificationIcon(notification.type) }}
+              </div>
+              <div class="notification-content">
+                <div class="notification-header">
+                  <h4 class="notification-title">{{ notification.title }}</h4>
+                  <span class="notification-time">{{ formatTimestamp(notification.timestamp) }}</span>
+                </div>
+                <p class="notification-message">{{ notification.message }}</p>
+              </div>
+              <div class="notification-actions">
+                @if (!notification.read) {
+                  <button 
+                    type="button"
+                    class="action-icon"
+                    (click)="onMarkAsRead(notification.id); $event.stopPropagation()"
+                    title="Mark as read"
+                  >
+                    ✓
+                  </button>
+                }
+                <button 
+                  type="button"
+                  class="action-icon delete"
+                  (click)="onDelete(notification.id); $event.stopPropagation()"
+                  title="Delete"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="empty-state">
+          <p>No notifications yet.</p>
+        </div>
+      }
+    </main>
+  </div>
+</div>

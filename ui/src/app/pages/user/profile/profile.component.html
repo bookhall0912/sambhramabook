@@ -1,0 +1,165 @@
+<div class="profile-page">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      <span class="brand-name">SambhramaBook</span>
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/bookings" routerLinkActive="active">My Bookings</a>
+      <a routerLink="/services" routerLinkActive="active">Services</a>
+    </nav>
+
+    <div class="profile">
+      <img src="https://i.pravatar.cc/40?img=47" alt="Profile">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a routerLink="/bookings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">My Bookings</a>
+      <a routerLink="/bookings/saved" routerLinkActive="active" class="sidebar-link">Saved Venues</a>
+
+      <div class="divider"></div>
+
+      <a routerLink="/bookings/profile" routerLinkActive="active" class="sidebar-link">Profile & Settings</a>
+      <a routerLink="/bookings/notifications" routerLinkActive="active" class="sidebar-link">Notifications</a>
+
+      <div class="divider"></div>
+
+      <a (click)="onLogout()" class="sidebar-link logout">Logout</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="greeting">
+        <h1>Profile & Settings</h1>
+        <p>Manage your account information and preferences.</p>
+      </div>
+
+      <form [formGroup]="profileForm" class="profile-form">
+        <div class="form-section">
+          <h3 class="section-title">Personal Information</h3>
+          
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="fullName" class="field-label">Full Name</label>
+              <input
+                id="fullName"
+                type="text"
+                formControlName="fullName"
+                class="field-input"
+                [disabled]="!isEditing()"
+                [class.error]="profileForm.get('fullName')?.invalid && profileForm.get('fullName')?.touched"
+              />
+              @if (profileForm.get('fullName')?.invalid && profileForm.get('fullName')?.touched) {
+                <span class="error-message">Full name is required</span>
+              }
+            </div>
+
+            <div class="form-field">
+              <label for="email" class="field-label">Email Address</label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                class="field-input"
+                [disabled]="!isEditing()"
+                [class.error]="profileForm.get('email')?.invalid && profileForm.get('email')?.touched"
+              />
+              @if (profileForm.get('email')?.invalid && profileForm.get('email')?.touched) {
+                <span class="error-message">Valid email is required</span>
+              }
+            </div>
+
+            <div class="form-field">
+              <label for="mobile" class="field-label">Mobile Number</label>
+              <input
+                id="mobile"
+                type="tel"
+                formControlName="mobile"
+                class="field-input"
+                [disabled]="!isEditing()"
+                [class.error]="profileForm.get('mobile')?.invalid && profileForm.get('mobile')?.touched"
+              />
+              @if (profileForm.get('mobile')?.invalid && profileForm.get('mobile')?.touched) {
+                <span class="error-message">Mobile number is required</span>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="section-title">Address</h3>
+          
+          <div class="form-grid">
+            <div class="form-field full-width">
+              <label for="address" class="field-label">Street Address</label>
+              <input
+                id="address"
+                type="text"
+                formControlName="address"
+                class="field-input"
+                [disabled]="!isEditing()"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="city" class="field-label">City</label>
+              <input
+                id="city"
+                type="text"
+                formControlName="city"
+                class="field-input"
+                [disabled]="!isEditing()"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="state" class="field-label">State</label>
+              <input
+                id="state"
+                type="text"
+                formControlName="state"
+                class="field-input"
+                [disabled]="!isEditing()"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="pincode" class="field-label">Pincode</label>
+              <input
+                id="pincode"
+                type="text"
+                formControlName="pincode"
+                class="field-input"
+                [disabled]="!isEditing()"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="section-title">Security</h3>
+          <button type="button" class="security-button" (click)="onChangePassword()">
+            Change Password
+          </button>
+        </div>
+
+        @if (isEditing()) {
+          <div class="form-actions">
+            <button type="button" class="cancel-button" (click)="onCancel()">Cancel</button>
+            <button type="button" class="save-button" (click)="onSave()" [disabled]="profileForm.invalid">
+              Save Changes
+            </button>
+          </div>
+        } @else {
+          <button type="button" class="edit-button" (click)="onEdit()">Edit Profile</button>
+        }
+      </form>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="tabs">
+  @for (tab of tabs(); track tab.id) {
+    <button
+      type="button"
+      [class.active]="activeTab() === tab.id"
+      (click)="onTabClick(tab.id)"
+      class="tab-button"
+    >
+      {{ tab.label }}
+    </button>
+  }
+</div>
+

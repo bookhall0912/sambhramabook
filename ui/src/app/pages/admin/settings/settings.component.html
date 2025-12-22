@@ -1,0 +1,119 @@
+<div class="admin-dashboard">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      SambhramaBook
+      <span class="badge">ADMIN</span>
+    </div>
+
+    <div class="admin-profile">
+      <div>
+        <strong>Admin User</strong><br>
+        <small>Super Admin</small>
+      </div>
+      <img src="https://i.pravatar.cc/32?img=47" alt="Admin">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h6>Overview</h6>
+      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Dashboard</a>
+      <a routerLink="/admin/analytics" routerLinkActive="active" class="sidebar-link">Analytics</a>
+
+      <h6>Management</h6>
+      <a routerLink="/admin/users" routerLinkActive="active" class="sidebar-link">Users</a>
+      <a routerLink="/admin/vendors" routerLinkActive="active" class="sidebar-link">Vendors</a>
+      <a routerLink="/admin/listings-approval" routerLinkActive="active" class="sidebar-link">
+        Listings Approval
+        @if (pendingCount() > 0) {
+          <span class="pill">{{ pendingCount() }}</span>
+        }
+      </a>
+
+      <h6>Operations</h6>
+      <a routerLink="/admin/bookings" routerLinkActive="active" class="sidebar-link">Bookings</a>
+      <a routerLink="/admin/payouts" routerLinkActive="active" class="sidebar-link">
+        Payouts
+        @if (payoutsCount() > 0) {
+          <span class="pill">{{ payoutsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/admin/reports" routerLinkActive="active" class="sidebar-link">Reports & Reviews</a>
+
+      <h6>System</h6>
+      <a routerLink="/admin/settings" routerLinkActive="active" class="sidebar-link">Platform Settings</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Platform Settings</h1>
+          <p>Configure platform-wide settings and preferences.</p>
+        </div>
+      </div>
+
+      <div class="settings-form">
+        <div class="settings-section">
+          <h3>General Settings</h3>
+          <div class="form-group">
+            <label>Platform Name</label>
+            <input type="text" [value]="settings().platformName" (input)="updatePlatformName($event)">
+          </div>
+          <div class="form-group">
+            <label>Commission Rate (%)</label>
+            <input type="number" [value]="settings().commissionRate" (input)="updateCommissionRate($event)">
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>Booking Limits</h3>
+          <div class="form-group">
+            <label>Minimum Booking Amount (₹)</label>
+            <input type="number" [value]="settings().minBookingAmount" (input)="updateMinBookingAmount($event)">
+          </div>
+          <div class="form-group">
+            <label>Maximum Booking Amount (₹)</label>
+            <input type="number" [value]="settings().maxBookingAmount" (input)="updateMaxBookingAmount($event)">
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>Support Information</h3>
+          <div class="form-group">
+            <label>Support Email</label>
+            <input type="email" [value]="settings().supportEmail" (input)="updateSupportEmail($event)">
+          </div>
+          <div class="form-group">
+            <label>Support Phone</label>
+            <input type="tel" [value]="settings().supportPhone" (input)="updateSupportPhone($event)">
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>Notifications</h3>
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" [checked]="settings().enableNotifications" (change)="updateEnableNotifications($event)">
+              Enable Platform Notifications
+            </label>
+          </div>
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" [checked]="settings().enableEmailAlerts" (change)="updateEnableEmailAlerts($event)">
+              Enable Email Alerts
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn primary" (click)="onSave()">Save Settings</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+

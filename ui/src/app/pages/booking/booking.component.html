@@ -1,0 +1,237 @@
+<app-header></app-header>
+
+<div class="booking-page">
+  <button type="button" class="back-button" (click)="goBack()" aria-label="Go back">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Back
+  </button>
+  <app-stepper 
+    [currentStep]="currentStep()" 
+      [steps]="[
+      { number: 1, label: 'Details' },
+      { number: 2, label: 'Add-ons' },
+      { number: 3, label: 'Review & Confirm' },
+      { number: 4, label: 'Payment' }
+    ]"
+    (stepClick)="goToStep($event)"
+  ></app-stepper>
+
+  <div class="booking-container">
+    <!-- LEFT COLUMN -->
+    <div class="booking-content">
+      @if (bookingData(); as data) {
+        <!-- STEP 1: Event Details -->
+        <div class="booking-card" [class.collapsed]="currentStep() !== 1">
+          <div class="section-header">
+            <div class="section-badge">1</div>
+            <h3 class="section-title">Event Details</h3>
+          </div>
+          
+          @if (currentStep() === 1) {
+            <div class="event-details-grid">
+              <div>
+                <strong>{{ formatDateRange(data.date, data.days) }}</strong><br>
+                <span class="text-muted">Premium Wedding Package</span>
+              </div>
+              <div>
+                {{ data.location }}<br>
+                <span class="text-muted">{{ data.guests }}+ Guests</span>
+              </div>
+            </div>
+
+            <div class="card-actions">
+              <button type="button" class="link-button" (click)="goBack()">Back</button>
+              <button type="button" class="primary-button" (click)="continueToNext()">
+                Continue to Add-ons
+              </button>
+            </div>
+          }
+        </div>
+
+        <!-- STEP 2: Add-ons -->
+        <div class="booking-card" [class.collapsed]="currentStep() !== 2">
+          <div class="section-header">
+            <div class="section-badge">2</div>
+            <h3 class="section-title">Select Add-ons & Extras</h3>
+          </div>
+          
+          @if (currentStep() === 2) {
+            <p class="section-description">
+              Enhance your package with these recommended services.
+            </p>
+
+            <div class="addons-list">
+              @for (addon of addons(); track addon.id) {
+                <app-addon-card
+                  [addon]="addon"
+                  (toggle)="toggleAddon(addon)"
+                ></app-addon-card>
+              }
+            </div>
+
+            <form [formGroup]="addonsForm" class="special-requirements">
+              <label for="specialRequirements" class="form-label">Special Requirements (Optional)</label>
+              <textarea
+                id="specialRequirements"
+                formControlName="specialRequirements"
+                class="form-textarea"
+                placeholder="Any specific shots or moments?"
+                rows="4"
+              ></textarea>
+            </form>
+
+            <div class="card-actions">
+              <button type="button" class="link-button" (click)="goBack()">Back</button>
+              <button type="button" class="primary-button" (click)="continueToNext()">
+                Continue to Review
+              </button>
+            </div>
+          }
+        </div>
+
+        <!-- STEP 3: Review & Confirm -->
+        <div class="booking-card" [class.collapsed]="currentStep() !== 3">
+          <div class="section-header">
+            <div class="section-badge">3</div>
+            <h3 class="section-title">Review & Confirm</h3>
+          </div>
+          
+          @if (currentStep() === 3) {
+            <div class="review-content">
+              <p class="review-description">
+                Please review your booking details below. Once confirmed, you'll receive a confirmation email.
+              </p>
+
+              <div class="review-section">
+                <h4 class="review-section-title">Event Details</h4>
+                <div class="review-details-grid">
+                  <div class="review-detail-item">
+                    <span class="review-label">Date</span>
+                    <span class="review-value">{{ formatDateRange(data.date, data.days) }}</span>
+                  </div>
+                  <div class="review-detail-item">
+                    <span class="review-label">Location</span>
+                    <span class="review-value">{{ data.location }}</span>
+                  </div>
+                  <div class="review-detail-item">
+                    <span class="review-label">Guests</span>
+                    <span class="review-value">{{ data.guests }}+</span>
+                  </div>
+                  <div class="review-detail-item">
+                    <span class="review-label">Duration</span>
+                    <span class="review-value">{{ data.days }} {{ data.days === 1 ? 'day' : 'days' }}</span>
+                  </div>
+                </div>
+              </div>
+
+              @if (selectedAddons().length > 0) {
+                <div class="review-section">
+                  <h4 class="review-section-title">Selected Add-ons</h4>
+                  <div class="selected-addons-list">
+                    @for (addon of selectedAddons(); track addon.id) {
+                      <div class="selected-addon-item">
+                        <span>{{ addon.title }}</span>
+                        <span>{{ formatPrice(addon.price) }}</span>
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+
+              @if (addonsForm.get('specialRequirements')?.value) {
+                <div class="review-section">
+                  <h4 class="review-section-title">Special Requirements</h4>
+                  <p class="review-text">{{ addonsForm.get('specialRequirements')?.value }}</p>
+                </div>
+              }
+
+              <div class="card-actions">
+                <button type="button" class="link-button" (click)="goBack()">Back</button>
+                <button type="button" class="primary-button" (click)="continueToNext()">
+                  Proceed to Payment
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- STEP 4: Payment -->
+        <div class="booking-card" [class.collapsed]="currentStep() !== 4">
+          <div class="section-header">
+            <div class="section-badge">4</div>
+            <h3 class="section-title">Payment</h3>
+          </div>
+          
+          @if (currentStep() === 4) {
+            <div class="payment-content">
+              @if (isProcessingPayment()) {
+                <div class="payment-processing">
+                  <div class="spinner"></div>
+                  <h4>Processing Payment...</h4>
+                  <p>Please wait while we process your payment. Do not close this page.</p>
+                </div>
+              } @else {
+                <p class="payment-description">
+                  Complete your booking by making the payment. Your booking will be confirmed once payment is successful.
+                </p>
+
+                <div class="payment-summary">
+                  <div class="summary-row">
+                    <span>Total Amount</span>
+                    <strong>{{ formatPrice(totalPrice()) }}</strong>
+                  </div>
+                </div>
+
+                <div class="payment-methods">
+                  <h4 class="payment-methods-title">Select Payment Method</h4>
+                  <div class="payment-options">
+                    <label class="payment-option" [class.selected]="paymentMethod() === 'UPI'">
+                      <input type="radio" name="paymentMethod" value="UPI" [checked]="paymentMethod() === 'UPI'" (change)="paymentMethod.set('UPI')">
+                      <span>UPI</span>
+                    </label>
+                    <label class="payment-option" [class.selected]="paymentMethod() === 'Card'">
+                      <input type="radio" name="paymentMethod" value="Card" [checked]="paymentMethod() === 'Card'" (change)="paymentMethod.set('Card')">
+                      <span>Credit/Debit Card</span>
+                    </label>
+                    <label class="payment-option" [class.selected]="paymentMethod() === 'Net Banking'">
+                      <input type="radio" name="paymentMethod" value="Net Banking" [checked]="paymentMethod() === 'Net Banking'" (change)="paymentMethod.set('Net Banking')">
+                      <span>Net Banking</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="payment-note">
+                  <p><strong>Note:</strong> For testing purposes, payment will always succeed.</p>
+                </div>
+
+                <div class="card-actions">
+                  <button type="button" class="link-button" (click)="goBack()">Back</button>
+                  <button type="button" class="primary-button" (click)="continueToNext()" [disabled]="isProcessingPayment()">
+                    Pay {{ formatPrice(totalPrice()) }}
+                  </button>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- RIGHT COLUMN: Summary Sidebar -->
+    <aside class="booking-sidebar">
+      @if (bookingData(); as data) {
+        <app-booking-summary
+          [hallName]="data.hallName"
+          [hallImage]="data.hallImage"
+          [location]="data.location"
+          [priceBreakdown]="priceBreakdown()"
+        ></app-booking-summary>
+      }
+    </aside>
+  </div>
+</div>
+
+<app-footer></app-footer>
+

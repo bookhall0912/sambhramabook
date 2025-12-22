@@ -1,0 +1,20 @@
+<section class="services-section">
+  <div class="section-container">
+    <div class="section-title-group">
+      <h2 class="section-title">More than just Venues</h2>
+      <p class="section-subtitle">Everything you need for a complete celebration</p>
+    </div>
+
+    @if (servicesService.services$().loading) {
+      <div class="loading">Loading services...</div>
+    } @else {
+      <div class="services-grid">
+        @for (service of services(); track service.id) {
+          <app-service-card [service]="service"></app-service-card>
+        } @empty {
+          <div class="empty-state">No services available</div>
+        }
+      </div>
+    }
+  </div>
+</section>

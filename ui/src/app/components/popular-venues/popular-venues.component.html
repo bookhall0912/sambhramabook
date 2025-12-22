@@ -1,0 +1,17 @@
+<section class="popular-venues-section">
+  <div class="section-container">
+    <div class="section-header">
+      <div class="section-title-group">
+        <h2 class="section-title">Popular Convention Halls</h2>
+        <p class="section-subtitle">Top rated venues loved by our community</p>
+      </div>
+      <a routerLink="/halls" class="view-all-button">View All Halls</a>
+    </div>
+
+    <div class="venues-grid">
+      @for (venue of venues; track venue.id) {
+        <app-venue-card [venue]="venue"></app-venue-card>
+      }
+    </div>
+  </div>
+</section>

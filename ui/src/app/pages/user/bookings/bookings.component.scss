@@ -1,0 +1,384 @@
+@use 'design-system' as *;
+
+.bookings-page {
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+/* ================= TOP NAV ================= */
+.topbar {
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  background: var(--brand-primary);
+  border-radius: 6px;
+}
+
+.brand-name {
+  font-weight: 700;
+  color: #f5b400;
+  font-size: 18px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  font-weight: 500;
+
+  a {
+    color: #5c4a3d;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color var(--transition-base);
+
+    &.active {
+      color: var(--brand-primary);
+      font-weight: 600;
+    }
+  }
+}
+
+.profile img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+/* ================= LAYOUT ================= */
+.layout {
+  display: flex;
+  padding: 28px;
+  gap: 28px;
+
+  @include respond-to-max('lg') {
+    flex-direction: column;
+  }
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width: 240px;
+  background: #fff3e5;
+  border-radius: 14px;
+  padding: 20px;
+  height: fit-content;
+  flex-shrink: 0;
+
+  @include respond-to-max('lg') {
+    width: 100%;
+  }
+}
+
+.sidebar-link {
+  display: block;
+  padding: 12px 14px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #5c4a3d;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-base);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &.active {
+    background: #ffffff;
+    color: var(--brand-primary);
+    font-weight: 600;
+  }
+
+  &.logout {
+    color: #e53935;
+    font-weight: 600;
+  }
+}
+
+.divider {
+  height: 1px;
+  background: #e7dccc;
+  margin: 16px 0;
+  border: none;
+}
+
+/* ================= CONTENT ================= */
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.greeting h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #2b2b2b;
+
+  span {
+    color: var(--brand-primary);
+  }
+}
+
+.greeting p {
+  color: #7b6a58;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+/* ================= TABS ================= */
+.tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #eadfce;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding-bottom: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #7b6a58;
+  transition: all var(--transition-base);
+
+  &:hover {
+    color: var(--brand-primary);
+  }
+
+  &.active {
+    color: var(--brand-primary);
+    border-bottom: 2px solid #f5b400;
+    font-weight: 600;
+  }
+}
+
+/* ================= BOOKING CARD ================= */
+.booking-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
+  border: 1px solid #eee;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #7b6a58;
+  margin-bottom: 14px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.upcoming {
+  background: #e0f7f3;
+  color: #009688;
+}
+
+.pending {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.booking-body {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  @include respond-to-max('md') {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.thumb {
+  width: 90px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #f1e9e4;
+  flex-shrink: 0;
+}
+
+.booking-info {
+  flex: 1;
+  min-width: 0;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+
+  p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 4px;
+  }
+
+  .meta {
+    font-size: 13px;
+    color: #5c4a3d;
+  }
+}
+
+.booking-actions {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+
+  @include respond-to-max('md') {
+    margin-left: 0;
+    width: 100%;
+    align-items: stretch;
+  }
+}
+
+.primary-btn {
+  background: var(--brand-primary);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color var(--transition-base);
+
+  &:hover {
+    background-color: #d4a015;
+  }
+}
+
+.secondary-btn {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  color: #2b2b2b;
+  transition: all var(--transition-base);
+
+  &:hover {
+    border-color: #f5b400;
+    color: var(--brand-primary);
+  }
+}
+
+.link {
+  color: #f5b400;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color var(--transition-base);
+
+  &:hover {
+    color: #d4a015;
+    text-decoration: underline;
+  }
+}
+
+/* ================= SAVED ================= */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px 0 16px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+
+  @include respond-to-max('md') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.saved-card {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.saved-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  background: #f1e9e4;
+}
+
+.saved-body {
+  padding: 14px;
+
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+
+  p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text-primary);
+    transition: all var(--transition-base);
+
+    &:hover {
+      border-color: #f5b400;
+      color: var(--brand-primary);
+    }
+  }
+}

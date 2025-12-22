@@ -1,0 +1,110 @@
+<div class="admin-dashboard">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo"></div>
+      SambhramaBook
+      <span class="badge">ADMIN</span>
+    </div>
+
+    <div class="admin-profile">
+      <div>
+        <strong>Admin User</strong><br>
+        <small>Super Admin</small>
+      </div>
+      <img src="https://i.pravatar.cc/32?img=47" alt="Admin">
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h6>Overview</h6>
+      <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="sidebar-link">Dashboard</a>
+      <a routerLink="/admin/analytics" routerLinkActive="active" class="sidebar-link">Analytics</a>
+
+      <h6>Management</h6>
+      <a routerLink="/admin/users" routerLinkActive="active" class="sidebar-link">Users</a>
+      <a routerLink="/admin/vendors" routerLinkActive="active" class="sidebar-link">Vendors</a>
+      <a routerLink="/admin/listings-approval" routerLinkActive="active" class="sidebar-link">
+        Listings Approval
+        @if (pendingCount() > 0) {
+          <span class="pill">{{ pendingCount() }}</span>
+        }
+      </a>
+
+      <h6>Operations</h6>
+      <a routerLink="/admin/bookings" routerLinkActive="active" class="sidebar-link">Bookings</a>
+      <a routerLink="/admin/payouts" routerLinkActive="active" class="sidebar-link">
+        Payouts
+        @if (payoutsCount() > 0) {
+          <span class="pill">{{ payoutsCount() }}</span>
+        }
+      </a>
+      <a routerLink="/admin/reports" routerLinkActive="active" class="sidebar-link">Reports & Reviews</a>
+
+      <h6>System</h6>
+      <a routerLink="/admin/settings" routerLinkActive="active" class="sidebar-link">Platform Settings</a>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Vendors</h1>
+          <p>Manage all registered vendors on the platform.</p>
+        </div>
+        <select class="filter">
+          <option>All Vendors</option>
+          <option>Active</option>
+          <option>Inactive</option>
+          <option>Suspended</option>
+        </select>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>VENDOR</th>
+            <th>EMAIL</th>
+            <th>MOBILE</th>
+            <th>JOINED</th>
+            <th>LISTINGS</th>
+            <th>EARNINGS</th>
+            <th>STATUS</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vendor of vendors(); track vendor.id) {
+            <tr>
+              <td>
+                <div class="vendor-cell">
+                  <img [src]="vendor.avatar" [alt]="vendor.name">
+                  <strong>{{ vendor.name }}</strong>
+                </div>
+              </td>
+              <td>{{ vendor.email }}</td>
+              <td>{{ vendor.mobile }}</td>
+              <td>{{ formatDate(vendor.joinDate) }}</td>
+              <td>{{ vendor.listings }}</td>
+              <td>{{ formatPrice(vendor.earnings) }}</td>
+              <td>
+                <span class="status" [class]="vendor.status.toLowerCase()">
+                  {{ vendor.status }}
+                </span>
+              </td>
+              <td>
+                <button type="button" class="btn outline" (click)="onViewDetails(vendor.id)">View</button>
+                @if (vendor.status === 'ACTIVE') {
+                  <button type="button" class="btn outline" (click)="onSuspend(vendor.id)">Suspend</button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </main>
+  </div>
+</div>
+

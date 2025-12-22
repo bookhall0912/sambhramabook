@@ -1,0 +1,146 @@
+<app-header></app-header>
+
+<div class="service-detail-page">
+  <div class="container">
+    <div class="hero">
+      <img [src]="vendorImage()" [alt]="vendorName()">
+    </div>
+
+    <div class="title-row">
+      <div class="vendor-info">
+        @if (isVerified()) {
+          <span class="pill">Verified Vendor</span>
+        }
+        <span class="pill">{{ vendorTag() }}</span>
+        <h1>{{ vendorName() }}</h1>
+        <div class="vendor-meta">
+          {{ vendorLocation() }} · ⭐ {{ vendorRating() }} ({{ vendorReviewCount() }} Reviews) · {{ vendorExperience() }} Years Experience
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn outline" (click)="onShare()">Share</button>
+        <button type="button" class="btn outline" (click)="onSave()">Save</button>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <span [class.active]="activeTab() === 'overview'" (click)="setActiveTab('overview')">Overview</span>
+      <span [class.active]="activeTab() === 'services'" (click)="setActiveTab('services')">Services & Packages</span>
+      <span [class.active]="activeTab() === 'portfolio'" (click)="setActiveTab('portfolio')">Portfolio</span>
+      <span [class.active]="activeTab() === 'availability'" (click)="setActiveTab('availability')">Availability</span>
+      <span [class.active]="activeTab() === 'reviews'" (click)="setActiveTab('reviews')">Reviews</span>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT -->
+      <div>
+        @if (activeTab() === 'overview' || activeTab() === 'services') {
+          <section>
+            <h3>About the Vendor</h3>
+            <p>{{ about() }}</p>
+          </section>
+
+          <section>
+            <h3>Specialities</h3>
+            <div class="tags">
+              @for (speciality of specialities(); track speciality) {
+                <span class="tag">{{ speciality }}</span>
+              }
+            </div>
+          </section>
+
+          <section>
+            <h3>Packages & Pricing</h3>
+            <div class="packages">
+              @for (pkg of packages(); track pkg.id) {
+                <div class="package" [class.popular]="pkg.isPopular">
+                  <h4>{{ pkg.name }}</h4>
+                  <div class="price">{{ formatPrice(pkg.price) }} {{ pkg.priceUnit }}</div>
+                  <ul>
+                    @for (feature of pkg.features; track feature) {
+                      <li>{{ feature }}</li>
+                    }
+                  </ul>
+                  <button 
+                    type="button" 
+                    [class]="pkg.isPopular ? 'btn primary' : 'btn outline'"
+                    (click)="selectPackage(pkg.id)">
+                    Select Package
+                  </button>
+                </div>
+              }
+            </div>
+          </section>
+        }
+
+        @if (activeTab() === 'portfolio') {
+          <section>
+            <h3>Portfolio</h3>
+            <div class="gallery">
+              @for (image of portfolioImages(); track image) {
+                <img [src]="image" [alt]="'Portfolio image ' + ($index + 1)">
+              }
+            </div>
+          </section>
+        }
+
+        @if (activeTab() === 'reviews') {
+          <section>
+            <h3>Reviews ({{ vendorReviewCount() }})</h3>
+            <div class="review-box">
+              <div class="review-score">{{ vendorRating() }}</div>
+              <p>"Absolutely the best decision we made for our wedding!"</p>
+            </div>
+          </section>
+        }
+
+        @if (activeTab() === 'availability') {
+          <section>
+            <h3>Availability</h3>
+            <p>Check vendor availability calendar and book your preferred dates.</p>
+            <!-- TODO: Add availability calendar component -->
+          </section>
+        }
+      </div>
+
+      <!-- RIGHT -->
+      <aside class="booking">
+        <h3>Book Service</h3>
+
+        <label>Event Date</label>
+        <input type="text" [value]="eventDate()" readonly>
+
+        <label>Package</label>
+        <select [ngModel]="selectedPackage()" (ngModelChange)="selectPackage($event)">
+          @for (pkg of packages(); track pkg.id) {
+            <option [value]="pkg.id">{{ pkg.name }} - {{ formatPrice(pkg.price) }} {{ pkg.priceUnit }}</option>
+          }
+        </select>
+
+        <div class="total">Total Estimate: {{ formatPrice(totalEstimate()) }}</div>
+
+        <button type="button" class="btn primary" style="width:100%" (click)="onRequestToBook()">Request to Book</button>
+        <button type="button" class="btn outline" style="width:100%;margin-top:8px" (click)="onContactVendor()">Contact Vendor</button>
+      </aside>
+    </div>
+
+    <section>
+      <h3>Similar {{ vendorTag() }} Vendors</h3>
+      <div class="similar">
+        @for (vendor of similarVendors(); track vendor.id) {
+          <div class="similar-card" (click)="onViewSimilarVendor(vendor.id)">
+            @if (vendor.image) {
+              <img [src]="vendor.image" [alt]="vendor.name">
+            } @else {
+              <div style="width:100%;height:120px;background:#f1e9e4;"></div>
+            }
+            <div class="similar-body">{{ vendor.name }}<br>{{ formatPrice(vendor.price) }} {{ vendor.priceUnit }}</div>
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+</div>
+
+<app-footer></app-footer>
+
