@@ -17,10 +17,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore api/Sambhrama.Api.csproj
+        run: dotnet restore apiNew/Sambhrama.Api.csproj
 
       - name: Build API
         run: dotnet build apiNew/Sambhrama.Api.csproj --configuration Release --no-restore
@@ -57,3 +57,4 @@ jobs:
         with:
           app-name: sambhrama-api
           package: ./publish
+
