@@ -443,3 +443,5 @@ D:\sambhramabook\apiNew\SambhramaBook.Api\obj\Debug\net10.0\refint\SambhramaBook
 D:\sambhramabook\apiNew\SambhramaBook.Api\obj\Debug\net10.0\SambhramaBook.Api.pdb
 D:\sambhramabook\apiNew\SambhramaBook.Api\obj\Debug\net10.0\SambhramaBook.Api.genruntimeconfig.cache
 D:\sambhramabook\apiNew\SambhramaBook.Api\obj\Debug\net10.0\ref\SambhramaBook.Api.dll
+D:\sambhramabook\apiNew\SambhramaBook.Api\bin\Debug\net10.0\appsettings.Production.json
+D:\sambhramabook\apiNew\SambhramaBook.Api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
