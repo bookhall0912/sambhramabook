@@ -2,7 +2,10 @@ import { Component, input, output, OnInit, OnDestroy, ElementRef, ViewChild } fr
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 import flatpickr from 'flatpickr';
-import yearSelectPlugin from 'flatpickr-year-select-plugin';
+// flatpickr-year-select-plugin is a UMD module without proper default export
+// The fallback handles both default and namespace exports
+import * as yearSelectPluginModule from 'flatpickr-year-select-plugin';
+const yearSelectPlugin = (yearSelectPluginModule as any).default || yearSelectPluginModule;
 
 @Component({
   selector: 'app-date-picker',
