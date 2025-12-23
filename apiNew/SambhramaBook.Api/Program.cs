@@ -2,12 +2,11 @@ using System.Text;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
+using SambhramaBook.Api.Configuration;
+using SambhramaBook.Api.Middleware;
 using SambhramaBook.Application.Configuration;
-using SambhramaBook.Application.Handlers.Auth;
-using SambhramaBook.Application.Queries;
 using SambhramaBook.Infrastructure;
-using SambhramaBook.Infrastructure.Queries;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddSwaggerGen(options =>
@@ -31,29 +31,21 @@ builder.Services.AddSwaggerGen(options =>
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
-    
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            Array.Empty<string>()
-        }
-    });
 });
 
-// CORS
+// CORS - Configure based on environment
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:4200", "http://localhost:5173")
+        var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
+        if (allowedOrigins == null || allowedOrigins.Length == 0)
+        {
+            // Default to localhost for development
+            allowedOrigins = new[] { "http://localhost:4200", "http://localhost:5173" };
+        }
+        
+        policy.WithOrigins(allowedOrigins)
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
@@ -90,18 +82,8 @@ if (jwtSettings != null)
 
 builder.Services.AddAuthorization();
 
-// Application Services - Auth Handlers
-builder.Services.AddScoped<SendOtpHandler>();
-builder.Services.AddScoped<VerifyOtpHandler>();
-builder.Services.AddScoped<GetCurrentUserHandler>();
-builder.Services.AddScoped<LogoutHandler>();
-builder.Services.AddScoped<RefreshTokenHandler>();
-
-// Vendor Handlers
-builder.Services.AddScoped<CompleteOnboardingHandler>();
-
-// Query Services
-builder.Services.AddScoped<IHallQueries, HallQueries>();
+// API Services (Handlers and Query Services)
+builder.Services.RegisterApiServices();
 
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));

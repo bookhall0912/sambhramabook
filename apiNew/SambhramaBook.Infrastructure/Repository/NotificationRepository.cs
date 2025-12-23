@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SambhramaBook.Application.Repositories;
 using SambhramaBook.Domain.Entities;
 
 namespace SambhramaBook.Infrastructure.Repository;
@@ -29,6 +30,14 @@ public class NotificationRepository : INotificationRepository
         }
 
         return await query
+            .OrderByDescending(n => n.CreatedAt)
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<IEnumerable<Notification>> GetUnreadByUserIdAsync(long userId, CancellationToken cancellationToken = default)
+    {
+        return await _context.Notifications
+            .Where(n => n.UserId == userId && !n.IsRead)
             .OrderByDescending(n => n.CreatedAt)
             .ToListAsync(cancellationToken);
     }

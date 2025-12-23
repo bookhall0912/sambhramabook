@@ -160,3 +160,4 @@ export class HallDetailComponent implements OnInit {
     return this.hall?.reviews?.length || 128;
   }
 }
+

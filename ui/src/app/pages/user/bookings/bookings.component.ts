@@ -1,8 +1,11 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { UserApiService } from '../../../services/user.api';
+import { BookingsApiService } from '../../../services/bookings.api';
 import { ManageBookingModalComponent, BookingData } from '../../../components/manage-booking-modal/manage-booking-modal.component';
+import { catchError, of } from 'rxjs';
 
 export interface Booking {
   id: string;
@@ -48,55 +51,11 @@ export class BookingsComponent implements OnInit {
   showManageModal = signal<boolean>(false);
   selectedBooking = signal<BookingData | null>(null);
   
-  bookings = signal<Booking[]>([
-    {
-      id: '1',
-      referenceId: 'SB-8824-X901',
-      venueName: 'Sambhrama Grand Convention Hall',
-      venueImage: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1',
-      location: 'JP Nagar, Bangalore',
-      startDate: '2024-11-12',
-      endDate: '2024-11-13',
-      days: 2,
-      guestCount: 800,
-      totalAmount: 306425,
-      status: 'UPCOMING',
-      paymentStatus: 'PAID',
-      eventType: 'Wedding Reception'
-    },
-    {
-      id: '2',
-      referenceId: 'SB-9932-P102',
-      venueName: 'Shutterbug Photography',
-      venueImage: '',
-      location: 'Bangalore',
-      startDate: '2024-11-12',
-      endDate: '2024-11-12',
-      days: 1,
-      guestCount: 0,
-      totalAmount: 25000,
-      status: 'UPCOMING',
-      paymentStatus: 'PENDING',
-      eventType: 'Candid Photography'
-    }
-  ]);
+  bookings = signal<Booking[]>([]);
+  savedVenues = signal<SavedVenue[]>([]);
 
-  savedVenues = signal<SavedVenue[]>([
-    {
-      id: '1',
-      name: 'Royal Orchid Hall',
-      image: '',
-      location: 'Indiranagar, Bangalore'
-    },
-    {
-      id: '2',
-      name: 'Golden Petal Events',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622',
-      location: 'Bangalore',
-      rating: 4.9,
-      reviewCount: 120
-    }
-  ]);
+  private userApiService = inject(UserApiService);
+  private bookingsApiService = inject(BookingsApiService);
 
   constructor(
     private router: Router,
@@ -112,13 +71,66 @@ export class BookingsComponent implements OnInit {
       this.userName.set(user.name);
     }
 
-    // TODO: Load bookings from API based on active tab
+    // Load bookings from API based on active tab
     this.loadBookings();
+    // Load saved venues
+    this.loadSavedVenues();
+  }
+
+  private loadSavedVenues(): void {
+    this.userApiService.getSavedListings()
+      .pipe(
+        catchError(error => {
+          console.error('Error loading saved venues:', error);
+          return of({ success: false, data: [] });
+        })
+      )
+      .subscribe(response => {
+        if (response.success) {
+          const saved = response.data.map(s => ({
+            id: s.id,
+            name: s.title,
+            image: s.imageUrl || '',
+            location: s.location,
+            rating: s.rating,
+            reviewCount: s.reviewCount
+          }));
+          this.savedVenues.set(saved);
+        }
+      });
   }
 
   private loadBookings(): void {
-    // TODO: Call API to fetch bookings based on activeTab
-    // For now, using mock data
+    const status = this.activeTab() === 'UPCOMING' ? 'UPCOMING' : 
+                   this.activeTab() === 'PAST' ? 'PAST' : 'CANCELLED';
+    
+    this.userApiService.getUserBookings(status, 1, 20)
+      .pipe(
+        catchError(error => {
+          console.error('Error loading bookings:', error);
+          return of({ success: false, data: [] });
+        })
+      )
+      .subscribe(response => {
+        if (response.success) {
+          const bookings = response.data.map(b => ({
+            id: b.id,
+            referenceId: b.referenceId,
+            venueName: b.venueName,
+            venueImage: b.venueImage || '',
+            location: b.location,
+            startDate: b.startDate,
+            endDate: b.endDate,
+            days: b.days,
+            guestCount: b.guestCount,
+            totalAmount: b.totalAmount,
+            status: b.status,
+            paymentStatus: b.paymentStatus,
+            eventType: b.eventType
+          }));
+          this.bookings.set(bookings);
+        }
+      });
   }
 
   setActiveTab(tab: TabType): void {
@@ -230,23 +242,32 @@ export class BookingsComponent implements OnInit {
   }
 
   onConfirmCancel(event: { bookingId: string; reason: string }): void {
-    console.log('Cancel booking:', event);
-    // TODO: Call API to cancel booking
-    // Update booking status to CANCELLED
-    this.bookings.update(bookings => 
-      bookings.map(b => 
-        b.id === event.bookingId 
-          ? { ...b, status: 'CANCELLED' as const, paymentStatus: 'REFUNDED' as const }
-          : b
-      )
-    );
+    const booking = this.bookings().find(b => b.id === event.bookingId);
+    if (!booking) return;
+
+    if (confirm(`Are you sure you want to cancel booking ${booking.referenceId}?`)) {
+      this.bookingsApiService.cancelBooking(event.bookingId)
+        .pipe(
+          catchError(error => {
+            console.error('Error cancelling booking:', error);
+            alert('Failed to cancel booking. Please try again.');
+            return of(null);
+          })
+        )
+        .subscribe(response => {
+          if (response) {
+            alert('Booking cancelled successfully.');
+            this.loadBookings(); // Reload bookings
+          }
+        });
+    }
     this.onCloseModal();
   }
 
   onConfirmReschedule(event: { bookingId: string }): void {
-    console.log('Reschedule booking:', event);
-    // TODO: Call API to request reschedule
     // TODO: Navigate to reschedule page or show reschedule form
+    // For now, just show a message
+    alert('Reschedule functionality will open a form to select new dates.');
     this.onCloseModal();
   }
 

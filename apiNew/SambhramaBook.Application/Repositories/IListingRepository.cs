@@ -22,8 +22,11 @@ public interface IListingRepository
         int page,
         int pageSize,
         CancellationToken cancellationToken = default);
+    Task<Listing?> GetByIdWithIncludesAsync(long id, CancellationToken cancellationToken = default);
+    Task<Listing?> GetByVendorIdAndIdAsync(long vendorId, long id, CancellationToken cancellationToken = default);
     Task<Listing> CreateAsync(Listing listing, CancellationToken cancellationToken = default);
     Task<Listing> UpdateAsync(Listing listing, CancellationToken cancellationToken = default);
+    Task DeleteAsync(long id, CancellationToken cancellationToken = default);
     Task<int> GetTotalCountAsync(
         string? location,
         decimal? minPrice,

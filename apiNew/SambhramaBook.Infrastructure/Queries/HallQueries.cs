@@ -144,6 +144,53 @@ public class HallQueries : IHallQueries
         };
     }
 
+    public async Task<IEnumerable<HallListItemDto>> GetSimilarHallsAsync(long hallId, int limit, CancellationToken cancellationToken = default)
+    {
+        // Get the reference hall
+        var referenceHall = await _context.Listings
+            .Include(l => l.Images.Where(img => img.IsPrimary))
+            .FirstOrDefaultAsync(l => l.Id == hallId && l.ListingType == ListingType.Hall, cancellationToken);
+
+        if (referenceHall == null)
+            return Enumerable.Empty<HallListItemDto>();
+
+        // Find similar halls based on:
+        // 1. Same city (highest priority)
+        // 2. Similar capacity range (within 20% of reference)
+        // 3. Similar price range (within 30% of reference)
+        // 4. High rating
+        var capacityRange = referenceHall.CapacityMax.HasValue && referenceHall.CapacityMin.HasValue
+            ? (referenceHall.CapacityMax.Value - referenceHall.CapacityMin.Value) * 0.2m
+            : 100;
+
+        var priceRange = referenceHall.BasePrice * 0.3m;
+
+        var similarHalls = await _context.Listings
+            .Include(l => l.Images.Where(img => img.IsPrimary))
+            .Include(l => l.Amenities)
+            .Include(l => l.Vendor)
+            .Where(l => l.Id != hallId &&
+                       l.ListingType == ListingType.Hall &&
+                       l.Status == ListingStatus.Approved &&
+                       l.ApprovalStatus == ApprovalStatus.Approved &&
+                       l.City == referenceHall.City && // Same city
+                       // Similar capacity (if both have capacity, otherwise include all)
+                       (!referenceHall.CapacityMax.HasValue || !referenceHall.CapacityMin.HasValue || 
+                        !l.CapacityMax.HasValue || !l.CapacityMin.HasValue ||
+                        (l.CapacityMax >= referenceHall.CapacityMin - capacityRange &&
+                         l.CapacityMin <= referenceHall.CapacityMax + capacityRange)))
+            .OrderByDescending(l => 
+                // Prioritize: similar price, high rating, booking count
+                (l.BasePrice >= referenceHall.BasePrice - priceRange && 
+                 l.BasePrice <= referenceHall.BasePrice + priceRange ? 100 : 0) +
+                l.AverageRating * 20 +
+                l.BookingCount)
+            .Take(limit)
+            .ToListAsync(cancellationToken);
+
+        return similarHalls.Select(MapToListItem);
+    }
+
     private HallListItemDto MapToListItem(Domain.Entities.Listing listing)
     {
         return new HallListItemDto

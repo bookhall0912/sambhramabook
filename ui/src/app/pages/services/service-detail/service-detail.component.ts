@@ -142,7 +142,8 @@ export class ServiceDetailComponent implements OnInit {
 
   private loadVendorData(id: string): void {
     // TODO: Load vendor data from API
-    // For now, using mock data
+    // TODO: Call API to fetch vendor details
+    // API endpoint: GET /api/services/{type}/{id}
     console.log('Loading vendor data for:', id);
   }
 
@@ -215,3 +216,5 @@ export class ServiceDetailComponent implements OnInit {
     this.router.navigate(['/services', this.serviceType(), vendorId]);
   }
 }
+
+

@@ -1,6 +1,8 @@
 using Microsoft.Extensions.Logging;
+using SambhramaBook.Application.Common;
 using SambhramaBook.Application.Models.Booking;
 using SambhramaBook.Application.Repositories;
+using SambhramaBook.Application.UnitOfWork;
 using SambhramaBook.Domain.Entities;
 using SambhramaBook.Domain.Enums;
 
@@ -11,46 +13,69 @@ public class CreateBookingHandler
     private readonly IBookingRepository _bookingRepository;
     private readonly IListingRepository _listingRepository;
     private readonly IUserRepository _userRepository;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IDateTimeProvider _dateTimeProvider;
     private readonly ILogger<CreateBookingHandler> _logger;
 
     public CreateBookingHandler(
         IBookingRepository bookingRepository,
         IListingRepository listingRepository,
         IUserRepository userRepository,
+        IUnitOfWork unitOfWork,
+        IDateTimeProvider dateTimeProvider,
         ILogger<CreateBookingHandler> logger)
     {
         _bookingRepository = bookingRepository;
         _listingRepository = listingRepository;
         _userRepository = userRepository;
+        _unitOfWork = unitOfWork;
+        _dateTimeProvider = dateTimeProvider;
         _logger = logger;
     }
 
-    public async Task<BookingDto> HandleAsync(CreateBookingRequest request, long customerId, CancellationToken cancellationToken = default)
+    public async Task<CreateBookingResponse> HandleAsync(long customerId, CreateBookingRequest request, CancellationToken cancellationToken = default)
     {
+
         // Validate listing exists and is available
         var listing = await _listingRepository.GetByIdAsync(request.ListingId, cancellationToken);
         if (listing == null)
         {
-            throw new InvalidOperationException("Listing not found");
+            return new CreateBookingResponse
+            {
+                Success = false,
+                Error = new ErrorResponse { Code = "NOT_FOUND", Message = "Listing not found" }
+            };
         }
 
         if (listing.Status != ListingStatus.Approved || listing.ApprovalStatus != ApprovalStatus.Approved)
         {
-            throw new InvalidOperationException("Listing is not available for booking");
+            return new CreateBookingResponse
+            {
+                Success = false,
+                Error = new ErrorResponse { Code = "UNAVAILABLE", Message = "Listing is not available for booking" }
+            };
         }
 
         // Check availability
         var isAvailable = await CheckAvailabilityAsync(request.ListingId, request.StartDate, request.EndDate, cancellationToken);
         if (!isAvailable)
         {
-            throw new InvalidOperationException("Listing is not available for the selected dates");
+            return new CreateBookingResponse
+            {
+                Success = false,
+                Error = new ErrorResponse { Code = "UNAVAILABLE", Message = "Listing is not available for the selected dates" }
+            };
         }
 
         // Get customer
         var customer = await _userRepository.GetByIdAsync(customerId, cancellationToken);
         if (customer == null)
         {
-            throw new InvalidOperationException("Customer not found");
+            return new CreateBookingResponse
+            {
+                Success = false,
+                Error = new ErrorResponse { Code = "NOT_FOUND", Message = "Customer not found" }
+            };
         }
 
         // Calculate pricing
@@ -98,45 +123,49 @@ public class CreateBookingHandler
             CreatedAt = DateTime.UtcNow
         });
 
-        // Create booking (reference is already set, so CreateAsync won't regenerate)
-        booking = await _bookingRepository.CreateAsync(booking, cancellationToken);
-
         // Add timeline entry
         booking.Timeline.Add(new Domain.Entities.BookingTimeline
         {
             StatusTo = BookingStatus.Pending.ToString(),
             Notes = "Booking created",
-            CreatedAt = DateTime.UtcNow
+            CreatedAt = _dateTimeProvider.GetUtcNow()
         });
 
-        await _bookingRepository.UpdateAsync(booking, cancellationToken);
+        // Create booking
+        booking = await _bookingRepository.CreateAsync(booking, cancellationToken);
+        await _unitOfWork.SaveChanges(cancellationToken);
 
-        return new BookingDto
+        return new CreateBookingResponse
         {
-            Id = booking.Id,
-            BookingReference = booking.BookingReference,
-            ListingId = listing.Id,
-            ListingName = listing.Title,
-            ListingImageUrl = listing.Images.FirstOrDefault(img => img.IsPrimary)?.ImageUrl,
-            Location = $"{listing.City}, {listing.State}",
-            StartDate = booking.StartDate,
-            EndDate = booking.EndDate,
-            Days = booking.DurationDays,
-            GuestCount = booking.GuestCount,
-            TotalAmount = booking.TotalAmount,
-            Status = booking.Status,
-            PaymentStatus = booking.PaymentStatus,
-            EventType = booking.EventType,
-            CreatedAt = booking.CreatedAt
+            Success = true,
+            Data = new CreateBookingResponseData
+            {
+                BookingId = booking.BookingReference,
+                HallId = listing.Id.ToString(),
+                HallName = listing.Title,
+                StartDate = booking.StartDate,
+                EndDate = booking.EndDate,
+                NumberOfDays = booking.DurationDays,
+                Guests = booking.GuestCount,
+                TotalAmount = booking.TotalAmount,
+                Status = booking.Status.ToString().ToLower(),
+                ConfirmationNumber = booking.BookingReference,
+                Message = "Booking submitted successfully"
+            }
         };
     }
 
     private async Task<bool> CheckAvailabilityAsync(long listingId, DateOnly startDate, DateOnly endDate, CancellationToken cancellationToken)
     {
-        // Check if dates are blocked in availability table
         // Check if dates overlap with existing bookings
-        // Return true if available
-        return true; // Simplified for now
+        var existingBookings = await _bookingRepository.GetByListingIdAsync(listingId, cancellationToken);
+        var hasConflict = existingBookings.Any(b => 
+            b.Status != BookingStatus.Cancelled &&
+            b.StartDate <= endDate && 
+            b.EndDate >= startDate);
+        
+        return !hasConflict;
     }
 }
+
 

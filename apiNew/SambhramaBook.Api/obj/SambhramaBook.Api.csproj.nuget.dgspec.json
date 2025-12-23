@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SambhramaBook\\apiNew\\SambhramaBook.Api\\SambhramaBook.Api.csproj": {}
+    "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\SambhramaBook.Api.csproj": {}
   },
   "projects": {
-    "C:\\SambhramaBook\\apiNew\\SambhramaBook.Api\\SambhramaBook.Api.csproj": {
+    "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\SambhramaBook.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Api\\SambhramaBook.Api.csproj",
+        "projectUniqueName": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\SambhramaBook.Api.csproj",
         "projectName": "SambhramaBook.Api",
-        "projectPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Api\\SambhramaBook.Api.csproj",
-        "packagesPath": "C:\\Users\\DVNaveen\\.nuget\\packages\\",
-        "outputPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Api\\obj\\",
+        "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\SambhramaBook.Api.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DVNaveen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,8 +33,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\SambhramaBook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj": {
-                "projectPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj"
+              "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj": {
+                "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj"
+              },
+              "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj": {
+                "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj"
               }
             }
           }
@@ -57,7 +60,7 @@
           "dependencies": {
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[12.1.0, )",
+              "version": "[12.1.1, )",
               "versionCentrallyManaged": true
             },
             "Microsoft.ApplicationInsights.AspNetCore": {
@@ -65,16 +68,21 @@
               "version": "[2.23.0, )",
               "versionCentrallyManaged": true
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[10.0.1, )",
+              "versionCentrallyManaged": true
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[10.0.0, )",
+              "version": "[10.0.1, )",
               "versionCentrallyManaged": true
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.0, )",
+              "version": "[10.0.1, )",
               "versionCentrallyManaged": true
             },
             "SharpGrip.FluentValidation.AutoValidation.Mvc": {
@@ -84,25 +92,31 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[10.0.1, )",
+              "version": "[10.1.0, )",
               "versionCentrallyManaged": true
             }
           },
           "centralPackageVersions": {
             "AutoMapper": "13.0.1",
             "AutoMapper.Extensions.Microsoft.DependencyInjection": "13.0.1",
-            "FluentValidation.DependencyInjectionExtensions": "12.1.0",
+            "Azure.Storage.Blobs": "12.22.0",
+            "BCrypt.Net-Next": "4.0.3",
+            "FluentValidation.DependencyInjectionExtensions": "12.1.1",
             "Microsoft.ApplicationInsights.AspNetCore": "2.23.0",
-            "Microsoft.AspNetCore.OpenApi": "10.0.0",
-            "Microsoft.EntityFrameworkCore.Design": "10.0.0",
-            "Microsoft.EntityFrameworkCore.SqlServer": "10.0.0",
+            "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.1",
+            "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+            "Microsoft.AspNetCore.OpenApi": "10.0.1",
+            "Microsoft.EntityFrameworkCore.Design": "10.0.1",
             "Microsoft.EntityFrameworkCore.Tools": "10.0.0",
             "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0",
             "Microsoft.Extensions.Hosting": "10.0.0",
             "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
             "Microsoft.Extensions.Options": "10.0.0",
+            "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.0",
             "SharpGrip.FluentValidation.AutoValidation.Mvc": "1.5.0",
-            "Swashbuckle.AspNetCore": "10.0.1"
+            "Swashbuckle.AspNetCore": "10.1.0",
+            "System.IdentityModel.Tokens.Jwt": "8.2.1",
+            "Twilio": "7.0.0"
           },
           "imports": [
             "net461",
@@ -123,7 +137,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -541,21 +555,21 @@
         }
       }
     },
-    "C:\\SambhramaBook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj": {
+    "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj",
+        "projectUniqueName": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj",
         "projectName": "SambhramaBook.Application",
-        "projectPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj",
-        "packagesPath": "C:\\Users\\DVNaveen\\.nuget\\packages\\",
-        "outputPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Application\\obj\\",
+        "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DVNaveen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -570,8 +584,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\SambhramaBook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj": {
-                "projectPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj"
+              "D:\\sambhramabook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj": {
+                "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj"
               }
             }
           }
@@ -599,7 +613,12 @@
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[12.1.0, )",
+              "version": "[12.1.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )",
               "versionCentrallyManaged": true
             },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
@@ -616,23 +635,34 @@
               "target": "Package",
               "version": "[10.0.0, )",
               "versionCentrallyManaged": true
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.2.1, )",
+              "versionCentrallyManaged": true
             }
           },
           "centralPackageVersions": {
             "AutoMapper": "13.0.1",
             "AutoMapper.Extensions.Microsoft.DependencyInjection": "13.0.1",
-            "FluentValidation.DependencyInjectionExtensions": "12.1.0",
+            "Azure.Storage.Blobs": "12.22.0",
+            "BCrypt.Net-Next": "4.0.3",
+            "FluentValidation.DependencyInjectionExtensions": "12.1.1",
             "Microsoft.ApplicationInsights.AspNetCore": "2.23.0",
-            "Microsoft.AspNetCore.OpenApi": "10.0.0",
-            "Microsoft.EntityFrameworkCore.Design": "10.0.0",
-            "Microsoft.EntityFrameworkCore.SqlServer": "10.0.0",
+            "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.1",
+            "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+            "Microsoft.AspNetCore.OpenApi": "10.0.1",
+            "Microsoft.EntityFrameworkCore.Design": "10.0.1",
             "Microsoft.EntityFrameworkCore.Tools": "10.0.0",
             "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0",
             "Microsoft.Extensions.Hosting": "10.0.0",
             "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
             "Microsoft.Extensions.Options": "10.0.0",
+            "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.0",
             "SharpGrip.FluentValidation.AutoValidation.Mvc": "1.5.0",
-            "Swashbuckle.AspNetCore": "10.0.1"
+            "Swashbuckle.AspNetCore": "10.1.0",
+            "System.IdentityModel.Tokens.Jwt": "8.2.1",
+            "Twilio": "7.0.0"
           },
           "imports": [
             "net461",
@@ -650,7 +680,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -928,21 +958,21 @@
         }
       }
     },
-    "C:\\SambhramaBook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj": {
+    "D:\\sambhramabook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj",
+        "projectUniqueName": "D:\\sambhramabook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj",
         "projectName": "SambhramaBook.Domain",
-        "projectPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj",
-        "packagesPath": "C:\\Users\\DVNaveen\\.nuget\\packages\\",
-        "outputPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Domain\\obj\\",
+        "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DVNaveen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -977,18 +1007,24 @@
           "centralPackageVersions": {
             "AutoMapper": "13.0.1",
             "AutoMapper.Extensions.Microsoft.DependencyInjection": "13.0.1",
-            "FluentValidation.DependencyInjectionExtensions": "12.1.0",
+            "Azure.Storage.Blobs": "12.22.0",
+            "BCrypt.Net-Next": "4.0.3",
+            "FluentValidation.DependencyInjectionExtensions": "12.1.1",
             "Microsoft.ApplicationInsights.AspNetCore": "2.23.0",
-            "Microsoft.AspNetCore.OpenApi": "10.0.0",
-            "Microsoft.EntityFrameworkCore.Design": "10.0.0",
-            "Microsoft.EntityFrameworkCore.SqlServer": "10.0.0",
+            "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.1",
+            "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+            "Microsoft.AspNetCore.OpenApi": "10.0.1",
+            "Microsoft.EntityFrameworkCore.Design": "10.0.1",
             "Microsoft.EntityFrameworkCore.Tools": "10.0.0",
             "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0",
             "Microsoft.Extensions.Hosting": "10.0.0",
             "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
             "Microsoft.Extensions.Options": "10.0.0",
+            "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.0",
             "SharpGrip.FluentValidation.AutoValidation.Mvc": "1.5.0",
-            "Swashbuckle.AspNetCore": "10.0.1"
+            "Swashbuckle.AspNetCore": "10.1.0",
+            "System.IdentityModel.Tokens.Jwt": "8.2.1",
+            "Twilio": "7.0.0"
           },
           "imports": [
             "net461",
@@ -1006,7 +1042,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1284,21 +1320,21 @@
         }
       }
     },
-    "C:\\SambhramaBook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj": {
+    "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj",
+        "projectUniqueName": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj",
         "projectName": "SambhramaBook.Infrastructure",
-        "projectPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\DVNaveen\\.nuget\\packages\\",
-        "outputPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Infrastructure\\obj\\",
+        "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+        "outputPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "centralPackageVersionsManagementEnabled": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DVNaveen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -1313,11 +1349,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\SambhramaBook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj": {
-                "projectPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj"
+              "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj": {
+                "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\SambhramaBook.Application.csproj"
               },
-              "C:\\SambhramaBook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj": {
-                "projectPath": "C:\\SambhramaBook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj"
+              "D:\\sambhramabook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj": {
+                "projectPath": "D:\\sambhramabook\\apiNew\\SambhramaBook.Domain\\SambhramaBook.Domain.csproj"
               }
             }
           }
@@ -1338,39 +1374,60 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.22.0, )",
+              "versionCentrallyManaged": true
+            },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )",
+              "versionCentrallyManaged": true
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.0, )",
-              "versionCentrallyManaged": true
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[10.0.0, )",
+              "version": "[10.0.1, )",
               "versionCentrallyManaged": true
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[10.0.0, )",
               "versionCentrallyManaged": true
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[10.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "versionCentrallyManaged": true
             }
           },
           "centralPackageVersions": {
             "AutoMapper": "13.0.1",
             "AutoMapper.Extensions.Microsoft.DependencyInjection": "13.0.1",
-            "FluentValidation.DependencyInjectionExtensions": "12.1.0",
+            "Azure.Storage.Blobs": "12.22.0",
+            "BCrypt.Net-Next": "4.0.3",
+            "FluentValidation.DependencyInjectionExtensions": "12.1.1",
             "Microsoft.ApplicationInsights.AspNetCore": "2.23.0",
-            "Microsoft.AspNetCore.OpenApi": "10.0.0",
-            "Microsoft.EntityFrameworkCore.Design": "10.0.0",
-            "Microsoft.EntityFrameworkCore.SqlServer": "10.0.0",
+            "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.1",
+            "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+            "Microsoft.AspNetCore.OpenApi": "10.0.1",
+            "Microsoft.EntityFrameworkCore.Design": "10.0.1",
             "Microsoft.EntityFrameworkCore.Tools": "10.0.0",
             "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0",
             "Microsoft.Extensions.Hosting": "10.0.0",
             "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
             "Microsoft.Extensions.Options": "10.0.0",
+            "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.0",
             "SharpGrip.FluentValidation.AutoValidation.Mvc": "1.5.0",
-            "Swashbuckle.AspNetCore": "10.0.1"
+            "Swashbuckle.AspNetCore": "10.1.0",
+            "System.IdentityModel.Tokens.Jwt": "8.2.1",
+            "Twilio": "7.0.0"
           },
           "imports": [
             "net461",
@@ -1388,7 +1445,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

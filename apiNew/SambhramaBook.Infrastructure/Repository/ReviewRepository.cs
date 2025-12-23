@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SambhramaBook.Application.Repositories;
 using SambhramaBook.Domain.Entities;
 
 namespace SambhramaBook.Infrastructure.Repository;
@@ -52,6 +53,16 @@ public class ReviewRepository : IReviewRepository
         _context.Reviews.Update(review);
         await _context.SaveChangesAsync(cancellationToken);
         return review;
+    }
+
+    public async Task DeleteAsync(long id, CancellationToken cancellationToken = default)
+    {
+        var review = await _context.Reviews.FindAsync([id], cancellationToken);
+        if (review != null)
+        {
+            _context.Reviews.Remove(review);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
     }
 }
 

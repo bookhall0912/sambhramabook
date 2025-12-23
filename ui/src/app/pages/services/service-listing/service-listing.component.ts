@@ -90,76 +90,10 @@ export class ServiceListingComponent implements OnInit {
   }
 
   private loadVendors(serviceType: string): void {
-    // Mock data - in real app, this would come from API
-    const mockVendors: ServiceVendor[] = [
-      {
-        id: '1',
-        name: 'Lens & Light Studios',
-        image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1',
-        rating: 4.9,
-        reviewCount: 120,
-        description: 'Award-winning candid wedding photography capturing raw emotions.',
-        price: 50000,
-        priceUnit: '/ day',
-        tag: 'Photography'
-      },
-      {
-        id: '2',
-        name: 'Memories by Rahul',
-        image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee',
-        rating: 4.7,
-        reviewCount: 85,
-        description: 'Creative pre-wedding and wedding photography.',
-        price: 35000,
-        priceUnit: '/ day',
-        tag: 'Photography'
-      },
-      {
-        id: '3',
-        name: 'Golden Frame Weddings',
-        image: '',
-        rating: 4.8,
-        reviewCount: 200,
-        description: 'Premium wedding photography & cinematography.',
-        price: 80000,
-        priceUnit: '/ day',
-        tag: 'Photography'
-      },
-      {
-        id: '4',
-        name: 'Capture Moments',
-        image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3',
-        rating: 4.6,
-        reviewCount: 95,
-        description: 'Professional event photography services.',
-        price: 45000,
-        priceUnit: '/ day',
-        tag: 'Photography'
-      },
-      {
-        id: '5',
-        name: 'Wedding Lens Pro',
-        image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622',
-        rating: 4.9,
-        reviewCount: 150,
-        description: 'Expert wedding and event photography.',
-        price: 60000,
-        priceUnit: '/ day',
-        tag: 'Photography'
-      },
-      {
-        id: '6',
-        name: 'Shutter Stories',
-        image: '',
-        rating: 4.5,
-        reviewCount: 70,
-        description: 'Affordable photography packages for all events.',
-        price: 28000,
-        priceUnit: '/ day',
-        tag: 'Photography'
-      }
-    ];
-    this.vendors.set(mockVendors);
+    // TODO: Call API to fetch service vendors
+    // API endpoint: GET /api/services/{type}?location={loc}&page={page}&pageSize={pageSize}
+    // For now, set empty array - API integration pending
+    this.vendors.set([]);
   }
 
   togglePhotographyStyle(style: string): void {

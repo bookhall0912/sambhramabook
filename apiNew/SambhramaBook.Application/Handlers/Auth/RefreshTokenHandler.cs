@@ -36,7 +36,7 @@ public class RefreshTokenHandler
             return new RefreshTokenResponse
             {
                 Success = false,
-                Error = new ErrorResponse
+                Error = new Models.Auth.ErrorResponse
                 {
                     Code = "INVALID_REFRESH_TOKEN",
                     Message = "Invalid or expired refresh token"
@@ -50,7 +50,7 @@ public class RefreshTokenHandler
             return new RefreshTokenResponse
             {
                 Success = false,
-                Error = new ErrorResponse
+                Error = new Models.Auth.ErrorResponse
                 {
                     Code = "USER_NOT_FOUND",
                     Message = "User not found or inactive"

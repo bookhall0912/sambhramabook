@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using SambhramaBook.Application.Repositories;
 using SambhramaBook.Domain.Entities;
-using SambhramaBook.Infrastructure;
 
 namespace SambhramaBook.Infrastructure.Repository;
 
@@ -58,6 +58,13 @@ public class BookingRepository : IBookingRepository
                 .ThenInclude(l => l.Images.Where(img => img.IsPrimary))
             .Where(b => b.VendorId == vendorId)
             .OrderByDescending(b => b.CreatedAt)
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<IEnumerable<Booking>> GetByListingIdAsync(long listingId, CancellationToken cancellationToken = default)
+    {
+        return await _context.Bookings
+            .Where(b => b.ListingId == listingId)
             .ToListAsync(cancellationToken);
     }
 

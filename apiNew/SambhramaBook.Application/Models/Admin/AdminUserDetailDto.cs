@@ -1,0 +1,16 @@
+namespace SambhramaBook.Application.Models.Admin;
+
+public class AdminUserDetailDto
+{
+    public string Id { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string? Email { get; set; }
+    public string? Mobile { get; set; }
+    public string? Avatar { get; set; }
+    public string Status { get; set; } = string.Empty;
+    public string JoinDate { get; set; } = string.Empty;
+    public int Bookings { get; set; }
+    public decimal TotalSpent { get; set; }
+    public string? LastLogin { get; set; }
+}
+

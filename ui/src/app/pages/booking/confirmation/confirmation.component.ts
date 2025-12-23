@@ -1,10 +1,12 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from '../../../components/header/header.component';
 import { FooterComponent } from '../../../components/footer/footer.component';
 import { HallsService } from '../../../services/halls.service';
 import { AuthService } from '../../../services/auth.service';
+import { BookingsApiService, BookingDetailDto } from '../../../services/bookings.api';
+import { catchError, of } from 'rxjs';
 
 interface BookingConfirmationData {
   bookingId: string;
@@ -36,6 +38,7 @@ interface BookingConfirmationData {
 export class BookingConfirmationComponent implements OnInit {
   bookingData = signal<BookingConfirmationData | null>(null);
   loading = signal<boolean>(true);
+  private bookingsApiService = inject(BookingsApiService);
 
   constructor(
     private route: ActivatedRoute,
@@ -56,44 +59,75 @@ export class BookingConfirmationComponent implements OnInit {
     const totalAmount = this.route.snapshot.queryParams['totalAmount'];
 
     if (bookingId) {
-      // TODO: Fetch booking details from API using bookingId
+      // Fetch booking details from API using bookingId
       this.loadBookingDetails(bookingId, transactionId, paymentMethod, totalAmount);
     } else {
-      // For now, use mock data or data from service
-      this.loadMockBookingData(transactionId, paymentMethod, totalAmount);
+      // Fallback to query params if no booking ID
+      this.loadBookingFromQueryParams(transactionId, paymentMethod, totalAmount);
     }
   }
 
   private loadBookingDetails(bookingId: string, transactionId?: string, paymentMethod?: string, totalAmount?: string): void {
-    // TODO: Call API to fetch booking details
-    // For now, use mock data with provided payment details
-    this.loadMockBookingData(transactionId, paymentMethod, totalAmount, bookingId);
+    // Try to get booking by ID first, then by reference
+    const isNumericId = /^\d+$/.test(bookingId);
+    const booking$ = isNumericId
+      ? this.bookingsApiService.getBookingById(bookingId)
+      : this.bookingsApiService.getBookingByReference(bookingId);
+
+    booking$
+      .pipe(
+        catchError(error => {
+          console.error('Error fetching booking details:', error);
+          // Fallback to query params if API fails
+          return of(null);
+        })
+      )
+      .subscribe(booking => {
+        if (booking) {
+          this.bookingData.set({
+            bookingId: booking.bookingId || booking.referenceId,
+            venueName: booking.venueName,
+            eventType: booking.eventType || 'Event',
+            startDate: booking.startDate,
+            endDate: booking.endDate,
+            days: booking.days,
+            guestCount: booking.guestCount,
+            totalAmount: booking.totalAmount,
+            transactionId: booking.paymentTransactionId || transactionId || '',
+            paymentMethod: booking.paymentMethod || paymentMethod || 'UPI',
+            email: booking.contactInfo?.email || this.authService.currentUser$()?.email || '',
+            phone: booking.contactInfo?.phone || this.authService.currentUser$()?.mobile || '',
+            status: booking.paymentStatus === 'PAID' ? 'PAID & CONFIRMED' : 
+                    booking.status === 'CANCELLED' ? 'CANCELLED' : 'PENDING'
+          });
+        } else {
+          // Fallback to query params if API fails
+          this.loadBookingFromQueryParams(transactionId, paymentMethod, totalAmount, bookingId);
+        }
+        this.loading.set(false);
+      });
   }
 
-  private loadMockBookingData(transactionId?: string, paymentMethod?: string, totalAmount?: string, bookingId?: string): void {
+  private loadBookingFromQueryParams(transactionId?: string, paymentMethod?: string, totalAmount?: string, bookingId?: string): void {
     // Get user data from auth service for email and phone
     const user = this.authService.currentUser$();
     
-    // Mock booking confirmation data
-    // In real implementation, this would come from the API response
-    const mockData: BookingConfirmationData = {
+    // Use query params as fallback
+    this.bookingData.set({
       bookingId: bookingId || 'SB-8824-X901',
-      venueName: 'Sambhrama Grand Hall',
-      eventType: 'Wedding Reception',
-      startDate: '2024-11-12',
-      endDate: '2024-11-13',
-      days: 2,
-      guestCount: 800,
-      totalAmount: totalAmount ? parseInt(totalAmount, 10) : 306425,
-      transactionId: transactionId || '88291039912',
+      venueName: 'Venue',
+      eventType: 'Event',
+      startDate: new Date().toISOString().split('T')[0],
+      endDate: new Date().toISOString().split('T')[0],
+      days: 1,
+      guestCount: 0,
+      totalAmount: totalAmount ? parseInt(totalAmount, 10) : 0,
+      transactionId: transactionId || '',
       paymentMethod: paymentMethod || 'UPI',
-      email: user?.email || 'user@example.com',
-      phone: user?.mobile || '+91 98765 43210',
-      status: 'PAID & CONFIRMED'
-    };
-
-    this.bookingData.set(mockData);
-    this.loading.set(false);
+      email: user?.email || '',
+      phone: user?.mobile || '',
+      status: 'PENDING'
+    });
   }
 
   formatDate(dateString: string): string {

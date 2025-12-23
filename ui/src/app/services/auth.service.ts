@@ -1,5 +1,8 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+import { environment } from 'environments/environment';
 
 export interface User {
   id: string;
@@ -18,6 +21,7 @@ export interface AuthState {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private readonly http = inject(HttpClient);
   private readonly authState = signal<AuthState>({
     isAuthenticated: false,
     user: null,
@@ -142,47 +146,52 @@ export class AuthService {
   }
 
   /**
-   * Verify OTP and login (mock implementation for now)
-   * In the future, this will call the actual API
+   * Send OTP to mobile/email
+   */
+  async sendOtp(mobileOrEmail: string): Promise<{ otpSent: boolean; message: string; expiresIn?: number }> {
+    try {
+      const response = await firstValueFrom(
+        this.http.post<{ success: boolean; data: { otpSent: boolean; message: string; expiresIn: number } }>(
+          `${environment.apiUrl}/auth/send-otp`,
+          { mobileOrEmail }
+        )
+      );
+      return response.data || { otpSent: false, message: 'Failed to send OTP' };
+    } catch (error: any) {
+      console.error('Error sending OTP:', error);
+      throw new Error(error?.error?.error?.message || 'Failed to send OTP');
+    }
+  }
+
+  /**
+   * Verify OTP and login
    */
   async verifyOtp(mobileOrEmail: string, otp: string): Promise<{ token: string; user: User }> {
-    // TODO: Replace with actual API call
-    // const response = await this.http.post<{ token: string; user: User }>('/api/auth/verify-otp', {
-    //   mobileOrEmail,
-    //   otp
-    // }).toPromise();
-    // return response;
-
-    // Mock implementation for now
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        // Mock user data - in real implementation, this comes from API
-        // For testing: specific phone numbers for different roles
-        // Clean phone number (remove all non-digits) for storage and role checking
-        const cleanPhone = mobileOrEmail.replace(/\D/g, '');
-        const isEmail = mobileOrEmail.includes('@');
-        const isAdmin = cleanPhone === '9876543210';
-        const isVendor = cleanPhone === '9876543211';
-        
-        let role: 'User' | 'Vendor' | 'Admin' = 'User';
-        if (isAdmin) {
-          role = 'Admin';
-        } else if (isVendor) {
-          role = 'Vendor';
+    try {
+      const response = await firstValueFrom(
+        this.http.post<{ success: boolean; data: { token: string; refreshToken: string; user: User } }>(
+          `${environment.apiUrl}/auth/verify-otp`,
+          { mobileOrEmail, otp }
+        )
+      );
+      
+      if (response.success && response.data) {
+        // Store refresh token for future use
+        if (response.data.refreshToken) {
+          localStorage.setItem('refresh_token', response.data.refreshToken);
         }
         
-        const mockUser: User = {
-          id: 'user-' + Date.now(),
-          email: isEmail ? mobileOrEmail : undefined,
-          mobile: isEmail ? undefined : cleanPhone, // Store cleaned phone number
-          name: role === 'Admin' ? 'Admin User' : role === 'Vendor' ? 'Vendor User' : 'User',
-          role: role
+        return {
+          token: response.data.token,
+          user: response.data.user
         };
-
-        const mockToken = 'mock_jwt_token_' + Date.now();
-        resolve({ token: mockToken, user: mockUser });
-      }, 500);
-    });
+      }
+      
+      throw new Error('Invalid response from server');
+    } catch (error: any) {
+      console.error('Error verifying OTP:', error);
+      throw new Error(error?.error?.error?.message || 'Failed to verify OTP');
+    }
   }
 }
 

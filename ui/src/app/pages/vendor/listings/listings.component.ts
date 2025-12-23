@@ -37,29 +37,10 @@ export class VendorListingsComponent implements OnInit {
   }
 
   private loadListings(): void {
-    // Mock data
-    this.listings.set([
-      {
-        id: '1',
-        name: 'Royal Grand Hall',
-        image: '',
-        location: 'Bangalore',
-        status: 'ACTIVE',
-        price: 150000,
-        capacity: 500,
-        views: 1204,
-        bookings: 8
-      },
-      {
-        id: '2',
-        name: 'Mini Party Hall',
-        image: '',
-        location: 'Bangalore',
-        status: 'DRAFT',
-        price: 80000,
-        capacity: 200
-      }
-    ]);
+    // TODO: Call API to fetch vendor listings
+    // API endpoint: GET /api/vendor/listings?status={status}&page={page}&pageSize={pageSize}
+    // For now, set empty array - API integration pending
+    this.listings.set([]);
   }
 
   onAddNew(): void {

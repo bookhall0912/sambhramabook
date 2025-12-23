@@ -1,8 +1,10 @@
-import { Component, OnInit, signal, computed } from '@angular/core';
+import { Component, OnInit, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { VendorApiService } from '../../../services/vendor.api';
 import { ManageBookingModalComponent, BookingData } from '../../../components/manage-booking-modal/manage-booking-modal.component';
+import { catchError, of } from 'rxjs';
 
 export interface VendorBooking {
   id: string;
@@ -46,60 +48,37 @@ export class VendorBookingsComponent implements OnInit {
     this.loadBookings();
   }
 
+  private vendorApiService = inject(VendorApiService);
+
   private loadBookings(): void {
-    // Mock data
-    const allBookings: VendorBooking[] = [
-      {
-        id: '1',
-        bookingId: 'SB-9012',
-        customerName: 'Amit Verma',
-        customerPhone: '+91 98765 43210',
-        venueName: 'Royal Grand Hall',
-        date: '2024-11-12',
-        days: 2,
-        guests: 500,
-        amount: 300000,
-        status: 'CONFIRMED'
-      },
-      {
-        id: '2',
-        bookingId: 'SB-9013',
-        customerName: 'Sneha Reddy',
-        customerPhone: '+91 98765 43211',
-        venueName: 'Royal Grand Hall',
-        date: '2024-11-15',
-        days: 1,
-        guests: 300,
-        amount: 150000,
-        status: 'PENDING'
-      },
-      {
-        id: '3',
-        bookingId: 'SB-9014',
-        customerName: 'Karthik M',
-        customerPhone: '+91 98765 43212',
-        venueName: 'Royal Grand Hall',
-        date: '2024-11-22',
-        days: 1,
-        guests: 400,
-        amount: 200000,
-        status: 'CONFIRMED'
-      },
-      {
-        id: '4',
-        bookingId: 'SB-9015',
-        customerName: 'Priya Sharma',
-        customerPhone: '+91 98765 43213',
-        venueName: 'Royal Grand Hall',
-        date: '2024-12-01',
-        days: 3,
-        guests: 600,
-        amount: 450000,
-        status: 'PENDING'
-      }
-    ];
-    this.bookings.set(allBookings);
-    this.pendingBookingsCount.set(allBookings.filter(b => b.status === 'PENDING').length);
+    const status = this.selectedFilter() === 'all' ? 'all' : 
+                   this.selectedFilter() === 'pending' ? 'pending' : 'confirmed';
+    
+    this.vendorApiService.getVendorBookings(status)
+      .pipe(
+        catchError(error => {
+          console.error('Error loading vendor bookings:', error);
+          return of({ success: false, data: [] });
+        })
+      )
+      .subscribe(response => {
+        if (response.success) {
+          const bookings = response.data.map(b => ({
+            id: b.id,
+            bookingId: b.bookingId,
+            customerName: b.customerName,
+            customerPhone: b.customerPhone,
+            venueName: b.venueName,
+            date: b.date,
+            days: b.days,
+            guests: b.guests,
+            amount: b.amount,
+            status: b.status
+          }));
+          this.bookings.set(bookings);
+          this.pendingBookingsCount.set(bookings.filter(b => b.status === 'PENDING').length);
+        }
+      });
   }
 
   setFilter(filter: 'all' | 'pending' | 'confirmed'): void {
@@ -123,11 +102,19 @@ export class VendorBookingsComponent implements OnInit {
   }
 
   onApprove(id: string): void {
-    // TODO: Call API
-    this.bookings.update(bookings =>
-      bookings.map(b => b.id === id ? { ...b, status: 'CONFIRMED' as const } : b)
-    );
-    this.pendingBookingsCount.set(this.bookings().filter(b => b.status === 'PENDING').length);
+    this.vendorApiService.approveBooking(id)
+      .pipe(
+        catchError(error => {
+          console.error('Error approving booking:', error);
+          alert('Failed to approve booking. Please try again.');
+          return of(null);
+        })
+      )
+      .subscribe(response => {
+        if (response) {
+          this.loadBookings(); // Reload bookings
+        }
+      });
   }
 
   onManage(id: string): void {
@@ -151,16 +138,24 @@ export class VendorBookingsComponent implements OnInit {
   }
 
   onConfirmCancel(event: { bookingId: string; reason: string }): void {
-    // TODO: Call API to cancel booking
-    console.log('Cancel booking:', event);
-    this.bookings.update(bookings =>
-      bookings.map(b => b.id === event.bookingId ? { ...b, status: 'CANCELLED' as const } : b)
-    );
+    this.vendorApiService.rejectBooking(event.bookingId, event.reason)
+      .pipe(
+        catchError(error => {
+          console.error('Error cancelling booking:', error);
+          alert('Failed to cancel booking. Please try again.');
+          return of(null);
+        })
+      )
+      .subscribe(response => {
+        if (response) {
+          this.loadBookings(); // Reload bookings
+        }
+      });
   }
 
   onConfirmReschedule(event: { bookingId: string }): void {
-    // TODO: Call API to reschedule booking
-    console.log('Reschedule booking:', event);
+    // TODO: Implement reschedule with date selection
+    alert('Reschedule functionality will open a form to select new dates.');
   }
 
   onKeepBooking(): void {

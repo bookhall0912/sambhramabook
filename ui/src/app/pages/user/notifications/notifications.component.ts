@@ -1,7 +1,9 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { UserApiService } from '../../../services/user.api';
+import { catchError, of } from 'rxjs';
 
 export interface Notification {
   id: string;
@@ -24,43 +26,8 @@ export interface Notification {
   styleUrl: './notifications.component.scss'
 })
 export class NotificationsComponent implements OnInit {
-  notifications = signal<Notification[]>([
-    {
-      id: '1',
-      title: 'Booking Confirmed',
-      message: 'Your booking for Sambhrama Grand Hall has been confirmed.',
-      type: 'booking',
-      read: false,
-      timestamp: '2024-11-10T10:30:00',
-      actionUrl: '/booking/confirmation?bookingId=SB-8824-X901'
-    },
-    {
-      id: '2',
-      title: 'Payment Received',
-      message: 'Payment of ₹3,06,425 has been successfully processed.',
-      type: 'payment',
-      read: false,
-      timestamp: '2024-11-10T09:15:00',
-      actionUrl: '/bookings'
-    },
-    {
-      id: '3',
-      title: 'Event Reminder',
-      message: 'Your event at Sambhrama Grand Hall is in 2 days.',
-      type: 'reminder',
-      read: true,
-      timestamp: '2024-11-08T14:20:00',
-      actionUrl: '/bookings'
-    },
-    {
-      id: '4',
-      title: 'System Update',
-      message: 'New features have been added to your dashboard.',
-      type: 'system',
-      read: true,
-      timestamp: '2024-11-05T08:00:00'
-    }
-  ]);
+  notifications = signal<Notification[]>([]);
+  private userApiService = inject(UserApiService);
 
   constructor(
     private router: Router,
@@ -69,7 +36,31 @@ export class NotificationsComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    // TODO: Load notifications from API
+    this.loadNotifications();
+  }
+
+  private loadNotifications(): void {
+    this.userApiService.getNotifications()
+      .pipe(
+        catchError(error => {
+          console.error('Error loading notifications:', error);
+          return of({ success: false, data: [] });
+        })
+      )
+      .subscribe(response => {
+        if (response.success) {
+          const notifications = response.data.map(n => ({
+            id: n.id,
+            title: n.title,
+            message: n.message,
+            type: n.type,
+            read: n.read,
+            timestamp: n.timestamp,
+            actionUrl: n.actionUrl
+          }));
+          this.notifications.set(notifications);
+        }
+      });
   }
 
   formatTimestamp(timestamp: string): string {
@@ -108,21 +99,41 @@ export class NotificationsComponent implements OnInit {
   }
 
   onMarkAsRead(notificationId: string): void {
-    // TODO: Call API to mark as read
-    this.notifications.update(notifs => 
-      notifs.map(n => n.id === notificationId ? { ...n, read: true } : n)
-    );
+    this.userApiService.markNotificationRead(notificationId)
+      .pipe(
+        catchError(error => {
+          console.error('Error marking notification as read:', error);
+          return of(null);
+        })
+      )
+      .subscribe(response => {
+        if (response) {
+          this.notifications.update(notifs => 
+            notifs.map(n => n.id === notificationId ? { ...n, read: true } : n)
+          );
+        }
+      });
   }
 
   onMarkAllAsRead(): void {
-    // TODO: Call API to mark all as read
-    this.notifications.update(notifs => 
-      notifs.map(n => ({ ...n, read: true }))
-    );
+    this.userApiService.markAllNotificationsRead()
+      .pipe(
+        catchError(error => {
+          console.error('Error marking all notifications as read:', error);
+          return of(null);
+        })
+      )
+      .subscribe(response => {
+        if (response) {
+          this.notifications.update(notifs => 
+            notifs.map(n => ({ ...n, read: true }))
+          );
+        }
+      });
   }
 
   onDelete(notificationId: string): void {
-    // TODO: Call API to delete notification
+    // Note: API doesn't have delete endpoint, so we just remove from local state
     this.notifications.update(notifs => notifs.filter(n => n.id !== notificationId));
   }
 

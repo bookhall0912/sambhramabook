@@ -1,0 +1,424 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\sambhramabook\\apiNew\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\controllers\\uploadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C097537-75E7-588F-5E41-F9B4B3491023}|SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj|d:\\sambhramabook\\apinew\\sambhramabook.infrastructure\\services\\blobstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C097537-75E7-588F-5E41-F9B4B3491023}|SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj|solutionrelative:sambhramabook.infrastructure\\services\\blobstorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\configuration\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\configuration\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\controllers\\hallscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\controllers\\hallscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C097537-75E7-588F-5E41-F9B4B3491023}|SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj|d:\\sambhramabook\\apinew\\sambhramabook.infrastructure\\sambhramabookservicesregistrar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C097537-75E7-588F-5E41-F9B4B3491023}|SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj|solutionrelative:sambhramabook.infrastructure\\sambhramabookservicesregistrar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C097537-75E7-588F-5E41-F9B4B3491023}|SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj|d:\\sambhramabook\\apinew\\sambhramabook.infrastructure\\queries\\adminqueries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C097537-75E7-588F-5E41-F9B4B3491023}|SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj|solutionrelative:sambhramabook.infrastructure\\queries\\adminqueries.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C097537-75E7-588F-5E41-F9B4B3491023}|SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj|d:\\sambhramabook\\apinew\\sambhramabook.infrastructure\\repository\\listingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C097537-75E7-588F-5E41-F9B4B3491023}|SambhramaBook.Infrastructure\\SambhramaBook.Infrastructure.csproj|solutionrelative:sambhramabook.infrastructure\\repository\\listingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\admin\\payouts\\getallpayoutshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\admin\\payouts\\getallpayoutshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\admin\\listings\\getpendinglistingsforapprovalhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\admin\\listings\\getpendinglistingsforapprovalhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\admin\\dashboard\\getpendinglistingshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\admin\\dashboard\\getpendinglistingshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\admin\\dashboard\\getadmindashboardoverviewhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\admin\\dashboard\\getadmindashboardoverviewhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\admin\\bookings\\getallbookingshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\admin\\bookings\\getallbookingshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\admin\\analytics\\getuseranalyticshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\admin\\analytics\\getuseranalyticshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\fileupload\\uploadimagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\fileupload\\uploadimagehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\models\\fileupload\\uploadimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\models\\fileupload\\uploadimageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\booking\\processpaymenthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\booking\\processpaymenthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\admin\\analytics\\getanalyticssummaryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\admin\\analytics\\getanalyticssummaryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|d:\\sambhramabook\\apinew\\sambhramabook.application\\handlers\\auth\\getcurrentuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9287FE-4D50-5234-C76F-B4CC0C15C010}|SambhramaBook.Application\\SambhramaBook.Application.csproj|solutionrelative:sambhramabook.application\\handlers\\auth\\getcurrentuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.Production.json",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.Production.json",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\appsettings.Production.json",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.Production.json",
+              "RelativeToolTip": "SambhramaBook.Api\\appsettings.Production.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-23T16:07:09.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\appsettings.Development.json",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.Development.json",
+              "RelativeToolTip": "SambhramaBook.Api\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-23T16:00:15.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\appsettings.json",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.json",
+              "RelativeToolTip": "SambhramaBook.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-23T15:58:23.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ServicesController.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\ServicesController.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\Controllers\\ServicesController.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\ServicesController.cs",
+              "RelativeToolTip": "SambhramaBook.Api\\Controllers\\ServicesController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAADwv1oAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T13:36:29.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UploadController.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\UploadController.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\Controllers\\UploadController.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\UploadController.cs",
+              "RelativeToolTip": "SambhramaBook.Api\\Controllers\\UploadController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACMAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T12:16:04.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BlobStorageService.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\Services\\BlobStorageService.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Infrastructure\\Services\\BlobStorageService.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\Services\\BlobStorageService.cs",
+              "RelativeToolTip": "SambhramaBook.Infrastructure\\Services\\BlobStorageService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T12:11:55.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ServiceRegistration.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Configuration\\ServiceRegistration.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\Configuration\\ServiceRegistration.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Configuration\\ServiceRegistration.cs",
+              "RelativeToolTip": "SambhramaBook.Api\\Configuration\\ServiceRegistration.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAYwF0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T11:45:07.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Program.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\Program.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Program.cs",
+              "RelativeToolTip": "SambhramaBook.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T11:32:48.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HallsController.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\HallsController.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\Controllers\\HallsController.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\HallsController.cs",
+              "RelativeToolTip": "SambhramaBook.Api\\Controllers\\HallsController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAA0wCwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T11:32:37.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "SambhramaBook.Api\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAHcCAAAAAAAAAAAIwJsCAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T11:23:56.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SambhramaBookServicesRegistrar.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBookServicesRegistrar.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Infrastructure\\SambhramaBookServicesRegistrar.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\SambhramaBookServicesRegistrar.cs",
+              "RelativeToolTip": "SambhramaBook.Infrastructure\\SambhramaBookServicesRegistrar.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAcwCgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T11:22:37.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AdminQueries.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\Queries\\AdminQueries.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Infrastructure\\Queries\\AdminQueries.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\Queries\\AdminQueries.cs",
+              "RelativeToolTip": "SambhramaBook.Infrastructure\\Queries\\AdminQueries.cs",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAWwPYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T11:11:33.928Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ListingRepository.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\Repository\\ListingRepository.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Infrastructure\\Repository\\ListingRepository.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Infrastructure\\Repository\\ListingRepository.cs",
+              "RelativeToolTip": "SambhramaBook.Infrastructure\\Repository\\ListingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T11:09:54.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GetAllPayoutsHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Payouts\\GetAllPayoutsHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Admin\\Payouts\\GetAllPayoutsHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Payouts\\GetAllPayoutsHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Admin\\Payouts\\GetAllPayoutsHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAMwBAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:46:02.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GetPendingListingsForApprovalHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Listings\\GetPendingListingsForApprovalHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Admin\\Listings\\GetPendingListingsForApprovalHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Listings\\GetPendingListingsForApprovalHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Admin\\Listings\\GetPendingListingsForApprovalHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:44:04.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GetPendingListingsHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Dashboard\\GetPendingListingsHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Admin\\Dashboard\\GetPendingListingsHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Dashboard\\GetPendingListingsHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Admin\\Dashboard\\GetPendingListingsHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:41:36.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "GetAdminDashboardOverviewHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Dashboard\\GetAdminDashboardOverviewHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Admin\\Dashboard\\GetAdminDashboardOverviewHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Dashboard\\GetAdminDashboardOverviewHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Admin\\Dashboard\\GetAdminDashboardOverviewHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:39:34.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GetAllBookingsHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Bookings\\GetAllBookingsHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Admin\\Bookings\\GetAllBookingsHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Bookings\\GetAllBookingsHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Admin\\Bookings\\GetAllBookingsHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:37:11.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GetUserAnalyticsHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Analytics\\GetUserAnalyticsHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Admin\\Analytics\\GetUserAnalyticsHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Analytics\\GetUserAnalyticsHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Admin\\Analytics\\GetUserAnalyticsHandler.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwBkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:35:16.042Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UploadImageResponse.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Models\\FileUpload\\UploadImageResponse.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Models\\FileUpload\\UploadImageResponse.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Models\\FileUpload\\UploadImageResponse.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Models\\FileUpload\\UploadImageResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:33:23.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UploadImageHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\FileUpload\\UploadImageHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\FileUpload\\UploadImageHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\FileUpload\\UploadImageHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\FileUpload\\UploadImageHandler.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAxwDIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:20:29.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ProcessPaymentHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Booking\\ProcessPaymentHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Booking\\ProcessPaymentHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Booking\\ProcessPaymentHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Booking\\ProcessPaymentHandler.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T10:11:45.321Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "GetAnalyticsSummaryHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Analytics\\GetAnalyticsSummaryHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Admin\\Analytics\\GetAnalyticsSummaryHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Admin\\Analytics\\GetAnalyticsSummaryHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Admin\\Analytics\\GetAnalyticsSummaryHandler.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwAoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T09:19:33.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "SambhramaBook.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAkwFQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T07:03:11.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "GetCurrentUserHandler.cs",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Auth\\GetCurrentUserHandler.cs",
+              "RelativeDocumentMoniker": "SambhramaBook.Application\\Handlers\\Auth\\GetCurrentUserHandler.cs",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Application\\Handlers\\Auth\\GetCurrentUserHandler.cs",
+              "RelativeToolTip": "SambhramaBook.Application\\Handlers\\Auth\\GetCurrentUserHandler.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAIBJwBAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T06:30:53.392Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SambhramaBook.Application.Repositories;
 using SambhramaBook.Domain.Entities;
 using SambhramaBook.Domain.Enums;
 
@@ -22,6 +23,23 @@ public class ListingRepository : IListingRepository
             .Include(l => l.ServicePackages)
             .Include(l => l.Reviews.Where(r => r.IsPublished))
             .FirstOrDefaultAsync(l => l.Id == id, cancellationToken);
+    }
+
+    public async Task<Listing?> GetByIdWithIncludesAsync(long id, CancellationToken cancellationToken = default)
+    {
+        return await _context.Listings
+            .Include(l => l.Vendor)
+            .Include(l => l.Images)
+            .Include(l => l.Amenities)
+            .Include(l => l.ServicePackages)
+            .Include(l => l.Reviews)
+            .FirstOrDefaultAsync(l => l.Id == id, cancellationToken);
+    }
+
+    public async Task<Listing?> GetByVendorIdAndIdAsync(long vendorId, long id, CancellationToken cancellationToken = default)
+    {
+        return await _context.Listings
+            .FirstOrDefaultAsync(l => l.Id == id && l.VendorId == vendorId, cancellationToken);
     }
 
     public async Task<Listing?> GetBySlugAsync(string slug, CancellationToken cancellationToken = default)
@@ -190,6 +208,16 @@ public class ListingRepository : IListingRepository
         }
 
         return await query.CountAsync(cancellationToken);
+    }
+
+    public async Task DeleteAsync(long id, CancellationToken cancellationToken = default)
+    {
+        var listing = await _context.Listings.FindAsync([id], cancellationToken);
+        if (listing != null)
+        {
+            _context.Listings.Remove(listing);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
     }
 }
 

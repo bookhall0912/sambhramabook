@@ -51,7 +51,7 @@ public class VerifyOtpHandler
             return new VerifyOtpResponse
             {
                 Success = false,
-                Error = new ErrorResponse
+                Error = new Models.Auth.ErrorResponse
                 {
                     Code = "INVALID_OTP",
                     Message = "Invalid or expired OTP"
@@ -65,7 +65,7 @@ public class VerifyOtpHandler
             return new VerifyOtpResponse
             {
                 Success = false,
-                Error = new ErrorResponse
+                Error = new Models.Auth.ErrorResponse
                 {
                     Code = "OTP_EXPIRED",
                     Message = "OTP has expired. Please request a new one."

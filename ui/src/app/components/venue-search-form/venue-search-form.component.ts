@@ -74,7 +74,7 @@ export class VenueSearchFormComponent implements OnInit {
       const location = formValue.location;
 
       // Navigate to halls page with search query params
-      // Using default coordinates (Bangalore) for mock data
+      // Using default coordinates (Bangalore) as fallback
       this.router.navigate(['/halls'], {
         queryParams: {
           location: location,

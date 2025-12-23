@@ -239,51 +239,25 @@ export class RegisterComponent implements OnInit {
       const mobileNumber = formValue.mobileNumber;
 
       try {
-        // TODO: Call API to verify OTP and complete registration
-        console.log('Verifying OTP and registering user:', {
-          role: this.selectedRole(),
-          otp: otpValue,
-          ...formValue
-        });
-
-        // Mock registration - in real implementation:
-        // 1. Verify OTP with API
-        // 2. Complete registration
-        // 3. Receive JWT token and user role from API
-        // 4. Store token and user data
-        // 5. Navigate based on role and returnUrl
-
-        // TODO: Call actual API to verify OTP and complete registration
-        // For now, using mock implementation similar to login
-        const userRole: 'User' | 'Vendor' = this.selectedRole() === 'Vendor' ? 'Vendor' : 'User';
+        // Call API to verify OTP and complete registration
+        const result = await this.authService.verifyOtp(mobileNumber, otpValue);
         
-        // Mock API response - in real implementation, this comes from the API
-        const mockUser = {
-          id: 'user-' + Date.now(),
-          email: formValue.email,
-          mobile: mobileNumber,
-          name: formValue.fullName, // User interface requires 'name' property
-          role: userRole
-        };
+        // AuthService.verifyOtp already handles login and token storage
+        // result contains { token, refreshToken, user }
         
-        const mockToken = 'mock-jwt-token-' + Date.now();
-        
-        // Store token and user data using AuthService
-        // Note: login() method will auto-navigate, but we'll override if needed
-        this.authService.login(mockToken, mockUser);
+        const userRole = result.user.role;
 
         // Handle navigation: returnUrl takes priority, then role-based
         if (this.returnUrl && this.returnUrl !== '/') {
-          // If returnUrl exists, use it (overrides the navigation from login())
+          // If returnUrl exists, use it
           this.router.navigateByUrl(this.returnUrl);
         } else {
           // No returnUrl: role-based redirection
           if (userRole === 'Vendor') {
-            // login() already navigated to vendor dashboard, but ensure it
             this.router.navigate(['/vendor/dashboard']);
           } else {
-            // User role: redirect to login page (override the landing page navigation from login())
-            this.router.navigate(['/login']);
+            // User role: redirect to home page
+            this.router.navigate(['/']);
           }
         }
       } catch (error) {

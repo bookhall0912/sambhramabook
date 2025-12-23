@@ -1,5 +1,3 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
 using SambhramaBook.Application.Common;
 using SambhramaBook.Application.Models.Vendor;
 using SambhramaBook.Application.Repositories;
@@ -13,35 +11,23 @@ public class CompleteOnboardingHandler
 {
     private readonly IVendorProfileRepository _vendorProfileRepository;
     private readonly IUserRepository _userRepository;
-    private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IDateTimeProvider _dateTimeProvider;
 
     public CompleteOnboardingHandler(
         IVendorProfileRepository vendorProfileRepository,
         IUserRepository userRepository,
-        IHttpContextAccessor httpContextAccessor,
         IUnitOfWork unitOfWork,
         IDateTimeProvider dateTimeProvider)
     {
         _vendorProfileRepository = vendorProfileRepository;
         _userRepository = userRepository;
-        _httpContextAccessor = httpContextAccessor;
         _unitOfWork = unitOfWork;
         _dateTimeProvider = dateTimeProvider;
     }
 
-    public async Task<CompleteOnboardingResponse> HandleAsync(CompleteOnboardingRequest request, CancellationToken cancellationToken = default)
+    public async Task<CompleteOnboardingResponse> HandleAsync(long userId, CompleteOnboardingRequest request, CancellationToken cancellationToken = default)
     {
-        var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (string.IsNullOrEmpty(userIdClaim) || !long.TryParse(userIdClaim, out var userId))
-        {
-            return new CompleteOnboardingResponse
-            {
-                Success = false
-            };
-        }
-
         var user = await _userRepository.GetByIdAsync(userId, cancellationToken);
         if (user == null || user.Role != UserRole.Vendor)
         {

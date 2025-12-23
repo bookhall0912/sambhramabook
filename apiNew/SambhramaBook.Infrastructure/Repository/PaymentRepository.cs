@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SambhramaBook.Application.Repositories;
 using SambhramaBook.Domain.Entities;
 
 namespace SambhramaBook.Infrastructure.Repository;
@@ -24,6 +25,13 @@ public class PaymentRepository : IPaymentRepository
         return await _context.Payments
             .Include(p => p.Booking)
             .FirstOrDefaultAsync(p => p.PaymentReference == reference, cancellationToken);
+    }
+
+    public async Task<Payment?> GetByPaymentReferenceAsync(string paymentReference, CancellationToken cancellationToken = default)
+    {
+        return await _context.Payments
+            .Include(p => p.Booking)
+            .FirstOrDefaultAsync(p => p.PaymentReference == paymentReference, cancellationToken);
     }
 
     public async Task<Payment> CreateAsync(Payment payment, CancellationToken cancellationToken = default)

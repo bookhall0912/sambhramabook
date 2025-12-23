@@ -20,4 +20,10 @@
     <ProjectReference Include="..\SambhramaBook.Domain\SambhramaBook.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" />
+    <PackageReference Include="Twilio" />
+    <PackageReference Include="BCrypt.Net-Next" />
+  </ItemGroup>
+
 </Project>

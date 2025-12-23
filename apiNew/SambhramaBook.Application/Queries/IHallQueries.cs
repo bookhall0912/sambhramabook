@@ -9,5 +9,6 @@ public interface IHallQueries
     Task<HallDetailDto?> GetHallByIdAsync(long id, CancellationToken cancellationToken = default);
     Task<HallDetailDto?> GetHallBySlugAsync(string slug, CancellationToken cancellationToken = default);
     Task<HallAvailabilityResponseDto> GetHallAvailabilityAsync(long id, string month, int year, CancellationToken cancellationToken = default);
+    Task<IEnumerable<HallListItemDto>> GetSimilarHallsAsync(long hallId, int limit, CancellationToken cancellationToken = default);
 }
 

@@ -8,6 +8,7 @@ import { StepperComponent } from '../../components/stepper/stepper.component';
 import { AddonCardComponent } from '../../components/addon-card/addon-card.component';
 import { BookingSummaryComponent } from '../../components/booking-summary/booking-summary.component';
 import { AuthService } from '../../services/auth.service';
+import { HallsService } from '../../services/halls.service';
 
 export interface Addon {
   id: string;
@@ -134,7 +135,8 @@ export class BookingComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private hallsService: HallsService
   ) {
     this.addonsForm = this.fb.group({
       specialRequirements: ['']
@@ -169,12 +171,12 @@ export class BookingComponent implements OnInit {
         if (vendorId && serviceType) {
           // Service booking
           // TODO: Fetch service vendor details from service using vendorId
-          // For now, using mock data
+          // For now, using default values - will be implemented when service APIs are ready
           const selectedPackage = this.getServicePackagePrice(packageId);
           this.bookingData.set({
             hallId: vendorId, // Reusing hallId field for vendorId
-            hallName: 'Lens & Light Studios', // TODO: Get from service
-            hallImage: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1',
+            hallName: 'Service Provider', // TODO: Get from service API
+            hallImage: '',
             location: 'Bangalore',
             date: queryParams['date'] || '2024-10-24',
             days: parseInt(queryParams['days'] || '1', 10),
@@ -188,19 +190,29 @@ export class BookingComponent implements OnInit {
           const days = parseInt(queryParams['days'] || '2', 10);
           const guests = parseInt(queryParams['guests'] || '500', 10);
           
-          // TODO: Fetch hall details from service using hallId
-          // For now, using mock data
-          this.bookingData.set({
-            hallId: bookingId || '1',
-            hallName: 'Lens & Light Studios',
-            hallImage: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop',
-            location: 'Bangalore',
-            date: date,
-            days: days,
-            guests: guests,
-            basePrice: 170000,
-            addons: this.addons()
-          });
+          // Fetch hall details from service using hallId
+          const hallId = bookingId || '1';
+          this.hallsService.fetchHallDetail(hallId);
+          
+          // Watch for hall detail updates
+          // Use setTimeout to wait for async fetch to complete
+          setTimeout(() => {
+            const detail = this.hallsService.hallDetail$();
+            if (detail?.hall) {
+              const hall = detail.hall;
+              this.bookingData.set({
+                hallId: hallId,
+                hallName: hall.name,
+                hallImage: hall.imageUrl,
+                location: hall.location,
+                date: date,
+                days: days,
+                guests: guests,
+                basePrice: hall.price,
+                addons: this.addons()
+              });
+            }
+          }, 100);
         }
       });
     });
@@ -275,7 +287,7 @@ export class BookingComponent implements OnInit {
     }).format(price);
   }
 
-  private processPayment(): void {
+  private async processPayment(): Promise<void> {
     const data = this.bookingData();
     if (!data) {
       console.error('No booking data available');
@@ -286,38 +298,48 @@ export class BookingComponent implements OnInit {
     // Generate transaction ID
     const transactionId = Math.floor(Math.random() * 100000000000).toString();
     
-    // Generate booking ID
-    const mockBookingId = 'SB-' + Math.floor(Math.random() * 10000) + '-X' + Math.floor(Math.random() * 1000);
+    // Calculate end date
+    const startDate = new Date(data.date);
+    const endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + data.days - 1);
+    const endDateStr = endDate.toISOString().split('T')[0];
+
+    // Get user info for contact
+    const user = this.authService.currentUser$();
     
-    // Navigate to confirmation page with booking details
-    const queryParams = new URLSearchParams({
-      bookingId: mockBookingId,
-      transactionId: transactionId,
-      paymentMethod: this.paymentMethod(),
-      totalAmount: this.totalPrice().toString()
-    });
+    // Submit booking to API
+    const bookingRequest = {
+      hallId: data.hallId,
+      startDate: data.date,
+      endDate: endDateStr,
+      numberOfDays: data.days,
+      guests: data.guests,
+      contactInfo: {
+        name: user?.name || '',
+        email: user?.email || '',
+        phone: user?.mobile || ''
+      },
+      specialRequests: data.specialRequirements || ''
+    };
+
+    try {
+      const bookingResponse = await this.hallsService.submitBooking(bookingRequest);
+      
+      // Navigate to confirmation page with booking details
+      const queryParams = new URLSearchParams({
+        bookingId: bookingResponse.bookingId || bookingResponse.confirmationNumber || '',
+        transactionId: transactionId,
+        paymentMethod: this.paymentMethod(),
+        totalAmount: this.totalPrice().toString()
+      });
     
-    const url = `/booking/confirmation?${queryParams.toString()}`;
-    console.log('Navigating to:', url);
-    
-    this.router.navigateByUrl(url).then(success => {
-      if (success) {
-        console.log('Navigation successful');
-      } else {
-        console.error('Navigation failed - trying alternative route');
-        // Fallback: try with router.navigate
-        this.router.navigate(['/booking/confirmation'], {
-          queryParams: {
-            bookingId: mockBookingId,
-            transactionId: transactionId,
-            paymentMethod: this.paymentMethod(),
-            totalAmount: this.totalPrice().toString()
-          }
-        });
-      }
-    }).catch(error => {
-      console.error('Navigation error:', error);
-    });
+      const url = `/booking/confirmation?${queryParams.toString()}`;
+      this.router.navigateByUrl(url);
+    } catch (error) {
+      console.error('Error submitting booking:', error);
+      // TODO: Show error message to user
+      this.isProcessingPayment.set(false);
+    }
   }
 }
 

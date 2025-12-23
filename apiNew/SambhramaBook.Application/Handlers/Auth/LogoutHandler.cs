@@ -1,5 +1,4 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
+using SambhramaBook.Application.Models.Auth;
 using SambhramaBook.Application.Repositories;
 using SambhramaBook.Application.UnitOfWork;
 
@@ -8,25 +7,18 @@ namespace SambhramaBook.Application.Handlers.Auth;
 public class LogoutHandler
 {
     private readonly ISessionRepository _sessionRepository;
-    private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IUnitOfWork _unitOfWork;
 
     public LogoutHandler(
         ISessionRepository sessionRepository,
-        IHttpContextAccessor httpContextAccessor,
         IUnitOfWork unitOfWork)
     {
         _sessionRepository = sessionRepository;
-        _httpContextAccessor = httpContextAccessor;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<LogoutResponse> HandleAsync(CancellationToken cancellationToken = default)
+    public async Task<LogoutResponse> HandleAsync(string token, CancellationToken cancellationToken = default)
     {
-        var token = _httpContextAccessor.HttpContext?.Request.Headers["Authorization"]
-            .ToString()
-            .Replace("Bearer ", "", StringComparison.OrdinalIgnoreCase);
-
         if (!string.IsNullOrEmpty(token))
         {
             var session = await _sessionRepository.GetByTokenAsync(token, cancellationToken);

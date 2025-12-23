@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'environments/environment';
 import { HallsListResponseDto } from '../models/dtos/halls-list-response.dto';
 import { HallDetailResponseDto } from '../models/dtos/hall-detail-response.dto';
@@ -8,6 +9,7 @@ import { HallsSearchRequestDto } from '../models/dtos/halls-search-request.dto';
 import { BookingRequestDto } from '../models/dtos/booking-request.dto';
 import { BookingResponseDto } from '../models/dtos/booking-response.dto';
 import { ServiceGetResponseDto } from '../models/dtos/service-get-response.dto';
+import { HallDto } from '../models/dtos/hall.dto';
 
 @Injectable({ providedIn: 'root' })
 export class HallsApiService {
@@ -79,10 +81,19 @@ export class HallsApiService {
 
   /**
    * Get similar halls (recommendations)
+   * API returns array directly, but we wrap it in HallsListResponseDto format for consistency
    */
   public getSimilarHalls(hallId: string, limit: number = 4): Observable<HallsListResponseDto> {
     const params = new HttpParams().set('limit', limit.toString());
-    return this.http.get<HallsListResponseDto>(`${environment.apiUrl}/halls/${hallId}/similar`, { params });
+    return this.http.get<HallDto[]>(`${environment.apiUrl}/halls/${hallId}/similar`, { params }).pipe(
+      map((halls) => ({
+        halls: halls,
+        total: halls.length,
+        page: 1,
+        pageSize: limit,
+        totalPages: 1
+      }))
+    );
   }
 
   /**

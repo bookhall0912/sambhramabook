@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SambhramaBook.Application.Handlers.Auth;
@@ -82,7 +83,13 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var response = await _getCurrentUserHandler.HandleAsync(ct);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim) || !long.TryParse(userIdClaim, out var userId))
+            {
+                return Unauthorized(new { success = false, message = "Invalid user" });
+            }
+
+            var response = await _getCurrentUserHandler.HandleAsync(userId, ct);
             if (response == null)
             {
                 return Unauthorized(new { success = false, message = "User not found" });
@@ -104,7 +111,8 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var response = await _logoutHandler.HandleAsync(ct);
+            var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "", StringComparison.OrdinalIgnoreCase);
+            var response = await _logoutHandler.HandleAsync(token, ct);
             return Ok(response);
         }
         catch (Exception ex)

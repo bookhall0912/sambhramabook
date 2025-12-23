@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SambhramaBook.Application.Repositories;
 using SambhramaBook.Domain.Entities;
 
 namespace SambhramaBook.Infrastructure.Repository;

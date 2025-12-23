@@ -1,7 +1,9 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import { UserApiService } from '../../../services/user.api';
+import { catchError, of } from 'rxjs';
 
 export interface SavedVenue {
   id: string;
@@ -25,38 +27,8 @@ export interface SavedVenue {
   styleUrl: './saved.component.scss'
 })
 export class SavedComponent implements OnInit {
-  savedVenues = signal<SavedVenue[]>([
-    {
-      id: '1',
-      name: 'Royal Orchid Hall',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622',
-      location: 'Indiranagar, Bangalore',
-      rating: 4.8,
-      reviewCount: 245,
-      price: 150000,
-      capacity: 500
-    },
-    {
-      id: '2',
-      name: 'Golden Petal Events',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622',
-      location: 'Whitefield, Bangalore',
-      rating: 4.9,
-      reviewCount: 120,
-      price: 200000,
-      capacity: 800
-    },
-    {
-      id: '3',
-      name: 'Grandeur Convention Center',
-      image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3',
-      location: 'Koramangala, Bangalore',
-      rating: 4.7,
-      reviewCount: 189,
-      price: 180000,
-      capacity: 600
-    }
-  ]);
+  savedVenues = signal<SavedVenue[]>([]);
+  private userApiService = inject(UserApiService);
 
   constructor(
     private router: Router,
@@ -65,7 +37,32 @@ export class SavedComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
-    // TODO: Load saved venues from API
+    this.loadSavedVenues();
+  }
+
+  private loadSavedVenues(): void {
+    this.userApiService.getSavedListings()
+      .pipe(
+        catchError(error => {
+          console.error('Error loading saved venues:', error);
+          return of({ success: false, data: [] });
+        })
+      )
+      .subscribe(response => {
+        if (response.success) {
+          const saved = response.data.map(s => ({
+            id: s.id,
+            name: s.title,
+            image: s.imageUrl || '',
+            location: s.location,
+            rating: s.rating,
+            reviewCount: s.reviewCount,
+            price: s.price,
+            capacity: s.capacity
+          }));
+          this.savedVenues.set(saved);
+        }
+      });
   }
 
   formatPrice(amount: number): string {
@@ -81,8 +78,19 @@ export class SavedComponent implements OnInit {
   }
 
   onRemoveSaved(venueId: string): void {
-    // TODO: Call API to remove from saved list
-    this.savedVenues.update(venues => venues.filter(v => v.id !== venueId));
+    this.userApiService.removeSavedListing(venueId)
+      .pipe(
+        catchError(error => {
+          console.error('Error removing saved venue:', error);
+          alert('Failed to remove venue from saved list.');
+          return of(null);
+        })
+      )
+      .subscribe(response => {
+        if (response) {
+          this.savedVenues.update(venues => venues.filter(v => v.id !== venueId));
+        }
+      });
   }
 
   onLogout(): void {
