@@ -5,7 +5,7 @@ export const environment: Environment = {
   // Set this to your production API URL
   // If using Azure Functions, use: '/api' for relative path
   // If using separate API service, use full URL: 'https://your-api.azurewebsites.net'
-  apiUrl: 'http://dev-api.sambhramabook.com/api',
+  apiUrl: 'https://dev-api.sambhramabook.com/api',
   // Add your Geoapify API key for production
   geoapifyApiKey: undefined,
 };
