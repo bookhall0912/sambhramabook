@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\sambhramabook\\apiNew\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|d:\\sambhramabook\\apinew\\sambhramabook.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{45742593-973D-AB17-337E-280F00C43BE1}|SambhramaBook.Api\\SambhramaBook.Api.csproj|solutionrelative:sambhramabook.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\appsettings.json",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.json",
+              "RelativeToolTip": "SambhramaBook.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-24T05:55:36.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Production.json",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.Production.json",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\appsettings.Production.json",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.Production.json",
+              "RelativeToolTip": "SambhramaBook.Api\\appsettings.Production.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-24T05:55:26.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "SambhramaBook.Api\\appsettings.Development.json",
+              "ToolTip": "D:\\sambhramabook\\apiNew\\SambhramaBook.Api\\appsettings.Development.json",
+              "RelativeToolTip": "SambhramaBook.Api\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-24T05:54:51.87Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
