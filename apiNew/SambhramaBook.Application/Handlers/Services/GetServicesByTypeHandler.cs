@@ -25,6 +25,7 @@ public class GetServicesByTypeHandler : IGetServicesByTypeHandler
         var (listings, total) = await _serviceQueries.GetServicesByTypeAsync(
             listingType,
             request.Location,
+            request.Type, // category code (photography, catering, etc.)
             request.Page,
             request.PageSize,
             ct);

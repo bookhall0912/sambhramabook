@@ -25,6 +25,12 @@ export class ServicesService {
    * Fetch all service categories from API
    */
   public fetchServiceCategories(): void {
+    // Prevent multiple simultaneous requests
+    const currentState = this.servicesState();
+    if (currentState.loading) {
+      return;
+    }
+
     this.servicesState.update(state => ({ ...state, loading: true, error: null }));
 
     this.servicesApiService.getServiceCategories()
@@ -36,16 +42,34 @@ export class ServicesService {
             loading: false,
             error: 'Failed to load service categories. Please try again.'
           }));
+          // Return EMPTY observable to stop the chain, don't emit empty categories
           return of({ categories: [] });
         })
       )
-      .subscribe(response => {
-        const sortedCategories = [...response.categories].sort((a, b) => a.displayOrder - b.displayOrder);
-        this.servicesState.set({
-          categories: sortedCategories,
-          loading: false,
-          error: null
-        });
+      .subscribe({
+        next: (response) => {
+          const currentState = this.servicesState();
+          const sortedCategories = [...response.categories].sort((a, b) => a.displayOrder - b.displayOrder);
+          
+          // Only clear error if we actually got categories
+          // If categories is empty, preserve any existing error
+          const errorToSet = sortedCategories.length > 0 ? null : currentState.error;
+          
+          this.servicesState.set({
+            categories: sortedCategories,
+            loading: false,
+            error: errorToSet
+          });
+        },
+        error: (error) => {
+          // This should not be reached due to catchError, but handle it just in case
+          console.error('Unexpected error in fetchServiceCategories:', error);
+          this.servicesState.update(state => ({
+            ...state,
+            loading: false,
+            error: 'Failed to load service categories. Please try again.'
+          }));
+        }
       });
   }
 }

@@ -27,20 +27,26 @@ export class ServicesSectionComponent implements OnInit {
     return categories.map(category => this.mapCategoryToService(category));
   });
 
+  private hasFetched = false;
+
   constructor(public servicesService: ServicesService) {
-    // Fetch services when component initializes
+    // Fetch services when component initializes - only once
     effect(() => {
       const state = this.servicesService.services$();
-      // If not loading, no categories, and no error, fetch data
-      if (!state.loading && state.categories.length === 0 && !state.error) {
+      // If not loading, no categories, no error, and haven't fetched yet, fetch data
+      if (!state.loading && state.categories.length === 0 && !state.error && !this.hasFetched) {
+        this.hasFetched = true;
         this.servicesService.fetchServiceCategories();
       }
     });
   }
 
   ngOnInit(): void {
-    // Always fetch on init
-    this.servicesService.fetchServiceCategories();
+    // Only fetch if not already fetched
+    if (!this.hasFetched) {
+      this.hasFetched = true;
+      this.servicesService.fetchServiceCategories();
+    }
   }
 
   private mapCategoryToService(category: ServiceCategoryDto): Service {

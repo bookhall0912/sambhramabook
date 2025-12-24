@@ -7,6 +7,7 @@ public class Listing
     public long Id { get; set; }
     public long VendorId { get; set; }
     public ListingType ListingType { get; set; }
+    public long? ServiceCategoryId { get; set; } // For Service listings only
     public required string Title { get; set; }
     public required string Slug { get; set; }
     public string? Description { get; set; }
@@ -60,6 +61,7 @@ public class Listing
 
     // Navigation properties
     public VendorProfile Vendor { get; set; } = null!;
+    public ServiceCategory? ServiceCategory { get; set; }
     public ICollection<ListingImage> Images { get; set; } = [];
     public ICollection<ListingAmenity> Amenities { get; set; } = [];
     public ICollection<ServicePackage> ServicePackages { get; set; } = [];

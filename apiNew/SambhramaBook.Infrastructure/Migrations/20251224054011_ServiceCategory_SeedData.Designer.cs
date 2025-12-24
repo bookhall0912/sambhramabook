@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SambhramaBook.Infrastructure;
@@ -11,9 +12,11 @@ using SambhramaBook.Infrastructure;
 namespace SambhramaBook.Infrastructure.Migrations
 {
     [DbContext(typeof(SambhramaBookDbContext))]
-    partial class SambhramaBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251224054011_ServiceCategory_SeedData")]
+    partial class ServiceCategory_SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

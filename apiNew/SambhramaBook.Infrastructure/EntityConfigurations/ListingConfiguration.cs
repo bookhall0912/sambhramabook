@@ -23,6 +23,9 @@ public class ListingConfiguration : IEntityTypeConfiguration<Listing>
             .HasConversion<int>()
             .IsRequired();
 
+        builder.Property(l => l.ServiceCategoryId)
+            .HasColumnName("service_category_id");
+
         builder.Property(l => l.Title)
             .HasColumnName("title")
             .HasMaxLength(255)
@@ -191,6 +194,13 @@ public class ListingConfiguration : IEntityTypeConfiguration<Listing>
             .WithMany(vp => vp.Listings)
             .HasForeignKey(l => l.VendorId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(l => l.ServiceCategory)
+            .WithMany(sc => sc.Listings)
+            .HasForeignKey(l => l.ServiceCategoryId)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        builder.HasIndex(l => l.ServiceCategoryId);
     }
 }
 

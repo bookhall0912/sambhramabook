@@ -143,21 +143,29 @@ import { ServiceCategoryDto } from '../../models/dtos/service-category.dto';
   `]
 })
 export class ServicesComponent implements OnInit {
+  private hasFetched = false;
+
   constructor(
     public servicesService: ServicesService,
     private router: Router
   ) {
-    // Fetch services when component initializes
+    // Fetch services when component initializes - only once
     effect(() => {
       const state = this.servicesService.services$();
-      if (!state.loading && state.categories.length === 0 && !state.error) {
+      // Only fetch if not loading, no categories, no error, and haven't fetched yet
+      if (!state.loading && state.categories.length === 0 && !state.error && !this.hasFetched) {
+        this.hasFetched = true;
         this.servicesService.fetchServiceCategories();
       }
     });
   }
 
   ngOnInit(): void {
-    this.servicesService.fetchServiceCategories();
+    // Only fetch if not already fetched
+    if (!this.hasFetched) {
+      this.hasFetched = true;
+      this.servicesService.fetchServiceCategories();
+    }
   }
 
   onServiceClick(serviceCode: string): void {

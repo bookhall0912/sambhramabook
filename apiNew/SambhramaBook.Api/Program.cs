@@ -1,6 +1,7 @@
 using System.Text;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using SambhramaBook.Api.Configuration;
@@ -34,21 +35,29 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // CORS - Configure based on environment
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
+if (allowedOrigins == null || allowedOrigins.Length == 0)
+{
+    // Default to localhost for development - include common ports
+    allowedOrigins = new[] { 
+        "http://localhost:4200", 
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://localhost:8080",
+        "http://127.0.0.1:4200",
+        "http://127.0.0.1:5173"
+    };
+}
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
-        if (allowedOrigins == null || allowedOrigins.Length == 0)
-        {
-            // Default to localhost for development
-            allowedOrigins = new[] { "http://localhost:4200", "http://localhost:5173" };
-        }
-        
         policy.WithOrigins(allowedOrigins)
               .AllowAnyMethod()
               .AllowAnyHeader()
-              .AllowCredentials();
+              .AllowCredentials()
+              .SetPreflightMaxAge(TimeSpan.FromSeconds(3600));
     });
 });
 
@@ -93,6 +102,13 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
+// Log CORS configuration for debugging
+if (!app.Environment.IsProduction())
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation("CORS Allowed Origins: {Origins}", string.Join(", ", allowedOrigins));
+}
+
 // Configure the HTTP request pipeline
 if (!app.Environment.IsProduction())
 {
@@ -101,8 +117,14 @@ if (!app.Environment.IsProduction())
     app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+// CORS must be before UseHttpsRedirection to handle preflight requests
 app.UseCors();
+
+// Only redirect to HTTPS in production
+if (app.Environment.IsProduction())
+{
+    app.UseHttpsRedirection();
+}
 app.UseMiddleware<GlobalExceptionHandler>();
 app.UseAuthentication();
 app.UseAuthorization();

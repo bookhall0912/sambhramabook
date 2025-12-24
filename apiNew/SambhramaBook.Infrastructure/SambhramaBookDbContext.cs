@@ -19,6 +19,7 @@ public class SambhramaBookDbContext : DbContext
     public virtual DbSet<User> Users { get; init; }
     public virtual DbSet<UserProfile> UserProfiles { get; init; }
     public virtual DbSet<VendorProfile> VendorProfiles { get; init; }
+    public virtual DbSet<ServiceCategory> ServiceCategories { get; init; }
     public virtual DbSet<Listing> Listings { get; init; }
     public virtual DbSet<ListingImage> ListingImages { get; init; }
     public virtual DbSet<ListingAmenity> ListingAmenities { get; init; }
