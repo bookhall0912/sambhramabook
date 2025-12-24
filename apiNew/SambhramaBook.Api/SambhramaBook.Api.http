@@ -1,6 +1,0 @@
-@SambhramaBook.Api_HostAddress = http://localhost:5276
-
-GET {{SambhramaBook.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
